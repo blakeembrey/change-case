@@ -7,6 +7,8 @@ var acceptString = function (fn) {
   };
 };
 
+var insignificant = exports.insignificantWords = ['and'];
+
 var lowerCase = exports.lowerCase = exports.lower = acceptString(function (str) {
   return str.toLowerCase();
 });
@@ -21,8 +23,7 @@ var splitWords = function (word) {
 
 var titleCase = exports.titleCase = exports.title = acceptString(function (str, isSignificant) {
   return splitWords(str).map(function (word) {
-    word = lowerCase(word);
-    if (!isSignificant && (word.length < 3 || ~['and'].indexOf(word))) {
+    if (!isSignificant && (word.length < 3 || ~insignificant.indexOf(word))) {
       return word;
     }
     return upperCase(word[0]) + word.slice(1);
@@ -56,4 +57,15 @@ exports.pathCase = exports.path = acceptString(function (str) {
 
 exports.constantCase = exports.constant = acceptString(function (str) {
   return splitWords(str).map(upperCase).join('_');
+});
+
+exports.switchCase = exports.switch = acceptString(function (str) {
+  var char;
+
+  for (var i = 0; i < str.length; i++) {
+    char = str.charAt(i);
+    str  = str.substr(0, i) + (char === upperCase(char) ? lowerCase(char) : upperCase(char)) + str.substr(i + 1);
+  }
+
+  return str;
 });

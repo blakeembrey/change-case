@@ -65,4 +65,9 @@ describe('change case', function () {
     assert.equal(changeCase.pathCase('Test_String'), 'test/string');
     assert.equal(changeCase.pathCase('Test-String'), 'test/string');
   });
+
+  it('should switch the cases', function () {
+    assert.equal(changeCase.switchCase('RaNdOMcasE'), 'rAnDomCASe');
+    assert.equal(changeCase.switchCase('mIX It.Down?'), 'Mix iT.dOWN?');
+  });
 });

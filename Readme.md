@@ -14,15 +14,16 @@ npm update change-case --save
 var changeCase = require('change-case');
 ```
 
-* `changeCase.upperCase(string)`
-* `changeCase.lowerCase(string)`
-* `changeCase.titleCase(string [, ignoreInsignificantWords])`
-* `changeCase.camelCase(string)`
-* `changeCase.snakeCase(string)`
-* `changeCase.paramCase(string)`
-* `changeCase.dotCase(string)`
-* `changeCase.pathCase(string)`
-* `changeCase.constantCase(string)`
+* changeCase.upperCase(string)
+* changeCase.lowerCase(string)
+* changeCase.titleCase(string [, ignoreInsignificantWords])
+* changeCase.camelCase(string)
+* changeCase.snakeCase(string)
+* changeCase.paramCase(string)
+* changeCase.dotCase(string)
+* changeCase.pathCase(string)
+* changeCase.constantCase(string)
+* changeCase.switchCase(string)
 
 ```javascript
 changeCase.upperCase('test string') // "TEST STRING"
@@ -35,6 +36,7 @@ changeCase.paramCase('test string') // "TestString"
 changeCase.dotCase('test string') // "test.string"
 changeCase.pathCase('test string') // "test/string"
 changeCase.constantCase('test string') // "TEST_STRING"
+changeCase.switchCase('TeST stRInG') // "tEst STriNg"
 ```
 
 ## License
