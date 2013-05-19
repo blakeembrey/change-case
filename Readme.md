@@ -5,7 +5,7 @@ Quickly convert strings between camelCase, PascalCase, Title Case, snake_case, l
 ## Installation
 
 ```
-npm update change-case --save
+npm install change-case --save
 ```
 
 ## API
