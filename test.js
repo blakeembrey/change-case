@@ -14,6 +14,7 @@ describe('change case', function () {
   it('should convert to title case', function () {
     assert.equal(changeCase.titleCase('this is a test'), 'This is a Test');
     assert.equal(changeCase.titleCase('this_is_a_test'), 'This is a Test');
+    assert.equal(changeCase.titleCase('this-is-a-test'), 'This is a Test');
     assert.equal(changeCase.titleCase('this is a test', true), 'This Is A Test');
   });
 

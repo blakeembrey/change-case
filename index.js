@@ -7,65 +7,68 @@ var acceptString = function (fn) {
   };
 };
 
-var insignificant = exports.insignificantWords = ['and'];
+var splitWords = function (word) {
+  return word.replace(/([a-z0-9])([A-Z])/, '$1 $2').split(/[^a-zA-Z0-9]/).map(e.lower);
+};
 
-var lowerCase = exports.lowerCase = exports.lower = acceptString(function (str) {
+var e = exports; // Alias `exports` object so I don't have to type as much
+
+e.insignificantWords = ['and'];
+
+e.lowerCase = e.lower = acceptString(function (str) {
   return str.toLowerCase();
 });
 
-var upperCase = exports.upperCase = exports.upper = acceptString(function (str) {
+e.upperCase = e.upper = acceptString(function (str) {
   return str.toUpperCase();
 });
 
-var splitWords = function (word) {
-  return word.replace(/([a-z0-9])([A-Z])/, '$1 $2').split(/[^a-zA-Z0-9]/).map(lowerCase);
-};
-
-var titleCase = exports.titleCase = exports.title = acceptString(function (str, isSignificant) {
+e.titleCase = e.title = acceptString(function (str, isSignificant) {
   return splitWords(str).map(function (word) {
-    if (!isSignificant && (word.length < 3 || ~insignificant.indexOf(word))) {
+    if (!isSignificant && (word.length < 3 || ~e.insignificantWords.indexOf(word))) {
       return word;
     }
-    return upperCase(word[0]) + word.slice(1);
+    return e.upper(word[0]) + word.slice(1);
   }).join(' ');
 });
 
-var pascalCase = exports.pascalCase = acceptString(function (str) {
-  return splitWords(str).map(titleCase).join('');
+e.pascalCase = e.pascal = acceptString(function (str) {
+  return splitWords(str).map(e.title).join('');
 });
 
-exports.camelCase = exports.camel = acceptString(function (str) {
-  str = pascalCase(str);
-  return lowerCase(str[0]) + str.slice(1);
+e.camelCase = e.camel = acceptString(function (str) {
+  str = e.pascal(str);
+  return e.lower(str[0]) + str.slice(1);
 });
 
-exports.snakeCase = exports.snake = acceptString(function (str) {
+e.snakeCase = e.snake = acceptString(function (str) {
   return splitWords(str).join('_');
 });
 
-exports.paramCase = exports.param = acceptString(function (str) {
+e.paramCase = e.param = acceptString(function (str) {
   return splitWords(str).join('-');
 });
 
-exports.dotCase = exports.dot = acceptString(function (str) {
+e.dotCase = e.dot = acceptString(function (str) {
   return splitWords(str).join('.');
 });
 
-exports.pathCase = exports.path = acceptString(function (str) {
+e.pathCase = e.path = acceptString(function (str) {
   return splitWords(str).join('/');
 });
 
-exports.constantCase = exports.constant = acceptString(function (str) {
-  return splitWords(str).map(upperCase).join('_');
+e.constantCase = e.constant = acceptString(function (str) {
+  return splitWords(str).map(e.upper).join('_');
 });
 
-exports.switchCase = exports.switch = acceptString(function (str) {
-  var char;
+e.switchCase = e.switch = acceptString(function (str) {
+  var output = '',
+      char;
 
   for (var i = 0; i < str.length; i++) {
     char = str.charAt(i);
-    str  = str.substr(0, i) + (char === upperCase(char) ? lowerCase(char) : upperCase(char)) + str.substr(i + 1);
+    output += (char === e.upper(char) ? e.lower(char) : e.upper(char));
   }
 
-  return str;
+  return output;
 });
