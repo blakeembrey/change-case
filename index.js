@@ -24,8 +24,8 @@ e.upperCase = e.upper = acceptString(function (str) {
 });
 
 e.titleCase = e.title = acceptString(function (str, isSignificant) {
-  return splitWords(str).map(function (word) {
-    if (!isSignificant && (word.length < 3 || ~e.insignificantWords.indexOf(word))) {
+  return splitWords(str).map(function (word, index) {
+    if (index && !isSignificant && (word.length < 3 || ~e.insignificantWords.indexOf(word))) {
       return word;
     }
     return e.upper(word[0]) + word.slice(1);

@@ -12,6 +12,7 @@ describe('change case', function () {
   });
 
   it('should convert to title case', function () {
+    assert.equal(changeCase.titleCase('a-simple-test'), 'A Simple Test');
     assert.equal(changeCase.titleCase('this is a test'), 'This is a Test');
     assert.equal(changeCase.titleCase('this_is_a_test'), 'This is a Test');
     assert.equal(changeCase.titleCase('this-is-a-test'), 'This is a Test');
@@ -30,6 +31,7 @@ describe('change case', function () {
     assert.equal(changeCase.pascalCase('Test String'), 'TestString');
     assert.equal(changeCase.pascalCase('Test_String'), 'TestString');
     assert.equal(changeCase.pascalCase('Test-String'), 'TestString');
+    assert.equal(changeCase.pascalCase('a-test-again'), 'ATestAgain');
   });
 
   it('should convert to snake case', function () {
