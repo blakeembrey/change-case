@@ -10,33 +10,125 @@ npm install change-case --save
 
 ## API
 
-```
+```js
 var changeCase = require('change-case');
 ```
 
-* `changeCase.upperCase(string)`
-* `changeCase.lowerCase(string)`
-* `changeCase.titleCase(string [, ignoreInsignificantWords])`
-* `changeCase.camelCase(string)`
-* `changeCase.snakeCase(string)`
-* `changeCase.paramCase(string)`
-* `changeCase.dotCase(string)`
-* `changeCase.pathCase(string)`
-* `changeCase.constantCase(string)`
-* `changeCase.switchCase(string)`
+**upperCase** changeCase.upperCase(string)
 
-```javascript
-changeCase.upperCase('test string') // "TEST STRING"
-changeCase.lowerCase('TEST STRING') // "test string"
-changeCase.titleCase('this is a test string') // "This is a Test String"
-changeCase.titleCase('this is a test string', true) // "This Is A Test String"
-changeCase.camelCase('test string') // "testString"
-changeCase.snakeCase('test string') // "test_string"
-changeCase.paramCase('test string') // "test-string"
-changeCase.dotCase('test string') // "test.string"
-changeCase.pathCase('test string') // "test/string"
-changeCase.constantCase('test string') // "TEST_STRING"
-changeCase.switchCase('TeST stRInG') // "tEst STriNg"
+Upper cases a string.
+
+```js
+changeCase.upperCase('test string');
+--> "TEST STRING"
+```
+
+**lowerCase** changeCase.lowerCase(string)
+
+Lower cases a string.
+
+```js
+changeCase.lowerCase('TEST STRING');
+--> "test string"
+```
+
+**upperCaseFirst** changeCase.upperCaseFirst(string)
+
+Upper cases only the first character of a string.
+
+```js
+changeCase.upperCaseFirst('test string');
+--> "Test string"
+```
+
+**lowerCaseFirst** changeCase.lowerCaseFirst(string)
+
+Lower cases only the first character of a string.
+
+```js
+changeCase.lowerCaseFirst('TEST STRING');
+--> "tEST STRING"
+```
+
+**titleCase** changeCase.titleCase(string)
+
+Title cases a string, useful for user inputted values being shown as titles. It does minimal sanitization of characters and will not handle non-sentence formats correctly (since it risks breaking formatting). If you need to parse a string in a different format, pass it through `sentenceCase` first.
+
+```js
+changeCase.titleCase('a simple test');
+--> "A Simple Test"
+```
+
+**sentenceCase** changeCase.sentenceCase(string)
+
+Transforms a string from any format to a lower cased sentence.
+
+```js
+changeCase.sentenceCase('testString');
+--> "test string"
+```
+
+**camelCase** changeCase.camelCase(string)
+
+Converts a string to a camel cased word.
+
+```js
+changeCase.camelCase('test string');
+--> "testString"
+```
+
+**snakeCase** changeCase.snakeCase(string)
+
+Converts a string to an underscore separated string.
+
+```js
+changeCase.snakeCase('test string');
+--> "test_string"
+```
+
+**paramCase** changeCase.paramCase(string)
+
+Converts a string to a dash separated string.
+
+```js
+changeCase.paramCase('test string');
+--> "test-case"
+```
+
+**dotCase** changeCase.dotCase(string)
+
+Converts a string to a period separated string.
+
+```js
+changeCase.dotCase('test string');
+--> "test.string"
+```
+
+**pathCase** changeCase.pathCase(string)
+
+Converts a string to a slash separated string.
+
+```js
+changeCase.pathCase('test string');
+--> "test/string"
+```
+
+**constantCase** changeCase.constantCase(string)
+
+Converts a string to a constant styled string (upper case separated by underscores).
+
+```js
+changeCase.constantCase('test string');
+--> "TEST_STRING"
+```
+
+**switchCase** changeCase.switchCase(string)
+
+Reverses the strings case.
+
+```js
+changeCase.switchCase('Test String');
+--> "tEST sTRING"
 ```
 
 ## License
