@@ -21,6 +21,7 @@ describe('change case', function () {
 
   it('should convert to title case', function () {
     assert.equal(changeCase.titleCase('a test sentence'), 'A Test Sentence');
+    assert.equal(changeCase.titleCase('s.p.e.c'), 'S.P.E.C');
   });
 
   it('should convert to sentence case', function () {
