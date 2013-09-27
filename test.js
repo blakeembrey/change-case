@@ -22,6 +22,12 @@ describe('change case', function () {
   it('should convert to title case', function () {
     assert.equal(changeCase.titleCase('a test sentence'), 'A Test Sentence');
     assert.equal(changeCase.titleCase('s.p.e.c'), 'S.P.E.C');
+    assert.equal(changeCase.titleCase('another s.p.e.c'), 'Another S.P.E.C');
+    assert.equal(changeCase.titleCase('i found a bug'), 'I Found a Bug');
+    assert.equal(changeCase.titleCase('i found a bug', true), 'I Found A Bug');
+    assert.equal(changeCase.titleCase('some things\''), 'Some Things\'');
+    assert.equal(changeCase.titleCase('"quotes"'), '"Quotes"');
+    assert.equal(changeCase.titleCase('hyphen-ness'), 'Hyphen-ness');
   });
 
   it('should convert to sentence case', function () {

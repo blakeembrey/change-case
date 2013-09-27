@@ -67,8 +67,8 @@ e.insignificantWords = ['and'];
  * @param  {String} string
  * @return {String}
  */
-e.lowerCase = e.lower = acceptString(function (string) {
-  return string.toLocaleLowerCase();
+e.lowerCase = acceptString(function (string) {
+  return string.toLowerCase();
 });
 
 /**
@@ -77,8 +77,8 @@ e.lowerCase = e.lower = acceptString(function (string) {
  * @param  {String} string
  * @return {String}
  */
-e.upperCase = e.upper = acceptString(function (string) {
-  return string.toLocaleUpperCase();
+e.upperCase = acceptString(function (string) {
+  return string.toUpperCase();
 });
 
 /**
@@ -87,7 +87,7 @@ e.upperCase = e.upper = acceptString(function (string) {
  * @param  {String} string
  * @return {String}
  */
-e.upperCaseFirst = e.upperFirst = acceptString(function (string) {
+e.upperCaseFirst = acceptString(function (string) {
   return e.upperCase(string.charAt(0)) + string.substr(1);
 });
 
@@ -97,7 +97,7 @@ e.upperCaseFirst = e.upperFirst = acceptString(function (string) {
  * @param  {String} string
  * @return {String}
  */
-e.lowerCaseFirst = e.lowerFirst = acceptString(function (string) {
+e.lowerCaseFirst = acceptString(function (string) {
   return e.lowerCase(string.charAt(0)) + string.substr(1);
 });
 
@@ -105,30 +105,37 @@ e.lowerCaseFirst = e.lowerFirst = acceptString(function (string) {
  * Title case a passed in string. Pass an optional boolean flag to title case
  * all words. Default behaviour is to skip insignicant words.
  *
- * @param  {String} string
+ * @param  {String}  string
+ * @param  {Boolean} significant
  * @return {String}
  */
-e.titleCase = e.title = acceptString(function (string) {
-  var prevSeparator = '';
+e.titleCase = e.title = acceptString(function (string, significant) {
+  return string
+    // Remove prefixed whitespace.
+    .replace(/^\s/, '')
+    // Remove suffixed whitespace.
+    .replace(/\s$/, '')
+    // Turn all whitespace into a single space character.
+    .replace(/\s+/g, ' ')
+    // Replace word strings. Matches "W.H.O", "tests'", "test's", "test", etc.
+    .replace(
+      /(?:(?:[a-zA-Z]\.)+[a-zA-Z]|[a-zA-Z\'\-]+[a-zA-Z]*)/g,
+      function (word, index) {
+        // Uppercase "W.H.O"
+        if (/(?:[a-zA-Z]\.)+[a-zA-Z]/g.test(word)) {
+          return e.upperCase(word);
+        }
 
-  return sanitizeString(string, function (word, index) {
-    // The first word of the string should always be capitalized.
-    if (index > 0 && (word.length < 3 || ~e.insignificantWords.indexOf(word))) {
-      return prevSeparator === '.' && word.length === 1 ?
-        e.upperCase(word) : e.lowerCase(word);
-    }
+        if (!significant && index > 0) {
+          if (word.length < 3 || ~e.insignificantWords.indexOf(word)) {
+            return e.lowerCase(word);
+          }
+        }
 
-    // Returns the word with the first character uppercased.
-    return e.upperCaseFirst(e.lowerCase(word));
-  }, function (separator) {
-    // Remove extra spaces.
-    separator = separator.replace(/ +/, ' ');
-
-    // Alias the previous separator for use in the next match.
-    prevSeparator = separator;
-
-    return separator;
-  });
+        return e.upperCaseFirst(e.lowerCase(word));
+      })
+    // Fix broken sentence formatting.
+    .replace(/(\.\,\!\?\;)([a-zA-Z0-9]+) /g, '$1 $2');
 });
 
 /**
@@ -220,7 +227,7 @@ e.constantCase = e.constant = acceptString(function (string) {
  * @return {String}
  */
 e.switchCase = e.switch = acceptString(function (string) {
-  return string.replace(/\w/g, function (c) {
+  return string.replace(/[a-zA-Z]/g, function (c) {
     var u = e.upperCase(c);
     return c === u ? e.lowerCase(c) : u;
   });

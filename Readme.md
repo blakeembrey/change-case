@@ -50,13 +50,19 @@ changeCase.lowerCaseFirst('TEST STRING');
 --> "tEST STRING"
 ```
 
-**titleCase** changeCase.titleCase(string)
+**titleCase** changeCase.titleCase(string, capitalizeAll)
 
-Title cases a string, useful for user inputted values being shown as titles. It does minimal sanitization of characters and will not handle non-sentence formats correctly (since it risks breaking formatting). If you need to parse a string in a different format, pass it through `sentenceCase` first.
+Title cases a string, usually user inputted strings that should be displayed as titles. It attempts to correct formatting of the sentence. If you need to parse a string in a different format, trying passing it through `sentenceCase` first.
 
 ```js
 changeCase.titleCase('a simple test');
 --> "A Simple Test"
+
+changeCase.titleCase('i found a bug');
+--> "I Found a Bug"
+
+changeCase.titleCase('i found a bug', true);
+--> "I Found A Bug"
 ```
 
 **sentenceCase** changeCase.sentenceCase(string)
