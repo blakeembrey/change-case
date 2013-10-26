@@ -43,6 +43,7 @@ describe('change case', function () {
     assert.equal(changeCase.camelCase('Test_String'), 'testString');
     assert.equal(changeCase.camelCase('Test-String'), 'testString');
     assert.equal(changeCase.camelCase('-webkit-transform'), 'webkitTransform');
+    assert.equal(changeCase.camelCase('fooBarBaz'), 'fooBarBaz');
   });
 
   it('should convert to pascal case', function () {

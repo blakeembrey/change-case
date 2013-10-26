@@ -29,7 +29,7 @@ var sanitizeString = function (string, replacement, separator) {
   var index = -1;
 
   return string
-    .replace(/([a-z0-9])([A-Z])/, '$1 $2')
+    .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
     .replace(/([^a-zA-Z0-9]*)([a-zA-Z0-9]+)/g, function (_, $0, $1) {
       var prefix = $0;
 
