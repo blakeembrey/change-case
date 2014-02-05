@@ -19,6 +19,18 @@ describe('change case', function () {
     assert.equal(changeCase.upperCaseFirst('test'), 'Test');
   });
 
+  it('should determine whether a string is all upper case or not', function () {
+    assert.equal(changeCase.isUpperCase('ALLUPPERCASE'), true);
+    assert.equal(changeCase.isUpperCase('NotAllUpperCase'), false);
+    assert.equal(changeCase.isUpperCase('alllowercase'), false);
+  });
+
+  it('should determine whether a string is all upper case or not', function () {
+    assert.equal(changeCase.isLowerCase('ALLUPPERCASE'), false);
+    assert.equal(changeCase.isLowerCase('NotAllLowerCase'), false);
+    assert.equal(changeCase.isLowerCase('alllowercase'), true);
+  });
+
   it('should convert to title case', function () {
     assert.equal(changeCase.titleCase('a test sentence'), 'A Test Sentence');
     assert.equal(changeCase.titleCase('s.p.e.c'), 'S.P.E.C');
@@ -38,20 +50,24 @@ describe('change case', function () {
   });
 
   it('should convert to camel case', function () {
+
     assert.equal(changeCase.camelCase('TestString'),  'testString');
     assert.equal(changeCase.camelCase('Test String'), 'testString');
     assert.equal(changeCase.camelCase('Test_String'), 'testString');
     assert.equal(changeCase.camelCase('Test-String'), 'testString');
+    assert.equal(changeCase.camelCase('TESTString'),  'testString');
     assert.equal(changeCase.camelCase('-webkit-transform'), 'webkitTransform');
     assert.equal(changeCase.camelCase('fooBarBaz'), 'fooBarBaz');
     assert.equal(changeCase.camelCase('some (things)'), 'someThings');
   });
 
   it('should convert to pascal case', function () {
+
     assert.equal(changeCase.pascalCase('testString'),  'TestString');
     assert.equal(changeCase.pascalCase('Test String'), 'TestString');
     assert.equal(changeCase.pascalCase('Test_String'), 'TestString');
     assert.equal(changeCase.pascalCase('Test-String'), 'TestString');
+    assert.equal(changeCase.pascalCase('TESTString'),  'TestString');
     assert.equal(changeCase.pascalCase('a-test-again'), 'ATestAgain');
     assert.equal(changeCase.pascalCase('a---better__test'), 'ABetterTest');
   });
