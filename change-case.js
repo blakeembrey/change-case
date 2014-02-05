@@ -27,10 +27,10 @@ var acceptString = function (fn) {
  */
 var sanitizeString = function (string, replacement, separator) {
   var index = -1;
-  
+
   return string
-    // Fix UPPERCASE words
-    .replace(/([A-Z]*)([A-Z]{1})/g, function (word, $0, $1) {
+    // Fix UPPERCASE words.
+    .replace(/([A-Z]+)([A-Z])/g, function (word, $0, $1) {
       return e.titleCase($0) + $1;
     })
     .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
@@ -49,7 +49,6 @@ var sanitizeString = function (string, replacement, separator) {
 
       return prefix + replacement($1, index, string);
     });
-
 };
 
 /**
@@ -68,22 +67,22 @@ e.insignificantWords = ['and'];
 
 /**
  * Returns a boolean describing whether the string is all UPPERCASE or not.
- * 
+ *
  * @param  {String} string
  * @return {Boolean}
  */
 e.isUpperCase = acceptString(function (string) {
-  return string == e.upperCase(string);
+  return string === e.upperCase(string);
 });
 
 /**
  * Returns a boolean describing whether the string is all lowercase or not.
- * 
+ *
  * @param  {String} string
  * @return {Boolean}
  */
 e.isLowerCase = acceptString(function (string) {
-  return string == e.lowerCase(string);
+  return string === e.lowerCase(string);
 });
 
 /**
