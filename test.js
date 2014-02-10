@@ -50,12 +50,11 @@ describe('change case', function () {
   });
 
   it('should convert to camel case', function () {
-
-    assert.equal(changeCase.camelCase('TestString'),  'testString');
+    assert.equal(changeCase.camelCase('TestString'), 'testString');
     assert.equal(changeCase.camelCase('Test String'), 'testString');
     assert.equal(changeCase.camelCase('Test_String'), 'testString');
     assert.equal(changeCase.camelCase('Test-String'), 'testString');
-    assert.equal(changeCase.camelCase('TESTString'),  'testString');
+    assert.equal(changeCase.camelCase('Facebook API'), 'facebookApi');
     assert.equal(changeCase.camelCase('-webkit-transform'), 'webkitTransform');
     assert.equal(changeCase.camelCase('fooBarBaz'), 'fooBarBaz');
     assert.equal(changeCase.camelCase('some (things)'), 'someThings');
@@ -67,7 +66,7 @@ describe('change case', function () {
     assert.equal(changeCase.pascalCase('Test String'), 'TestString');
     assert.equal(changeCase.pascalCase('Test_String'), 'TestString');
     assert.equal(changeCase.pascalCase('Test-String'), 'TestString');
-    assert.equal(changeCase.pascalCase('TESTString'),  'TestString');
+    assert.equal(changeCase.pascalCase('Facebook API'), 'FacebookApi');
     assert.equal(changeCase.pascalCase('a-test-again'), 'ATestAgain');
     assert.equal(changeCase.pascalCase('a---better__test'), 'ABetterTest');
   });
