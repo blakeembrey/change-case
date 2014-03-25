@@ -8,84 +8,88 @@ Quickly convert strings between camelCase, PascalCase, Title Case, snake_case, l
 npm install change-case --save
 ```
 
-## API
+## Usage
 
 ```js
 var changeCase = require('change-case');
+//=> { isUpperCase: [Function], ... }
+```
+
+**isUpperCase** changeCase.isUpperCase(string)
+
+Return a boolean indicating the string is upper cased.
+
+```js
+changeCase.isUpperCase('test string');
+//=> false
+```
+
+**isLowerCase** changeCase.isLowerCase(string)
+
+Return a boolean indicating the string is lower cased.
+
+```js
+changeCase.isLowerCase('test string');
+//=> true
 ```
 
 **upperCase** changeCase.upperCase(string)
 
-Upper cases a string.
+Return an upper cased string.
 
 ```js
 changeCase.upperCase('test string');
---> "TEST STRING"
+//=> "TEST STRING"
 ```
 
 **lowerCase** changeCase.lowerCase(string)
 
-Lower cases a string.
+Return a lower cased string.
 
 ```js
 changeCase.lowerCase('TEST STRING');
---> "test string"
+//=> "test string"
 ```
 
-**upperCaseFirst** changeCase.upperCaseFirst(string)
+**titleCase** changeCase.titleCase(string)
 
-Upper cases only the first character of a string.
-
-```js
-changeCase.upperCaseFirst('test string');
---> "Test string"
-```
-
-**lowerCaseFirst** changeCase.lowerCaseFirst(string)
-
-Lower cases only the first character of a string.
-
-```js
-changeCase.lowerCaseFirst('TEST STRING');
---> "tEST STRING"
-```
-
-**titleCase** changeCase.titleCase(string, capitalizeAll)
-
-Title cases a string, usually user inputted strings that should be displayed as titles. It attempts to correct formatting of the sentence. If you need to parse a string in a different format, trying passing it through `sentenceCase` first.
+Return a space separated string with the first character of every word upper cased.
 
 ```js
 changeCase.titleCase('a simple test');
---> "A Simple Test"
-
-changeCase.titleCase('i found a bug');
---> "I Found a Bug"
-
-changeCase.titleCase('i found a bug', true);
---> "I Found A Bug"
+//=> "A Simple Test"
 ```
 
 **sentenceCase** changeCase.sentenceCase(string)
 
-Transforms a string from any format to a lower cased sentence.
+Return a lower cased, space separated string.
 
 ```js
 changeCase.sentenceCase('testString');
---> "test string"
+//=> "test string"
 ```
 
 **camelCase** changeCase.camelCase(string)
 
-Converts a string to a camel cased word.
+Return a string with the separators denoted by having the next letter capitalized.
 
 ```js
 changeCase.camelCase('test string');
---> "testString"
+//=> "testString"
+```
+
+**pascalCase** changeCase.pascalCase(string)
+
+Return a string denoted in the same fashion as `camelCase`, but with the first letter also capitalized.
+
+```js
+changeCase.pascalCase('test string');
+//=> "TestString"
 ```
 
 **snakeCase** changeCase.snakeCase(string)
 
-Converts a string to an underscore separated string.
+Return a lower cased, space separated string.
 
 ```js
 changeCase.snakeCase('test string');
@@ -94,47 +98,47 @@ changeCase.snakeCase('test string');
 
 **paramCase** changeCase.paramCase(string)
 
-Converts a string to a dash separated string.
+Return a lower cased, dash separated string.
 
 ```js
 changeCase.paramCase('test string');
---> "test-case"
+//=> "test-case"
 ```
 
 **dotCase** changeCase.dotCase(string)
 
-Converts a string to a period separated string.
+Return a lower cased, period separated string.
 
 ```js
 changeCase.dotCase('test string');
---> "test.string"
+//=> "test.string"
 ```
 
 **pathCase** changeCase.pathCase(string)
 
-Converts a string to a slash separated string.
+Return a lower cased, slash separated string.
 
 ```js
 changeCase.pathCase('test string');
---> "test/string"
+//=> "test/string"
 ```
 
 **constantCase** changeCase.constantCase(string)
 
-Converts a string to a constant styled string (upper case separated by underscores).
+Return an upper cased, underscore separated string.
 
 ```js
 changeCase.constantCase('test string');
---> "TEST_STRING"
+//=> "TEST_STRING"
 ```
 
-**switchCase** changeCase.switchCase(string)
+**swapCase** changeCase.swapCase(string)
 
-Reverses the strings case.
+Return a string with lower case characters upper cased and upper case character lower cased.
 
 ```js
-changeCase.switchCase('Test String');
---> "tEST sTRING"
+changeCase.swapCase('Test String');
+//=> "tEST sTRING"
 ```
 
 ## License
