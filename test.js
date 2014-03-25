@@ -1,6 +1,6 @@
 /* global describe, it */
-var assert     = require('assert'),
-    changeCase = require('./');
+var assert     = require('assert');
+var changeCase = require('./');
 
 describe('change case', function () {
   it('should convert to lower case', function () {
@@ -9,14 +9,6 @@ describe('change case', function () {
 
   it('should convert to upper case', function () {
     assert.equal(changeCase.upperCase('test'), 'TEST');
-  });
-
-  it('should lower case the first character', function () {
-    assert.equal(changeCase.lowerCaseFirst('TEST'), 'tEST');
-  });
-
-  it('should upper case the first character', function () {
-    assert.equal(changeCase.upperCaseFirst('test'), 'Test');
   });
 
   it('should determine whether a string is all upper case or not', function () {
@@ -33,13 +25,10 @@ describe('change case', function () {
 
   it('should convert to title case', function () {
     assert.equal(changeCase.titleCase('a test sentence'), 'A Test Sentence');
-    assert.equal(changeCase.titleCase('s.p.e.c'), 'S.P.E.C');
-    assert.equal(changeCase.titleCase('another s.p.e.c'), 'Another S.P.E.C');
-    assert.equal(changeCase.titleCase('i found a bug'), 'I Found a Bug');
-    assert.equal(changeCase.titleCase('i found a bug', true), 'I Found A Bug');
-    assert.equal(changeCase.titleCase('some things\''), 'Some Things\'');
-    assert.equal(changeCase.titleCase('"quotes"'), '"Quotes"');
-    assert.equal(changeCase.titleCase('hyphen-ness'), 'Hyphen-ness');
+    assert.equal(changeCase.titleCase('i found a bug'), 'I Found A Bug');
+    assert.equal(changeCase.titleCase('some things\''), 'Some Things');
+    assert.equal(changeCase.titleCase('"quotes"'), 'Quotes');
+    assert.equal(changeCase.titleCase('hyphen-ness'), 'Hyphen Ness');
   });
 
   it('should convert to sentence case', function () {
@@ -111,8 +100,8 @@ describe('change case', function () {
     assert.equal(changeCase.pathCase('a---better__test'), 'a/better/test');
   });
 
-  it('should switch the cases', function () {
-    assert.equal(changeCase.switchCase('RaNdOMcasE'), 'rAnDomCASe');
-    assert.equal(changeCase.switchCase('mIX It.Down?'), 'Mix iT.dOWN?');
+  it('should swap the cases', function () {
+    assert.equal(changeCase.swapCase('RaNdOMcasE'), 'rAnDomCASe');
+    assert.equal(changeCase.swapCase('mIX It.Down?'), 'Mix iT.dOWN?');
   });
 });

@@ -1,254 +1,116 @@
-/**
- * Wraps a function with a security check that ensures the argument being
- * passed in is a string.
- *
- * @param  {Function} fn
- * @return {Function}
- */
-var acceptString = function (fn) {
-  return function (string) {
-    if (typeof string !== 'string') {
-      throw new TypeError('Changing case will only works on strings');
-    }
+var dot      = require('dot-case');
+var swap     = require('swap-case');
+var path     = require('path-case');
+var upper    = require('upper-case');
+var lower    = require('lower-case');
+var camel    = require('camel-case');
+var snake    = require('snake-case');
+var title    = require('title-case');
+var param    = require('param-case');
+var pascal   = require('pascal-case');
+var constant = require('constant-case');
+var sentence = require('sentence-case');
 
-    return fn.apply(null, arguments);
-  };
+/**
+ * Check if a string is upper case.
+ *
+ * @param  {String}  str
+ * @return {Boolean}
+ */
+exports.isUpperCase = function (str) {
+  return str === upper(str);
 };
 
 /**
- * Sanitizes a passed in string with certain options. It accepts a replacement
- * function that should accept a string word parameter. It also accepts an
- * optional separator override to replace the separator character.
+ * Check if a string is lower case.
  *
- * @param  {String}   string
- * @param  {Function} replacement
- * @param  {Function|String} [separator]
- * @return {Array}
+ * @param  {String}  str
+ * @return {Boolean}
  */
-var sanitizeString = function (string, replacement, separator) {
-  var index = -1;
-
-  return string
-    .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
-    .replace(/([^a-zA-Z0-9]*)([a-zA-Z0-9]*)/g, function (_, $0, $1) {
-      var prefix = $0;
-
-      index += 1;
-
-      if (prefix) {
-        if (typeof separator === 'string') {
-          prefix = separator;
-        } else if (typeof separator === 'function') {
-          prefix = separator($0, index, string);
-        }
-      }
-
-      return prefix + replacement($1, index, string);
-    });
+exports.isLowerCase = function (str) {
+  return str === lower(str);
 };
 
 /**
- * Exports object.
+ * Upper case a string.
  *
- * @type {Object}
+ * @type {Function}
  */
-var e = exports;
+exports.upperCase = exports.upper = upper;
 
 /**
- * Expose a mutable array of insignificant words that will not be title cased.
+ * Lower case a string.
  *
- * @type {Array}
+ * @type {Function}
  */
-e.insignificantWords = ['and'];
+exports.lowerCase = exports.lower = lower;
 
 /**
- * Returns a boolean describing whether the string is all UPPERCASE or not.
+ * Title case a string.
  *
- * @param  {String} string
- * @return {Boolean}
+ * @type {Function}
  */
-e.isUpperCase = acceptString(function (string) {
-  return string === e.upperCase(string);
-});
+exports.titleCase = exports.title = title;
 
 /**
- * Returns a boolean describing whether the string is all lowercase or not.
+ * Sentence case a string.
  *
- * @param  {String} string
- * @return {Boolean}
+ * @type {Function}
  */
-e.isLowerCase = acceptString(function (string) {
-  return string === e.lowerCase(string);
-});
+exports.sentenceCase = exports.sentence = sentence;
 
 /**
- * Lowercase a passed in string.
+ * Camel case a string.
  *
- * @param  {String} string
- * @return {String}
+ * @type {Function}
  */
-e.lowerCase = acceptString(function (string) {
-  return string.toLowerCase();
-});
+exports.camelCase = exports.camel = camel;
 
 /**
- * Uppercase a passed in string.
+ * Pascal case a string.
  *
- * @param  {String} string
- * @return {String}
+ * @type {Function}
  */
-e.upperCase = acceptString(function (string) {
-  return string.toUpperCase();
-});
+exports.pascalCase = exports.pascal = pascal;
 
 /**
- * Uppercase the first character of a string.
+ * Snake case a string.
  *
- * @param  {String} string
- * @return {String}
+ * @type {Function}
  */
-e.upperCaseFirst = acceptString(function (string) {
-  return e.upperCase(string.charAt(0)) + string.substr(1);
-});
+exports.snakeCase = exports.snake = snake;
 
 /**
- * Lowercase the first character of a string.
+ * Param case a string.
  *
- * @param  {String} string
- * @return {String}
+ * @type {Function}
  */
-e.lowerCaseFirst = acceptString(function (string) {
-  return e.lowerCase(string.charAt(0)) + string.substr(1);
-});
+exports.paramCase = exports.param = param;
 
 /**
- * Title case a passed in string. Pass an optional boolean flag to title case
- * all words. Default behaviour is to skip insignicant words.
+ * Dot case a string.
  *
- * @param  {String}  string
- * @param  {Boolean} significant
- * @return {String}
+ * @type {Function}
  */
-e.titleCase = e.title = acceptString(function (string, significant) {
-  return string
-    // Remove prefixed whitespace.
-    .replace(/^\s/, '')
-    // Remove suffixed whitespace.
-    .replace(/\s$/, '')
-    // Turn all whitespace into a single space character.
-    .replace(/\s+/g, ' ')
-    // Replace word strings. Matches "W.H.O", "tests'", "test's", "test", etc.
-    .replace(
-      /(?:(?:[a-zA-Z]\.)+[a-zA-Z]|[a-zA-Z\'\-]+[a-zA-Z]*)/g,
-      function (word, index) {
-        // Uppercase "W.H.O"
-        if (/(?:[a-zA-Z]\.)+[a-zA-Z]/g.test(word)) {
-          return e.upperCase(word);
-        }
-
-        if (!significant && index > 0) {
-          if (word.length < 3 || ~e.insignificantWords.indexOf(word)) {
-            return e.lowerCase(word);
-          }
-        }
-
-        return e.upperCaseFirst(e.lowerCase(word));
-      })
-    // Fix broken sentence formatting.
-    .replace(/(\.\,\!\?\;)([a-zA-Z0-9]+) /g, '$1 $2');
-});
+exports.dotCase = exports.dot = dot;
 
 /**
- * Sentence case a passed in string. E.g. "TestString" => "test string".
+ * Path case a string.
  *
- * @param  {String} string
- * @return {String}
+ * @type {Function}
  */
-e.sentenceCase = e.sentence = acceptString(function (string) {
-  return sanitizeString(string, e.lowerCase, ' ');
-});
+exports.pathCase = exports.path = path;
 
 /**
- * Pascal case a passed in string. E.g. "test string" => "TestString".
+ * Constant case a string.
  *
- * @param  {String} string
- * @return {String}
+ * @type {Function}
  */
-e.pascalCase = e.pascal = acceptString(function (string) {
-  return sanitizeString(string, function (word) {
-    return e.upperCaseFirst(e.lowerCase(word));
-  }, '');
-});
+exports.constantCase = exports.constant = constant;
 
 /**
- * Camel case a passed in string. E.g. "test string" => "testString".
+ * Swap case a string.
  *
- * @param  {String} string
- * @return {String}
+ * @type {Function}
  */
-e.camelCase = e.camel = acceptString(function (string) {
-  return e.lowerCaseFirst(e.pascalCase(string));
-});
-
-/**
- * Snake case a passed in string. E.g. "test string" => "test_string".
- *
- * @param  {String} string
- * @return {String}
- */
-e.snakeCase = e.snake = acceptString(function (string) {
-  return sanitizeString(string, e.lowerCase, '_');
-});
-
-/**
- * Param case a passed in string. E.g. "test string" => "test-string".
- *
- * @param  {String} string
- * @return {String}
- */
-e.paramCase = e.param = acceptString(function (string) {
-  return sanitizeString(string, e.lowerCase, '-');
-});
-
-/**
- * Dot case a passed in string. E.g. "test string" => "test.string".
- *
- * @param  {String} string
- * @return {String}
- */
-e.dotCase = e.dot = acceptString(function (string) {
-  return sanitizeString(string, e.lowerCase, '.');
-});
-
-/**
- * Path case a passed in string. E.g. "test string" => "test/string".
- *
- * @param  {String} string
- * @return {String}
- */
-e.pathCase = e.path = acceptString(function (string) {
-  return sanitizeString(string, e.lowerCase, '/');
-});
-
-/**
- * Constant case a passed in string. E.g. "test string" => "TEST_STRING".
- *
- * @param  {String} string
- * @return {String}
- */
-e.constantCase = e.constant = acceptString(function (string) {
-  return sanitizeString(string, e.upperCase, '_');
-});
-
-/**
- * Reverse the case of a string. E.g. "Test String" => "tEST sTRING".
- *
- * @param  {String} string
- * @return {String}
- */
-e.switchCase = e.switch = acceptString(function (string) {
-  return string.replace(/[a-zA-Z]/g, function (c) {
-    var u = e.upperCase(c);
-    return c === u ? e.lowerCase(c) : u;
-  });
-});
+exports.swapCase = exports.swap = swap;

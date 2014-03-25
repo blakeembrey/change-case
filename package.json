@@ -1,28 +1,42 @@
 {
   "name": "change-case",
   "version": "1.0.6",
-  "description": "Convert strings between camelCase, PascalCase, Title Case, snake_case, etc",
+  "description": "Convert a string between camelCase, PascalCase, Title Case, snake_case, etc.",
   "main": "change-case.js",
   "scripts": {
     "test": "istanbul cover _mocha -- -R spec"
   },
-  "repository": "https://github.com/blakeembrey/node-change-case",
+  "repository": "https://github.com/blakeembrey/change-case",
   "keywords": [
-    "camelcase",
-    "pascalcase",
-    "titlecase",
+    "camel",
+    "pascal",
+    "title",
     "case",
-    "lowercase",
-    "uppercase",
-    "paramcase",
-    "dotcase",
-    "pathcase",
-    "constantcase"
+    "lower",
+    "upper",
+    "param",
+    "dot",
+    "path",
+    "constant"
   ],
   "author": "Blake Embrey",
   "license": "MIT",
   "devDependencies": {
-    "mocha": "~1.17.1",
-    "istanbul": "~0.2.4"
+    "istanbul": "^0.2.6",
+    "mocha": "^1.18.2"
+  },
+  "dependencies": {
+    "camel-case": "0.0.2",
+    "constant-case": "0.0.2",
+    "dot-case": "0.0.2",
+    "lower-case": "0.0.1",
+    "param-case": "0.0.2",
+    "pascal-case": "0.0.2",
+    "path-case": "0.0.2",
+    "sentence-case": "0.0.2",
+    "snake-case": "0.0.2",
+    "swap-case": "0.0.1",
+    "title-case": "0.0.2",
+    "upper-case": "0.0.1"
   }
 }
