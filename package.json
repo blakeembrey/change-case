@@ -1,7 +1,7 @@
 {
   "name": "change-case",
   "version": "2.0.1",
-  "description": "Convert a string between camelCase, PascalCase, Title Case, snake_case, etc.",
+  "description": "Convert a string between camelCase, PascalCase, Title Case, snake_case and more.",
   "main": "change-case.js",
   "scripts": {
     "test": "istanbul cover _mocha -- -R spec"
@@ -26,17 +26,17 @@
     "mocha": "^1.18.2"
   },
   "dependencies": {
-    "camel-case": "0.0.2",
-    "constant-case": "0.0.2",
-    "dot-case": "0.0.2",
+    "camel-case": "^0.1.0",
+    "constant-case": "^0.1.0",
+    "dot-case": "^0.1.0",
     "lower-case": "0.0.1",
-    "param-case": "0.0.2",
-    "pascal-case": "0.0.2",
-    "path-case": "0.0.2",
-    "sentence-case": "0.0.2",
-    "snake-case": "0.0.2",
+    "param-case": "^0.1.0",
+    "pascal-case": "^0.1.0",
+    "path-case": "^0.1.0",
+    "sentence-case": "^0.1.1",
+    "snake-case": "^0.1.1",
     "swap-case": "0.0.1",
-    "title-case": "0.0.2",
+    "title-case": "^0.1.0",
     "upper-case": "0.0.1"
   }
 }

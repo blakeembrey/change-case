@@ -1,6 +1,6 @@
-# Change Case
+# change-case
 
-Quickly convert strings between camelCase, PascalCase, Title Case, snake_case, lowercase, UPPERCASE, CONSTANT_CASE, etc.
+Quickly convert strings between `camelCase`, `PascalCase`, `Title Case`, `snake_case`, `lowercase`, `UPPERCASE`, `CONSTANT_CASE` and more.
 
 ## Installation
 
