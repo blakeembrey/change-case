@@ -17,7 +17,9 @@
     "param",
     "dot",
     "path",
-    "constant"
+    "constant",
+    "cases",
+    "check"
   ],
   "author": "Blake Embrey",
   "license": "MIT",
@@ -29,14 +31,17 @@
     "camel-case": "^0.1.0",
     "constant-case": "^0.1.0",
     "dot-case": "^0.1.0",
+    "is-lower-case": "0.0.1",
+    "is-upper-case": "0.0.1",
     "lower-case": "0.0.1",
     "param-case": "^0.1.0",
-    "pascal-case": "^0.1.0",
+    "pascal-case": "^0.1.1",
     "path-case": "^0.1.0",
     "sentence-case": "^0.1.1",
     "snake-case": "^0.1.1",
     "swap-case": "0.0.1",
     "title-case": "^0.1.0",
-    "upper-case": "0.0.1"
+    "upper-case": "0.0.1",
+    "upper-case-first": "0.0.1"
   }
 }
