@@ -28,24 +28,24 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "istanbul": "^0.2.6",
+    "istanbul": "^0.3.0",
     "mocha": "^1.18.2"
   },
   "dependencies": {
-    "camel-case": "^0.1.0",
-    "constant-case": "^0.1.0",
-    "dot-case": "^0.1.0",
-    "is-lower-case": "0.0.1",
-    "is-upper-case": "0.0.1",
-    "lower-case": "0.0.1",
-    "param-case": "^0.1.0",
-    "pascal-case": "^0.1.1",
-    "path-case": "^0.1.0",
-    "sentence-case": "^0.1.1",
-    "snake-case": "^0.1.1",
-    "swap-case": "0.0.1",
-    "title-case": "^0.1.0",
-    "upper-case": "0.0.1",
-    "upper-case-first": "0.0.1"
+    "camel-case": "^1.0.0",
+    "constant-case": "^1.0.0",
+    "dot-case": "^1.0.0",
+    "is-lower-case": "^1.0.0",
+    "is-upper-case": "^1.0.0",
+    "lower-case": "^1.0.0",
+    "param-case": "^1.0.0",
+    "pascal-case": "^1.0.0",
+    "path-case": "^1.0.0",
+    "sentence-case": "^1.0.0",
+    "snake-case": "^1.0.0",
+    "swap-case": "^1.0.0",
+    "title-case": "^1.0.0",
+    "upper-case": "^1.0.0",
+    "upper-case-first": "^1.0.0"
   }
 }
