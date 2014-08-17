@@ -7,3 +7,5 @@ notifications:
 
 node_js:
   - "0.10"
+
+after_script: "npm install coveralls@2 && cat ./coverage/lcov.info | coveralls"
