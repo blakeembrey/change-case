@@ -21,7 +21,11 @@
     "cases",
     "check"
   ],
-  "author": "Blake Embrey",
+  "author": {
+    "name": "Blake Embrey",
+    "email": "hello@blakeembrey.com",
+    "url": "http://blakeembrey.me"
+  },
   "license": "MIT",
   "devDependencies": {
     "istanbul": "^0.2.6",
