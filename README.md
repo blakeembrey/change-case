@@ -9,7 +9,7 @@ Convert strings between `camelCase`, `PascalCase`, `Title Case`, `snake_case`, `
 
 All methods support non-ASCII characters and non-string entities, such as objects with a `toString` property, numbers and booleans. Empty values (`null` and `undefined`) will result in an empty string.
 
-Every method is available on npm as individual packages.
+Every method is also available on npm as individual packages.
 
 ## Installation
 
@@ -26,7 +26,7 @@ var changeCase = require('change-case');
 
 [isUpperCase](https://github.com/blakeembrey/is-upper-case) changeCase.isUpper(string)
 
-Return a boolean indicating the string is upper cased.
+Return a boolean indicating whether the string is upper cased.
 
 ```js
 changeCase.isUpperCase('test string');
@@ -35,7 +35,7 @@ changeCase.isUpperCase('test string');
 
 [isLowerCase](https://github.com/blakeembrey/is-lower-case) changeCase.isLower(string)
 
-Return a boolean indicating the string is lower cased.
+Return a boolean indicating whether the string is lower cased.
 
 ```js
 changeCase.isLowerCase('test string');
@@ -44,7 +44,7 @@ changeCase.isLowerCase('test string');
 
 [upperCase](https://github.com/blakeembrey/upper-case) changeCase.upper(string)
 
-Return an upper cased string.
+Return the string in upper case.
 
 ```js
 changeCase.upperCase('test string');
@@ -53,7 +53,7 @@ changeCase.upperCase('test string');
 
 [upperCaseFirst](https://github.com/blakeembrey/upper-case-first) changeCase.ucFirst(string)
 
-Return a string with the first character upper cased.
+Return the string with the first character upper cased.
 
 ```js
 changeCase.upperCaseFirst('test');
@@ -62,34 +62,34 @@ changeCase.upperCaseFirst('test');
 
 [lowerCase](https://github.com/blakeembrey/lower-case) changeCase.lower(string)
 
-Return a lower cased string.
+Return the string in lower case.
 
 ```js
 changeCase.lowerCase('TEST STRING');
 //=> "test string"
 ```
 
-[titleCase](https://github.com/blakeembrey/title-case) changeCase.title(string)
-
-Return a space separated string with the first character of every word upper cased.
-
-```js
-changeCase.titleCase('a simple test');
-//=> "A Simple Test"
-```
-
 [sentenceCase](https://github.com/blakeembrey/sentence-case) changeCase.sentence(string)
 
-Return a lower cased, space separated string.
+Return as a lower case, space separated string.
 
 ```js
 changeCase.sentenceCase('testString');
 //=> "test string"
 ```
 
+[titleCase](https://github.com/blakeembrey/title-case) changeCase.title(string)
+
+Return as a space separated string with the first character of every word upper cased.
+
+```js
+changeCase.titleCase('a simple test');
+//=> "A Simple Test"
+```
+
 [camelCase](https://github.com/blakeembrey/camel-case) changeCase.camel(string)
 
-Return a string with the separators denoted by having the next letter capitalized.
+Return as a string with the separators denoted by having the next letter capitalized.
 
 ```js
 changeCase.camelCase('test string');
@@ -98,7 +98,7 @@ changeCase.camelCase('test string');
 
 [pascalCase](https://github.com/blakeembrey/pascal-case) changeCase.pascal(string)
 
-Return a string denoted in the same fashion as `camelCase`, but with the first letter capitalized.
+Return as a string denoted in the same fashion as `camelCase`, but with the first letter also capitalized.
 
 ```js
 changeCase.pascalCase('test string');
@@ -107,7 +107,7 @@ changeCase.pascalCase('test string');
 
 [snakeCase](https://github.com/blakeembrey/snake-case) changeCase.snake(string)
 
-Return a lower cased, space separated string.
+Return as a lower case, underscore separated string.
 
 ```js
 changeCase.snakeCase('test string');
@@ -116,7 +116,7 @@ changeCase.snakeCase('test string');
 
 [paramCase](https://github.com/blakeembrey/param-case) changeCase.param(string)
 
-Return a lower cased, dash separated string.
+Return as a lower case, dash separated string.
 
 ```js
 changeCase.paramCase('test string');
@@ -125,7 +125,7 @@ changeCase.paramCase('test string');
 
 [dotCase](https://github.com/blakeembrey/dot-case) changeCase.dot(string)
 
-Return a lower cased, period separated string.
+Return as a lower case, period separated string.
 
 ```js
 changeCase.dotCase('test string');
@@ -134,7 +134,7 @@ changeCase.dotCase('test string');
 
 [pathCase](https://github.com/blakeembrey/path-case) changeCase.path(string)
 
-Return a lower cased, slash separated string.
+Return as a lower case, slash separated string.
 
 ```js
 changeCase.pathCase('test string');
@@ -143,7 +143,7 @@ changeCase.pathCase('test string');
 
 [constantCase](https://github.com/blakeembrey/constant-case) changeCase.constant(string)
 
-Return an upper cased, underscore separated string.
+Return as an upper case, underscore separated string.
 
 ```js
 changeCase.constantCase('test string');
@@ -152,7 +152,7 @@ changeCase.constantCase('test string');
 
 [swapCase](https://github.com/blakeembrey/swap-case) changeCase.swap(string)
 
-Return a string with lower case characters upper cased and upper case character lower cased.
+Return as a string with every character case reversed.
 
 ```js
 changeCase.swapCase('Test String');
