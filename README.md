@@ -24,7 +24,7 @@ var changeCase = require('change-case');
 //=> { isUpperCase: [Function], ... }
 ```
 
-**isUpperCase** changeCase.isUpper(string)
+[isUpperCase](https://github.com/blakeembrey/is-upper-case) changeCase.isUpper(string)
 
 Return a boolean indicating the string is upper cased.
 
@@ -33,7 +33,7 @@ changeCase.isUpperCase('test string');
 //=> false
 ```
 
-**isLowerCase** changeCase.isLower(string)
+[isLowerCase](https://github.com/blakeembrey/is-lower-case) changeCase.isLower(string)
 
 Return a boolean indicating the string is lower cased.
 
@@ -42,7 +42,7 @@ changeCase.isLowerCase('test string');
 //=> true
 ```
 
-**upperCase** changeCase.upper(string)
+[upperCase](https://github.com/blakeembrey/upper-case) changeCase.upper(string)
 
 Return an upper cased string.
 
@@ -51,7 +51,7 @@ changeCase.upperCase('test string');
 //=> "TEST STRING"
 ```
 
-**upperCaseFirst** changeCase.ucFirst(string)
+[upperCaseFirst](https://github.com/blakeembrey/upper-case-first) changeCase.ucFirst(string)
 
 Return a string with the first character upper cased.
 
@@ -60,7 +60,7 @@ changeCase.upperCaseFirst('test');
 //=> "Test"
 ```
 
-**lowerCase** changeCase.lower(string)
+[lowerCase](https://github.com/blakeembrey/lower-case) changeCase.lower(string)
 
 Return a lower cased string.
 
@@ -69,7 +69,7 @@ changeCase.lowerCase('TEST STRING');
 //=> "test string"
 ```
 
-**titleCase** changeCase.title(string)
+[titleCase](https://github.com/blakeembrey/title-case) changeCase.title(string)
 
 Return a space separated string with the first character of every word upper cased.
 
@@ -78,7 +78,7 @@ changeCase.titleCase('a simple test');
 //=> "A Simple Test"
 ```
 
-**sentenceCase** changeCase.sentence(string)
+[sentenceCase](https://github.com/blakeembrey/sentence-case) changeCase.sentence(string)
 
 Return a lower cased, space separated string.
 
@@ -87,7 +87,7 @@ changeCase.sentenceCase('testString');
 //=> "test string"
 ```
 
-**camelCase** changeCase.camel(string)
+[camelCase](https://github.com/blakeembrey/camel-case) changeCase.camel(string)
 
 Return a string with the separators denoted by having the next letter capitalized.
 
@@ -96,7 +96,7 @@ changeCase.camelCase('test string');
 //=> "testString"
 ```
 
-**pascalCase** changeCase.pascal(string)
+[pascalCase](https://github.com/blakeembrey/pascal-case) changeCase.pascal(string)
 
 Return a string denoted in the same fashion as `camelCase`, but with the first letter capitalized.
 
@@ -105,7 +105,7 @@ changeCase.pascalCase('test string');
 //=> "TestString"
 ```
 
-**snakeCase** changeCase.snake(string)
+[snakeCase](https://github.com/blakeembrey/snake-case) changeCase.snake(string)
 
 Return a lower cased, space separated string.
 
@@ -114,7 +114,7 @@ changeCase.snakeCase('test string');
 --> "test_string"
 ```
 
-**paramCase** changeCase.param(string)
+[paramCase](https://github.com/blakeembrey/param-case) changeCase.param(string)
 
 Return a lower cased, dash separated string.
 
@@ -123,7 +123,7 @@ changeCase.paramCase('test string');
 //=> "test-case"
 ```
 
-**dotCase** changeCase.dot(string)
+[dotCase](https://github.com/blakeembrey/dot-case) changeCase.dot(string)
 
 Return a lower cased, period separated string.
 
@@ -132,7 +132,7 @@ changeCase.dotCase('test string');
 //=> "test.string"
 ```
 
-**pathCase** changeCase.path(string)
+[pathCase](https://github.com/blakeembrey/path-case) changeCase.path(string)
 
 Return a lower cased, slash separated string.
 
@@ -141,7 +141,7 @@ changeCase.pathCase('test string');
 //=> "test/string"
 ```
 
-**constantCase** changeCase.constant(string)
+[constantCase](https://github.com/blakeembrey/constant-case) changeCase.constant(string)
 
 Return an upper cased, underscore separated string.
 
@@ -150,7 +150,7 @@ changeCase.constantCase('test string');
 //=> "TEST_STRING"
 ```
 
-**swapCase** changeCase.swap(string)
+[swapCase](https://github.com/blakeembrey/swap-case) changeCase.swap(string)
 
 Return a string with lower case characters upper cased and upper case character lower cased.
 
