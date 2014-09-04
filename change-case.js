@@ -1,32 +1,19 @@
-var camel = require('camel-case');
-
 /**
- * Map of module names to short alias name. Long alias names will be generated
- * automatically based on the module name.
+ * Straight exports with short alias, to support browserify.
  *
- * @type {Object}
  */
-var ALIASES = {
-  'dot-case':         'dot',
-  'swap-case':        'swap',
-  'path-case':        'path',
-  'upper-case':       'upper',
-  'lower-case':       'lower',
-  'camel-case':       'camel',
-  'snake-case':       'snake',
-  'title-case':       'title',
-  'param-case':       'param',
-  'pascal-case':      'pascal',
-  'constant-case':    'constant',
-  'sentence-case':    'sentence',
-  'is-upper-case':    'isUpper',
-  'is-lower-case':    'isLower',
-  'upper-case-first': 'ucFirst'
-};
-
-/**
- * Automatically alias all modules and short names.
- */
-Object.keys(ALIASES).forEach(function (name) {
-  exports[camel(name)] = exports[ALIASES[name]] = require(name);
-});
+exports.dot      = exports.dotCase        = require('dot-case')
+exports.swap     = exports.swapCase       = require('swap-case')
+exports.path     = exports.pathCase       = require('path-case')
+exports.upper    = exports.upperCase      = require('upper-case')
+exports.lower    = exports.lowerCase      = require('lower-case')
+exports.camel    = exports.camelCase      = require('camel-case')
+exports.snake    = exports.snakeCase      = require('snake-case')
+exports.title    = exports.titleCase      = require('title-case')
+exports.param    = exports.paramCase      = require('param-case')
+exports.pascal   = exports.pascalCase     = require('pascal-case')
+exports.constant = exports.constantCase   = require('constant-case')
+exports.sentence = exports.sentenceCase   = require('sentence-case')
+exports.isUpper  = exports.isUpperCase    = require('is-upper-case')
+exports.isLower  = exports.isLowerCase    = require('is-lower-case')
+exports.ucFirst  = exports.upperCaseFirst = require('upper-case-first')
