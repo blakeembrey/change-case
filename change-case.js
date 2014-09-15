@@ -1,19 +1,18 @@
 /**
- * Straight exports with short alias, to support browserify.
- *
+ * Directly export with short aliases to support browserify.
  */
-exports.dot      = exports.dotCase        = require('dot-case')
-exports.swap     = exports.swapCase       = require('swap-case')
-exports.path     = exports.pathCase       = require('path-case')
-exports.upper    = exports.upperCase      = require('upper-case')
-exports.lower    = exports.lowerCase      = require('lower-case')
-exports.camel    = exports.camelCase      = require('camel-case')
-exports.snake    = exports.snakeCase      = require('snake-case')
-exports.title    = exports.titleCase      = require('title-case')
-exports.param    = exports.paramCase      = require('param-case')
-exports.pascal   = exports.pascalCase     = require('pascal-case')
-exports.constant = exports.constantCase   = require('constant-case')
-exports.sentence = exports.sentenceCase   = require('sentence-case')
-exports.isUpper  = exports.isUpperCase    = require('is-upper-case')
-exports.isLower  = exports.isLowerCase    = require('is-lower-case')
-exports.ucFirst  = exports.upperCaseFirst = require('upper-case-first')
+exports.dot      = exports.dotCase        = require('dot-case');
+exports.swap     = exports.swapCase       = require('swap-case');
+exports.path     = exports.pathCase       = require('path-case');
+exports.upper    = exports.upperCase      = require('upper-case');
+exports.lower    = exports.lowerCase      = require('lower-case');
+exports.camel    = exports.camelCase      = require('camel-case');
+exports.snake    = exports.snakeCase      = require('snake-case');
+exports.title    = exports.titleCase      = require('title-case');
+exports.param    = exports.paramCase      = require('param-case');
+exports.pascal   = exports.pascalCase     = require('pascal-case');
+exports.constant = exports.constantCase   = require('constant-case');
+exports.sentence = exports.sentenceCase   = require('sentence-case');
+exports.isUpper  = exports.isUpperCase    = require('is-upper-case');
+exports.isLower  = exports.isLowerCase    = require('is-lower-case');
+exports.ucFirst  = exports.upperCaseFirst = require('upper-case-first');
