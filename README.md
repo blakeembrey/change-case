@@ -7,9 +7,9 @@
 
 Convert strings between `camelCase`, `PascalCase`, `Title Case`, `snake_case`, `lowercase`, `UPPERCASE`, `CONSTANT_CASE` and more.
 
-All methods support non-ASCII characters and non-string entities, such as objects with a `toString` property, numbers and booleans. Empty values (`null` and `undefined`) will result in an empty string.
+All methods support Unicode (non-ASCII characters) and non-string entities, such as objects with a `toString` property, numbers and booleans. Empty values (`null` and `undefined`) will result in an empty string.
 
-Every method is also available on npm as individual packages.
+**Every method is also available on npm as an individual package.**
 
 ## Installation
 
@@ -21,10 +21,28 @@ npm install change-case --save
 
 ```js
 var changeCase = require('change-case');
-//=> { isUpperCase: [Function], ... }
+//=> { isUpperCase: [Function], camelCase: [Function], ... }
 ```
 
-[isUpperCase](https://github.com/blakeembrey/is-upper-case) changeCase.isUpper(string)
+**Available methods** (short-hand shown below, long-hand available in examples):
+
+* `isUpper`
+* `isLower`
+* `upper`
+* `ucFirst`
+* `lower`
+* `sentence`
+* `title`
+* `camel`
+* `pascal`
+* `snake`
+* `param`
+* `dot`
+* `path`
+* `constant`
+* `swap`
+
+### [isUpperCase](https://github.com/blakeembrey/is-upper-case)
 
 Return a boolean indicating whether the string is upper cased.
 
@@ -33,7 +51,7 @@ changeCase.isUpperCase('test string');
 //=> false
 ```
 
-[isLowerCase](https://github.com/blakeembrey/is-lower-case) changeCase.isLower(string)
+### [isLowerCase](https://github.com/blakeembrey/is-lower-case)
 
 Return a boolean indicating whether the string is lower cased.
 
@@ -42,7 +60,7 @@ changeCase.isLowerCase('test string');
 //=> true
 ```
 
-[upperCase](https://github.com/blakeembrey/upper-case) changeCase.upper(string)
+### [upperCase](https://github.com/blakeembrey/upper-case)
 
 Return the string in upper case.
 
@@ -51,7 +69,7 @@ changeCase.upperCase('test string');
 //=> "TEST STRING"
 ```
 
-[upperCaseFirst](https://github.com/blakeembrey/upper-case-first) changeCase.ucFirst(string)
+### [upperCaseFirst](https://github.com/blakeembrey/upper-case-first)
 
 Return the string with the first character upper cased.
 
@@ -60,7 +78,7 @@ changeCase.upperCaseFirst('test');
 //=> "Test"
 ```
 
-[lowerCase](https://github.com/blakeembrey/lower-case) changeCase.lower(string)
+### [lowerCase](https://github.com/blakeembrey/lower-case)
 
 Return the string in lower case.
 
@@ -69,7 +87,7 @@ changeCase.lowerCase('TEST STRING');
 //=> "test string"
 ```
 
-[sentenceCase](https://github.com/blakeembrey/sentence-case) changeCase.sentence(string)
+### [sentenceCase](https://github.com/blakeembrey/sentence-case)
 
 Return as a lower case, space separated string.
 
@@ -78,7 +96,7 @@ changeCase.sentenceCase('testString');
 //=> "test string"
 ```
 
-[titleCase](https://github.com/blakeembrey/title-case) changeCase.title(string)
+### [titleCase](https://github.com/blakeembrey/title-case)
 
 Return as a space separated string with the first character of every word upper cased.
 
@@ -87,7 +105,7 @@ changeCase.titleCase('a simple test');
 //=> "A Simple Test"
 ```
 
-[camelCase](https://github.com/blakeembrey/camel-case) changeCase.camel(string)
+### [camelCase](https://github.com/blakeembrey/camel-case)
 
 Return as a string with the separators denoted by having the next letter capitalized.
 
@@ -96,7 +114,7 @@ changeCase.camelCase('test string');
 //=> "testString"
 ```
 
-[pascalCase](https://github.com/blakeembrey/pascal-case) changeCase.pascal(string)
+### [pascalCase](https://github.com/blakeembrey/pascal-case)
 
 Return as a string denoted in the same fashion as `camelCase`, but with the first letter also capitalized.
 
@@ -105,7 +123,7 @@ changeCase.pascalCase('test string');
 //=> "TestString"
 ```
 
-[snakeCase](https://github.com/blakeembrey/snake-case) changeCase.snake(string)
+### [snakeCase](https://github.com/blakeembrey/snake-case)
 
 Return as a lower case, underscore separated string.
 
@@ -114,7 +132,7 @@ changeCase.snakeCase('test string');
 --> "test_string"
 ```
 
-[paramCase](https://github.com/blakeembrey/param-case) changeCase.param(string)
+### [paramCase](https://github.com/blakeembrey/param-case)
 
 Return as a lower case, dash separated string.
 
@@ -123,7 +141,7 @@ changeCase.paramCase('test string');
 //=> "test-case"
 ```
 
-[dotCase](https://github.com/blakeembrey/dot-case) changeCase.dot(string)
+### [dotCase](https://github.com/blakeembrey/dot-case)
 
 Return as a lower case, period separated string.
 
@@ -132,7 +150,7 @@ changeCase.dotCase('test string');
 //=> "test.string"
 ```
 
-[pathCase](https://github.com/blakeembrey/path-case) changeCase.path(string)
+### [pathCase](https://github.com/blakeembrey/path-case)
 
 Return as a lower case, slash separated string.
 
@@ -141,7 +159,7 @@ changeCase.pathCase('test string');
 //=> "test/string"
 ```
 
-[constantCase](https://github.com/blakeembrey/constant-case) changeCase.constant(string)
+### [constantCase](https://github.com/blakeembrey/constant-case)
 
 Return as an upper case, underscore separated string.
 
@@ -150,7 +168,7 @@ changeCase.constantCase('test string');
 //=> "TEST_STRING"
 ```
 
-[swapCase](https://github.com/blakeembrey/swap-case) changeCase.swap(string)
+### [swapCase](https://github.com/blakeembrey/swap-case)
 
 Return as a string with every character case reversed.
 
