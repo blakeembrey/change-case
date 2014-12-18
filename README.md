@@ -159,6 +159,10 @@ changeCase.swapCase('Test String');
 //=> "tEST sTRING"
 ```
 
+## Related
+
+Also available on [Meteor](https://github.com/Konecty/change-case)!
+
 ## License
 
 MIT
