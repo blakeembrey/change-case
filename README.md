@@ -138,7 +138,7 @@ Return as a lower case, dash separated string.
 
 ```js
 changeCase.paramCase('test string');
-//=> "test-case"
+//=> "test-string"
 ```
 
 ### [dotCase](https://github.com/blakeembrey/dot-case)
