@@ -129,7 +129,7 @@ Return as a lower case, underscore separated string.
 
 ```js
 changeCase.snakeCase('test string');
---> "test_string"
+//=> "test_string"
 ```
 
 ### [paramCase](https://github.com/blakeembrey/param-case)
