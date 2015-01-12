@@ -3,6 +3,10 @@
   "version": "2.1.6",
   "description": "Convert a string between camelCase, PascalCase, Title Case, snake_case and more.",
   "main": "change-case.js",
+  "files": [
+    "change-case.js",
+    "LICENSE"
+  ],
   "scripts": {
     "test": "istanbul cover _mocha -- -R spec"
   },
