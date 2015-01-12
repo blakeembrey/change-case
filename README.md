@@ -41,6 +41,8 @@ var changeCase = require('change-case');
 * `constant`
 * `swap`
 
+All methods accept two arguments, the string to change case and an optional locale.
+
 ### [isUpperCase](https://github.com/blakeembrey/is-upper-case)
 
 Return a boolean indicating whether the string is upper cased.

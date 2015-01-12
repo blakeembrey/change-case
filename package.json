@@ -33,20 +33,20 @@
     "pre-commit": "0.0.9"
   },
   "dependencies": {
-    "camel-case": "^1.0.0",
-    "constant-case": "^1.0.0",
-    "dot-case": "^1.0.0",
-    "is-lower-case": "^1.0.0",
-    "is-upper-case": "^1.0.0",
-    "lower-case": "^1.0.0",
-    "param-case": "^1.0.0",
-    "pascal-case": "^1.0.0",
-    "path-case": "^1.0.0",
-    "sentence-case": "^1.0.0",
-    "snake-case": "^1.0.0",
-    "swap-case": "^1.0.0",
-    "title-case": "^1.0.0",
-    "upper-case": "^1.0.0",
-    "upper-case-first": "^1.0.0"
+    "camel-case": "^1.1.1",
+    "constant-case": "^1.1.0",
+    "dot-case": "^1.1.0",
+    "is-lower-case": "^1.1.0",
+    "is-upper-case": "^1.1.0",
+    "lower-case": "^1.1.1",
+    "param-case": "^1.1.0",
+    "pascal-case": "^1.1.0",
+    "path-case": "^1.1.0",
+    "sentence-case": "^1.1.1",
+    "snake-case": "^1.1.0",
+    "swap-case": "^1.1.0",
+    "title-case": "^1.1.0",
+    "upper-case": "^1.1.1",
+    "upper-case-first": "^1.1.0"
   }
 }
