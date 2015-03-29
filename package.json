@@ -37,7 +37,8 @@
   "devDependencies": {
     "istanbul": "^0.3.0",
     "mocha": "^2.2.1",
-    "pre-commit": "^1.0.6"
+    "pre-commit": "^1.0.6",
+    "standard": "^3.3.0"
   },
   "dependencies": {
     "camel-case": "^1.1.1",
