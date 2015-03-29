@@ -18,6 +18,12 @@ describe('change case', function () {
     assert.equal(changeCase.upperCaseFirst('test'), 'Test');
   });
 
+
+  it('should lower case the first character', function () {
+    assert.equal(changeCase.lcFirst('TEST'), 'tEST');
+    assert.equal(changeCase.lowerCaseFirst('Test'), 'test');
+  });
+
   it('should determine whether a string is all upper case or not', function () {
     assert.equal(changeCase.isUpper('ALLUPPERCASE'), true);
     assert.equal(changeCase.isUpperCase('NotAllUpperCase'), false);

@@ -43,6 +43,7 @@
     "is-lower-case": "^1.1.0",
     "is-upper-case": "^1.1.0",
     "lower-case": "^1.1.1",
+    "lower-case-first": "^1.0.0",
     "param-case": "^1.1.0",
     "pascal-case": "^1.1.0",
     "path-case": "^1.1.0",

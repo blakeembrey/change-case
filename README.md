@@ -29,6 +29,7 @@ var changeCase = require('change-case');
 * `isLower`
 * `upper`
 * `ucFirst`
+* `lcFirst`
 * `lower`
 * `sentence`
 * `title`
@@ -77,6 +78,15 @@ Return the string with the first character upper cased.
 ```js
 changeCase.upperCaseFirst('test');
 //=> "Test"
+```
+
+### [lowerCaseFirst](https://github.com/blakeembrey/lower-case-first)
+
+Return the string with the first character lower cased.
+
+```js
+changeCase.lowerCaseFirst('TEST');
+//=> "tEST"
 ```
 
 ### [lowerCase](https://github.com/blakeembrey/lower-case)

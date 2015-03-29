@@ -16,3 +16,4 @@ exports.sentence = exports.sentenceCase   = require('sentence-case');
 exports.isUpper  = exports.isUpperCase    = require('is-upper-case');
 exports.isLower  = exports.isLowerCase    = require('is-lower-case');
 exports.ucFirst  = exports.upperCaseFirst = require('upper-case-first');
+exports.lcFirst  = exports.lowerCaseFirst = require('lower-case-first');
