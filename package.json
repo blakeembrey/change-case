@@ -8,7 +8,10 @@
     "LICENSE"
   ],
   "scripts": {
-    "test": "istanbul cover _mocha -- -R spec"
+    "lint": "standard",
+    "test-std": "mocha -- -R spec --bail",
+    "test-cov": "istanbul cover node_modules/mocha/bin/_mocha -- -R spec --bail",
+    "test": "npm run lint && npm run test-cov"
   },
   "repository": "https://github.com/blakeembrey/change-case",
   "keywords": [
@@ -33,8 +36,8 @@
   "license": "MIT",
   "devDependencies": {
     "istanbul": "^0.3.0",
-    "mocha": "^1.18.2",
-    "pre-commit": "0.0.9"
+    "mocha": "^2.2.1",
+    "pre-commit": "^1.0.6"
   },
   "dependencies": {
     "camel-case": "^1.1.1",
