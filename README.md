@@ -269,6 +269,10 @@ changeCase.swapCase('Test String')
 //=> "tEST sTRING"
 ```
 
+## Typings
+
+Includes a [TypeScript definition](change-case.d.ts).
+
 ## Related
 
 Also available on [Meteor](https://github.com/Konecty/change-case)!

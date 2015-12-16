@@ -3,8 +3,10 @@
   "version": "2.3.0",
   "description": "Convert a string between camelCase, PascalCase, Title Case, snake_case and more.",
   "main": "change-case.js",
+  "typings": "change-case.d.ts",
   "files": [
     "change-case.js",
+    "change-case.d.ts",
     "LICENSE"
   ],
   "scripts": {
