@@ -275,7 +275,9 @@ Includes a [TypeScript definition](change-case.d.ts).
 
 ## Related
 
-Also available on [Meteor](https://github.com/Konecty/change-case)!
+* [Meteor](https://github.com/Konecty/change-case)
+* [Atom](https://github.com/robhurring/atom-change-case)
+* [VSCode](https://github.com/wmaurer/vscode-change-case)
 
 ## License
 
