@@ -43,11 +43,25 @@ describe('change case', function () {
     assert.equal(changeCase.titleCase('hyphen-ness'), 'Hyphen Ness')
   })
 
+  it('should convert to no case', function () {
+    assert.equal(changeCase.no('a-simple-test'), 'a simple test')
+    assert.equal(changeCase.noCase('this is a test'), 'this is a test')
+    assert.equal(changeCase.noCase('this_is_a_test'), 'this is a test')
+    assert.equal(changeCase.noCase('this-is-a-test'), 'this is a test')
+  })
+
+  it('should convert to header case', function () {
+    assert.equal(changeCase.header('a-simple-test'), 'A-Simple-Test')
+    assert.equal(changeCase.headerCase('this is a test'), 'This-Is-A-Test')
+    assert.equal(changeCase.headerCase('this_is_a_test'), 'This-Is-A-Test')
+    assert.equal(changeCase.headerCase('this-is-a-test'), 'This-Is-A-Test')
+  })
+
   it('should convert to sentence case', function () {
-    assert.equal(changeCase.sentence('a-simple-test'), 'a simple test')
-    assert.equal(changeCase.sentenceCase('this is a test'), 'this is a test')
-    assert.equal(changeCase.sentenceCase('this_is_a_test'), 'this is a test')
-    assert.equal(changeCase.sentenceCase('this-is-a-test'), 'this is a test')
+    assert.equal(changeCase.sentence('a-simple-test'), 'A simple test')
+    assert.equal(changeCase.sentenceCase('this is a test'), 'This is a test')
+    assert.equal(changeCase.sentenceCase('this_is_a_test'), 'This is a test')
+    assert.equal(changeCase.sentenceCase('this-is-a-test'), 'This is a test')
   })
 
   it('should convert to camel case', function () {

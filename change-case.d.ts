@@ -1,3 +1,4 @@
+import noCase = require('no-case')
 import dotCase = require('dot-case')
 import swapCase = require('swap-case')
 import pathCase = require('path-case')
@@ -7,6 +8,7 @@ import camelCase = require('camel-case')
 import snakeCase = require('snake-case')
 import titleCase = require('title-case')
 import paramCase = require('param-case')
+import headerCase = require('header-case')
 import pascalCase = require('pascal-case')
 import constantCase = require('constant-case')
 import sentenceCase = require('sentence-case')
@@ -15,6 +17,7 @@ import isLowerCase = require('is-lower-case')
 import upperCaseFirst = require('upper-case-first')
 import lowerCaseFirst = require('lower-case-first')
 
+export { noCase, noCase as no }
 export { dotCase, dotCase as dot }
 export { swapCase, swapCase as swap }
 export { pathCase, pathCase as path }
@@ -24,6 +27,7 @@ export { camelCase, camelCase as camel }
 export { snakeCase, snakeCase as snake }
 export { titleCase, titleCase as title }
 export { paramCase, paramCase as param }
+export { headerCase, headerCase as header }
 export { pascalCase, pascalCase as pascal }
 export { constantCase, constantCase as constant }
 export { sentenceCase, sentenceCase as sentence }
