@@ -42,6 +42,7 @@
     "standard": "^8.0.0"
   },
   "dependencies": {
+    "binary-case": "^1.0.0",
     "camel-case": "^3.0.0",
     "constant-case": "^2.0.0",
     "dot-case": "^2.1.0",

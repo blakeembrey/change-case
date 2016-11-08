@@ -26,6 +26,7 @@ var changeCase = require('change-case')
 
 **Available methods** (short-hand shown below, long-hand available in examples):
 
+* [`binary`](#binarycase)
 * [`camel`](#camelcase)
 * [`constant`](#constantcase)
 * [`dot`](#dotcase)
@@ -46,6 +47,20 @@ var changeCase = require('change-case')
 * [`ucFirst`](#uppercasefirst)
 
 All methods accept two arguments, the string to change case and an optional locale.
+
+### [binaryCase](https://github.com/Gi60s/binary-case)
+
+[![NPM version](https://img.shields.io/npm/v/binary-case.svg?style=flat)](https://npmjs.org/package/binary-case)
+[![NPM downloads](https://img.shields.io/npm/dm/binary-case.svg?style=flat)](https://npmjs.org/package/binary-case)
+[![Build status](https://img.shields.io/travis/Gi60s/binary-case.svg?style=flat)](https://travis-ci.org/Gi60s/binary-case)
+[![Test coverage](https://img.shields.io/coveralls/Gi60s/binary-case.svg?style=flat)](https://coveralls.io/r/Gi60s/binary-case?branch=master)
+
+Take a string and a number and perform binary case switching on alpha characters.
+
+```js
+changeCase.binaryCase('test string', 36)
+//=> "teSt sTring"
+```
 
 ### [camelCase](https://github.com/blakeembrey/camel-case)
 
