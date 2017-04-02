@@ -257,14 +257,12 @@ changeCase.swapCase('Test String')
 //=> "tEST sTRING"
 ```
 
-### [titleCase](https://github.com/blakeembrey/title-case)
+### [titleCase](https://github.com/rvagg/titlecase)
 
-[![NPM version](https://img.shields.io/npm/v/title-case.svg?style=flat)](https://npmjs.org/package/title-case)
-[![NPM downloads](https://img.shields.io/npm/dm/title-case.svg?style=flat)](https://npmjs.org/package/title-case)
-[![Build status](https://img.shields.io/travis/blakeembrey/title-case.svg?style=flat)](https://travis-ci.org/blakeembrey/title-case)
-[![Test coverage](https://img.shields.io/coveralls/blakeembrey/title-case.svg?style=flat)](https://coveralls.io/r/blakeembrey/title-case?branch=master)
+[![NPM version](https://img.shields.io/npm/v/title-case.svg?style=flat)](https://www.npmjs.com/package/titlecase)
+[![NPM downloads](https://img.shields.io/npm/dm/title-case.svg?style=flat)](https://www.npmjs.com/package/titlecase)
 
-Return as a space separated string with the first character of every word upper cased.
+Return as a space separated string with the first character of every word upper cased, with logical exceptions. Supports special characters. Does not swallow characters.
 
 ```js
 changeCase.titleCase('a simple test')
