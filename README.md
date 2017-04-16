@@ -5,6 +5,8 @@
 [![Build status][travis-image]][travis-url]
 [![Test coverage][coveralls-image]][coveralls-url]
 
+[![NPM](https://nodei.co/npm/change-case.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/change-case/)
+
 Convert strings between `camelCase`, `PascalCase`, `Title Case`, `snake_case`, `lowercase`, `UPPERCASE`, `CONSTANT_CASE` and more.
 
 All methods support Unicode (non-ASCII characters) and non-string entities, such as objects with a `toString` property, numbers and booleans. Empty values (`null` and `undefined`) will result in an empty string.
