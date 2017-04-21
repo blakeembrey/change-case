@@ -8,6 +8,7 @@ import camelCase = require('camel-case')
 import snakeCase = require('snake-case')
 import titleCase = require('title-case')
 import paramCase = require('param-case')
+import binaryCase = require('binary-case')
 import headerCase = require('header-case')
 import pascalCase = require('pascal-case')
 import constantCase = require('constant-case')
@@ -27,6 +28,7 @@ export { camelCase, camelCase as camel }
 export { snakeCase, snakeCase as snake }
 export { titleCase, titleCase as title }
 export { paramCase, paramCase as param }
+export { binaryCase, binaryCase as binary }
 export { headerCase, headerCase as header }
 export { pascalCase, pascalCase as pascal }
 export { constantCase, constantCase as constant }
