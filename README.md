@@ -1,11 +1,10 @@
 # Change Case
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/blakeembrey/change-case.svg)](https://greenkeeper.io/)
-
 [![NPM version][npm-image]][npm-url]
 [![NPM downloads][downloads-image]][downloads-url]
 [![Build status][travis-image]][travis-url]
 [![Test coverage][coveralls-image]][coveralls-url]
+[![Greenkeeper badge](https://badges.greenkeeper.io/blakeembrey/change-case.svg)](https://greenkeeper.io/)
 
 Convert strings between `camelCase`, `PascalCase`, `Title Case`, `snake_case`, `lowercase`, `UPPERCASE`, `CONSTANT_CASE` and more.
 
