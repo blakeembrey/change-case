@@ -25,6 +25,13 @@ var changeCase = require('change-case')
 //=> { isUpperCase: [Function], camelCase: [Function], ... }
 ```
 
+with typescript & webpack:
+
+```js
+import * as changeCase from "change-case";
+changeCase.constantCase("test string")
+```
+
 **Available methods** (short-hand shown below, long-hand available in examples):
 
 * [`camel`](#camelcase)
