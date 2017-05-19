@@ -57,7 +57,7 @@
     "sentence-case": "^2.1.0",
     "snake-case": "^2.1.0",
     "swap-case": "^1.1.0",
-    "title-case": "^2.1.0",
+    "titlecase": "^1.1.2",
     "upper-case": "^1.1.1",
     "upper-case-first": "^1.1.0"
   }
