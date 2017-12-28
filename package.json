@@ -50,7 +50,7 @@
     "is-upper-case": "^1.1.0",
     "lower-case": "^1.1.1",
     "lower-case-first": "^1.0.0",
-    "no-case": "^2.2.0",
+    "no-case": "^2.3.2",
     "param-case": "^2.1.0",
     "pascal-case": "^2.0.0",
     "path-case": "^2.1.0",
