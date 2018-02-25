@@ -29,7 +29,7 @@ describe('change case', function () {
     assert.equal(changeCase.isUpperCase('alllowercase'), false)
   })
 
-  it('should determine whether a string is all upper case or not', function () {
+  it('should determine whether a string is all lower case or not', function () {
     assert.equal(changeCase.isLower('ALLUPPERCASE'), false)
     assert.equal(changeCase.isLowerCase('NotAllLowerCase'), false)
     assert.equal(changeCase.isLowerCase('alllowercase'), true)
