@@ -8,6 +8,8 @@ exports.camel = exports.camelCase = require('camel-case')
 exports.snake = exports.snakeCase = require('snake-case')
 exports.title = exports.titleCase = require('title-case')
 exports.param = exports.paramCase = require('param-case')
+exports.kebab = exports.kebabCase = exports.paramCase
+exports.hyphen = exports.hyphenCase = exports.paramCase
 exports.header = exports.headerCase = require('header-case')
 exports.pascal = exports.pascalCase = require('pascal-case')
 exports.constant = exports.constantCase = require('constant-case')

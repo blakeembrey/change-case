@@ -27,6 +27,8 @@ export { camelCase, camelCase as camel }
 export { snakeCase, snakeCase as snake }
 export { titleCase, titleCase as title }
 export { paramCase, paramCase as param }
+export { paramCase as kebabCase, paramCase as kebab }
+export { paramCase as hyphenCase, paramCase as hyphen }
 export { headerCase, headerCase as header }
 export { pascalCase, pascalCase as pascal }
 export { constantCase, constantCase as constant }
