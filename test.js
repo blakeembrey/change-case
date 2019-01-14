@@ -101,6 +101,22 @@ describe('change case', function () {
     assert.equal(changeCase.paramCase('a---better__test'), 'a-better-test')
   })
 
+  it('should convert to kebab case', function () {
+    assert.equal(changeCase.kebab('testString'), 'test-string')
+    assert.equal(changeCase.kebabCase('Test String'), 'test-string')
+    assert.equal(changeCase.kebabCase('Test_String'), 'test-string')
+    assert.equal(changeCase.kebabCase('Test-String'), 'test-string')
+    assert.equal(changeCase.kebabCase('a---better__test'), 'a-better-test')
+  })
+
+  it('should convert to hyphen case', function () {
+    assert.equal(changeCase.hyphen('testString'), 'test-string')
+    assert.equal(changeCase.hyphenCase('Test String'), 'test-string')
+    assert.equal(changeCase.hyphenCase('Test_String'), 'test-string')
+    assert.equal(changeCase.hyphenCase('Test-String'), 'test-string')
+    assert.equal(changeCase.hyphenCase('a---better__test'), 'a-better-test')
+  })
+
   it('should convert to constant case', function () {
     assert.equal(changeCase.constant('testString'), 'TEST_STRING')
     assert.equal(changeCase.constantCase('Test String'), 'TEST_STRING')

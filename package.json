@@ -24,6 +24,8 @@
     "lower",
     "upper",
     "param",
+    "kebab",
+    "hyphen",
     "dot",
     "path",
     "constant",
