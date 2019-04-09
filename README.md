@@ -35,7 +35,7 @@ var changeCase = require('change-case')
 * [`lower`](#lowercase)
 * [`lcFirst`](#lowercasefirst)
 * [`no`](#nocase)
-* [`param`](#paramcase)
+* [`param`](#paramcase) - aliases: [`kebab`, `hyphen`]
 * [`pascal`](#pascalcase)
 * [`path`](#pathcase)
 * [`sentence`](#sentencecase)
@@ -179,6 +179,10 @@ changeCase.noCase('test string')
 [![NPM downloads](https://img.shields.io/npm/dm/param-case.svg?style=flat)](https://npmjs.org/package/param-case)
 [![Build status](https://img.shields.io/travis/blakeembrey/param-case.svg?style=flat)](https://travis-ci.org/blakeembrey/param-case)
 [![Test coverage](https://img.shields.io/coveralls/blakeembrey/param-case.svg?style=flat)](https://coveralls.io/r/blakeembrey/param-case?branch=master)
+
+#### Aliases
+- `kebabCase`
+- `hyphenCase`
 
 Return as a lower case, dash separated string.
 
