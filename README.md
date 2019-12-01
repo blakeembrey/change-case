@@ -30,7 +30,7 @@ import * as changeCase from "change-case";
 - [`sentenceCase`](#sentencecase)
 - [`snakeCase`](#snakecase)
 
-_All methods accept an `options` object, pre-configured to the case being used._
+_These functions are bundled with [`change-case`](https://github.com/blakeembrey/change-case/tree/master/packages/change-case)._
 
 #### [camelCase](https://github.com/blakeembrey/change-case/tree/master/packages/camel-case)
 
@@ -142,7 +142,7 @@ snakeCase("test string");
 - [`upperCase`](#uppercase)
 - [`upperCaseFirst`](#uppercasefirst)
 
-_Utility functions do not follow standard `case` functionality._
+_These functions do not follow the standard `case` behavior, you must install these separately._
 
 #### [titleCase](https://github.com/blakeembrey/change-case/tree/master/packages/title-case)
 
