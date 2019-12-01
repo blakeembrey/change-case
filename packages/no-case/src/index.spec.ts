@@ -50,8 +50,8 @@ const TEST_CASES: [string, string, Options?][] = [
   ["foo_13_bar", "foo 13 bar"],
 
   // Customization.
-  ["camel2019", "camel 2019", { splitRegexp: /([a-z])([A-Z0-9])/ }],
-  ["minifyURLs", "minify urls", { splitRegexp: /([a-z])([A-Z0-9])/ }]
+  ["camel2019", "camel 2019", { splitRegexp: /([a-z])([A-Z0-9])/g }],
+  ["minifyURLs", "minify urls", { splitRegexp: /([a-z])([A-Z0-9])/g }]
 ];
 
 describe("no case", () => {

@@ -36,7 +36,7 @@ If you find the default split hard to use, you can write a new one. The example 
 
 ```js
 const options = {
-  splitRegexp: /([a-z])([A-Z0-9])/
+  splitRegexp: /([a-z])([A-Z0-9])/g
 };
 ```
 
