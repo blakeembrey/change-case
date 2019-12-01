@@ -11,7 +11,7 @@ export interface Options {
 const DEFAULT_SPLIT_REGEXP = /([a-z0-9])([A-Z])|([A-Z])([A-Z][a-z])/g;
 
 // Remove all non-word characters.
-const DEFAULT_STRIP_REGEXP = /[^a-zA-Z0-9]+/g;
+const DEFAULT_STRIP_REGEXP = /[^A-Z0-9]+/gi;
 
 /**
  * Normalize the string into something other libraries can manipulate easier.

@@ -16,7 +16,9 @@ npm install change-case --save
 import * as changeCase from "change-case";
 ```
 
-### Core methods
+### Core
+
+These functions are bundled with [`change-case`](https://github.com/blakeembrey/change-case/tree/master/packages/change-case):
 
 - [`camelCase`](#camelcase)
 - [`capitalCase`](#capitalcase)
@@ -30,7 +32,12 @@ import * as changeCase from "change-case";
 - [`sentenceCase`](#sentencecase)
 - [`snakeCase`](#snakecase)
 
-_These functions are bundled with [`change-case`](https://github.com/blakeembrey/change-case/tree/master/packages/change-case)._
+All core methods accept `options` as the second argument:
+
+- **`splitRegexp`** RegExp used to split into word segments.
+- **`stripRegexp`** RegExp used to remove extraneous characters (default: `/[^A-Z0-9]/gi`).
+- **`delimiter`** Value used between words (e.g. `" "`).
+- **`transform`** Used to transform each word segment (e.g. `lowerCase`).
 
 #### [camelCase](https://github.com/blakeembrey/change-case/tree/master/packages/camel-case)
 
