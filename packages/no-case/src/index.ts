@@ -8,18 +8,18 @@ export interface Options {
 }
 
 // Support camel case ("camelCase" -> "camel Case" and "CAMELCase" -> "CAMEL Case").
-const SPLIT_REGEXP = /([a-z0-9])([A-Z])|([A-Z])([A-Z][a-z])/g;
+const DEFAULT_SPLIT_REGEXP = /([a-z0-9])([A-Z])|([A-Z])([A-Z][a-z])/g;
 
 // Remove all non-word characters.
-const STRIP_REGEXP = /[^a-zA-Z0-9]+/g;
+const DEFAULT_STRIP_REGEXP = /[^a-zA-Z0-9]+/g;
 
 /**
  * Normalize the string into something other libraries can manipulate easier.
  */
 export function noCase(input: string, options: Options = {}) {
   const {
-    splitRegexp = SPLIT_REGEXP,
-    stripRegexp = STRIP_REGEXP,
+    splitRegexp = DEFAULT_SPLIT_REGEXP,
+    stripRegexp = DEFAULT_STRIP_REGEXP,
     transform = lowerCase,
     delimiter = " "
   } = options;

@@ -1,6 +1,6 @@
-import { noCase } from ".";
+import { noCase, Options } from ".";
 
-const TEST_CASES: [string, string][] = [
+const TEST_CASES: [string, string, Options?][] = [
   // Single words.
   ["test", "test"],
   ["TEST", "test"],
@@ -47,13 +47,17 @@ const TEST_CASES: [string, string][] = [
 
   // https://github.com/blakeembrey/change-case/issues/21
   ["amazon s3 data", "amazon s3 data"],
-  ["foo_13_bar", "foo 13 bar"]
+  ["foo_13_bar", "foo 13 bar"],
+
+  // Customization.
+  ["camel2019", "camel 2019", { splitRegexp: /([a-z])([A-Z0-9])/ }],
+  ["minifyURLs", "minify urls", { splitRegexp: /([a-z])([A-Z0-9])/ }]
 ];
 
 describe("no case", () => {
-  for (const [input, result] of TEST_CASES) {
+  for (const [input, result, options] of TEST_CASES) {
     it(`${input} -> ${result}`, () => {
-      expect(noCase(input)).toEqual(result);
+      expect(noCase(input, options)).toEqual(result);
     });
   }
 });
