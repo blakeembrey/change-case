@@ -1,3 +1,5 @@
+sudo: false
+
 language: node_js
 
 notifications:
@@ -6,6 +8,5 @@ notifications:
     on_failure: change
 
 node_js:
-  - "stable"
-
-after_script: "npm install coveralls@2 && cat ./coverage/lcov.info | coveralls"
+  - "8"
+  - stable
