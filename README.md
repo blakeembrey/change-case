@@ -18,7 +18,7 @@ import * as changeCase from "change-case";
 
 ### Core
 
-These functions are bundled with [`change-case`](https://github.com/blakeembrey/change-case/tree/master/packages/change-case):
+These functions come bundled with [`change-case`](https://github.com/blakeembrey/change-case/tree/master/packages/change-case):
 
 - [`camelCase`](#camelcase)
 - [`capitalCase`](#capitalcase)
@@ -32,12 +32,7 @@ These functions are bundled with [`change-case`](https://github.com/blakeembrey/
 - [`sentenceCase`](#sentencecase)
 - [`snakeCase`](#snakecase)
 
-All core methods accept `options` as the second argument:
-
-- **`splitRegexp`** RegExp used to split into word segments.
-- **`stripRegexp`** RegExp used to remove extraneous characters (default: `/[^A-Z0-9]/gi`).
-- **`delimiter`** Value used between words (e.g. `" "`).
-- **`transform`** Used to transform each word segment (e.g. `lowerCase`).
+All core methods accept [`options`](#options) as the second argument.
 
 #### [camelCase](https://github.com/blakeembrey/change-case/tree/master/packages/camel-case)
 
@@ -149,7 +144,7 @@ snakeCase("test string");
 - [`upperCase`](#uppercase)
 - [`upperCaseFirst`](#uppercasefirst)
 
-_These functions do not follow the standard `case` behavior, you must install these separately._
+_These functions are not "case" libraries but independent functions, you must install these separately._
 
 #### [titleCase](https://github.com/blakeembrey/change-case/tree/master/packages/title-case)
 
@@ -221,6 +216,23 @@ upperCase("test string");
 ```js
 upperCaseFirst("test");
 //=> "Test"
+```
+
+### Options
+
+- **`splitRegexp`** RegExp used to split into word segments (see [example](#split-example)).
+- **`stripRegexp`** RegExp used to remove extraneous characters (default: `/[^A-Z0-9]/gi`).
+- **`delimiter`** Value used between words (e.g. `" "`).
+- **`transform`** Used to transform each word segment (e.g. `lowerCase`).
+
+#### Split Example
+
+If you find the default split hard to use, you can provide a different one. The example below will change the behavior to `word2019 -> word 2019` and `minifyURLs -> minify urls`:
+
+```js
+const options = {
+  splitRegexp: /([a-z])([A-Z0-9])/g
+};
 ```
 
 ## Related

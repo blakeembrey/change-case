@@ -23,22 +23,7 @@ noCase("PascalCase"); //=> "pascal case"
 noCase("version 1.2.10"); //=> "version 1 2 10"
 ```
 
-### Options
-
-- **`splitRegexp`** RegExp used to split into word segments.
-- **`stripRegexp`** RegExp used to remove extraneous characters.
-- **`delimiter`** Value used between words (default: `" "`).
-- **`transform`** Used to transform each word segment individually (default: `lowerCase`).
-
-#### Customize Split
-
-If you find the default split hard to use, you can write a new one. The example below will change the behavior to `word2019 -> word 2019` and `minifyURLs -> minify urls`. Without this change, the default split will be confused.
-
-```js
-const options = {
-  splitRegexp: /([a-z])([A-Z0-9])/g
-};
-```
+The function also accepts [`options`](https://github.com/blakeembrey/change-case#options).
 
 ## License
 

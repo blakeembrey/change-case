@@ -23,6 +23,8 @@ constantCase("PascalCase"); //=> "PASCAL_CASE"
 constantCase("version 1.2.10"); //=> "VERSION_1_2_10"
 ```
 
+The function also accepts [`options`](https://github.com/blakeembrey/change-case#options).
+
 ## License
 
 MIT

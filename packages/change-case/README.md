@@ -30,7 +30,7 @@ import {
 } from "change-case";
 ```
 
-All methods available [independently](https://github.com/blakeembrey/change-case).
+Methods can also be installed [independently](https://github.com/blakeembrey/change-case). All functions also accept [`options`](https://github.com/blakeembrey/change-case#options) as the second argument.
 
 ## License
 

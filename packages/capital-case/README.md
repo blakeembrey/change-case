@@ -23,6 +23,8 @@ capitalCase("PascalCase"); //=> "Pascal Case"
 capitalCase("version 1.2.10"); //=> "Version 1 2 10"
 ```
 
+The function also accepts [`options`](https://github.com/blakeembrey/change-case#options).
+
 ## License
 
 MIT
