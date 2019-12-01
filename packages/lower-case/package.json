@@ -1,6 +1,6 @@
 {
   "name": "lower-case",
-  "version": "1.1.4",
+  "version": "2.0.0",
   "description": "Transforms the string to lower case",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",

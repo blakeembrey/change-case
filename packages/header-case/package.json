@@ -1,6 +1,6 @@
 {
   "name": "header-case",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Transform into a dash separated string of capitalized words",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -70,7 +70,7 @@
     "access": "public"
   },
   "dependencies": {
-    "capital-case": "^0.0.0"
+    "capital-case": "^1.0.0"
   },
   "devDependencies": {
     "@size-limit/preset-small-lib": "^2.2.1",

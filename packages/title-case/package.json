@@ -1,6 +1,6 @@
 {
   "name": "title-case",
-  "version": "2.1.1",
+  "version": "3.0.0",
   "description": "Transform a string into title case following English rules",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -70,8 +70,8 @@
     "access": "public"
   },
   "dependencies": {
-    "lower-case": "^1.0.0",
-    "upper-case": "^1.0.0"
+    "lower-case": "^2.0.0",
+    "upper-case": "^2.0.0"
   },
   "devDependencies": {
     "@size-limit/preset-small-lib": "^2.2.1",

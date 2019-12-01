@@ -1,6 +1,6 @@
 {
   "name": "path-case",
-  "version": "2.1.1",
+  "version": "3.0.0",
   "description": "Transform into a lower case string with slashes between words",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -69,7 +69,7 @@
     "access": "public"
   },
   "dependencies": {
-    "dot-case": "^2.0.0"
+    "dot-case": "^3.0.0"
   },
   "devDependencies": {
     "@size-limit/preset-small-lib": "^2.2.1",
