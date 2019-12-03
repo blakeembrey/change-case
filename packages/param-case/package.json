@@ -1,6 +1,6 @@
 {
   "name": "param-case",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Transform into a lower cased string with dashes between words",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -72,7 +72,7 @@
     "access": "public"
   },
   "dependencies": {
-    "dot-case": "^3.0.0"
+    "dot-case": "^3.0.1"
   },
   "devDependencies": {
     "@size-limit/preset-small-lib": "^2.2.1",
