@@ -56,7 +56,9 @@ const TEST_CASES: [string, string][] = [
   [
     "the quick brown fox jumps over the lazy dog",
     "The Quick Brown Fox Jumps over the Lazy Dog"
-  ]
+  ],
+  ["newcastle upon tyne", "Newcastle upon Tyne"],
+  ["newcastle *upon* tyne", "Newcastle *upon* Tyne"]
 ];
 
 describe("swap case", () => {

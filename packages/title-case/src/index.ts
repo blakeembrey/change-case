@@ -1,4 +1,4 @@
-const SMALL_WORDS = /^(?:a|an|and|as|at|but|by|en|for|if|in|neither|nor|of|on|only|or|over|per|so|than|that|the|to|v\.?|versus|vs\.?|via|when|with|without|yet)$/i;
+const SMALL_WORDS = /\b(?:an?d?|a[st]|because|but|by|en|for|i[fn]|neither|nor|o[fnr]|only|over|per|so|some|tha[tn]|the|to|up|upon|vs?\.?|versus|via|when|with|without|yet)\b/i;
 const TOKENS = /[^\s:–—-]+|./g;
 const WHITESPACE = /\s/;
 const IS_MANUAL_CASE = /.(?=[A-Z]|\..)/;
