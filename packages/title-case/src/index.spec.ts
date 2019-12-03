@@ -52,6 +52,10 @@ const TEST_CASES: [string, string][] = [
   [
     "Notes and observations regarding Apple’s announcements from ‘The Beat Goes On’ special event",
     "Notes and Observations Regarding Apple’s Announcements From ‘The Beat Goes On’ Special Event"
+  ],
+  [
+    "the quick brown fox jumps over the lazy dog",
+    "The Quick Brown Fox Jumps over the Lazy Dog"
   ]
 ];
 

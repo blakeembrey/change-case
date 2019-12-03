@@ -4,7 +4,7 @@
 [![NPM downloads][downloads-image]][downloads-url]
 [![Bundle size][bundlephobia-image]][bundlephobia-url]
 
-> Transform a string into title case following English rules.
+> Transform a string into [title case](https://en.wikipedia.org/wiki/Letter_case#Title_case) following English rules.
 
 ## Installation
 
