@@ -69,7 +69,6 @@
     "access": "public"
   },
   "dependencies": {
-    "lower-case": "^2.0.0",
     "no-case": "^3.0.0",
     "upper-case-first": "^2.0.0"
   },

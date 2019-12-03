@@ -69,10 +69,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "dependencies": {
-    "lower-case": "^2.0.0",
-    "upper-case": "^2.0.0"
-  },
   "devDependencies": {
     "@size-limit/preset-small-lib": "^2.2.1",
     "@types/jest": "^24.0.23",
