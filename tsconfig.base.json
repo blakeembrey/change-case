@@ -1,10 +1,11 @@
 {
   "compilerOptions": {
-    "target": "es2015",
-    "lib": ["es2015"],
+    "target": "es5",
+    "lib": ["es5"],
     "outDir": "dist",
     "module": "commonjs",
     "moduleResolution": "node",
+    "importHelpers": true,
     "declaration": true,
     "strict": true,
     "sourceMap": true,

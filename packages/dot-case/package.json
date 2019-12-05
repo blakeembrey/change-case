@@ -16,7 +16,7 @@
     "lint": "tslint \"src/**/*\" --project tsconfig.json",
     "build": "rimraf dist/ dist.es2015/ && tsc && tsc -P tsconfig.es2015.json",
     "specs": "jest --coverage",
-    "test": "npm run build && npm run lint && npm run specs && npm run size",
+    "test": "npm run build && npm run lint && npm run specs",
     "size": "size-limit",
     "prepare": "npm run build"
   },
@@ -46,7 +46,7 @@
   "size-limit": [
     {
       "path": "dist/index.js",
-      "limit": "350 B"
+      "limit": "450 B"
     }
   ],
   "jest": {
@@ -70,7 +70,8 @@
     "access": "public"
   },
   "dependencies": {
-    "no-case": "^3.0.1"
+    "no-case": "^3.0.1",
+    "tslib": "^1.10.0"
   },
   "devDependencies": {
     "@size-limit/preset-small-lib": "^2.2.1",

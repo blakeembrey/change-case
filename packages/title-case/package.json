@@ -16,7 +16,7 @@
     "lint": "tslint \"src/**/*\" --project tsconfig.json",
     "build": "rimraf dist/ dist.es2015/ && tsc && tsc -P tsconfig.es2015.json",
     "specs": "jest --coverage",
-    "test": "npm run build && npm run lint && npm run specs && npm run size",
+    "test": "npm run build && npm run lint && npm run specs",
     "size": "size-limit",
     "prepare": "npm run build"
   },
@@ -80,5 +80,8 @@
     "tslint-config-prettier": "^1.18.0",
     "tslint-config-standard": "^9.0.0",
     "typescript": "^3.7.2"
+  },
+  "dependencies": {
+    "tslib": "^1.10.0"
   }
 }
