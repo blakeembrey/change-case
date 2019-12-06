@@ -1,5 +1,5 @@
 import { noCase, Options } from "no-case";
-import { upperCase } from 'upper-case';
+import { upperCase } from "upper-case";
 
 export { Options };
 

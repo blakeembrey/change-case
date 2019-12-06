@@ -12,4 +12,4 @@ describe("lower case first", () => {
       expect(lowerCaseFirst(input)).toEqual(result);
     });
   }
-})
+});
