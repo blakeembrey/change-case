@@ -1,6 +1,6 @@
 {
   "name": "no-case",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "Transform into a lower cased string with spaces between words",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",

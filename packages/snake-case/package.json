@@ -1,6 +1,6 @@
 {
   "name": "snake-case",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "Transform into a lower case string with underscores between words",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -71,7 +71,7 @@
     "access": "public"
   },
   "dependencies": {
-    "dot-case": "^3.0.2",
+    "dot-case": "^3.0.3",
     "tslib": "^1.10.0"
   },
   "devDependencies": {

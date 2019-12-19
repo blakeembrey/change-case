@@ -1,6 +1,6 @@
 {
   "name": "sentence-case",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "Transform into a lower case with spaces between words, then capitalize the string",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -69,7 +69,7 @@
     "access": "public"
   },
   "dependencies": {
-    "no-case": "^3.0.2",
+    "no-case": "^3.0.3",
     "tslib": "^1.10.0",
     "upper-case-first": "^2.0.1"
   },

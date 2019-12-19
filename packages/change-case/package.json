@@ -1,6 +1,6 @@
 {
   "name": "change-case",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "Transform a string between `camelCase`, `PascalCase`, `Capital Case`, `snake_case`, `param-case`, `CONSTANT_CASE` and others",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -72,17 +72,17 @@
     "access": "public"
   },
   "dependencies": {
-    "camel-case": "^4.1.0",
-    "capital-case": "^1.0.2",
-    "constant-case": "^3.0.2",
-    "dot-case": "^3.0.2",
-    "header-case": "^2.0.2",
-    "no-case": "^3.0.2",
-    "param-case": "^3.0.2",
-    "pascal-case": "^3.1.0",
-    "path-case": "^3.0.2",
-    "sentence-case": "^3.0.2",
-    "snake-case": "^3.0.2",
+    "camel-case": "^4.1.1",
+    "capital-case": "^1.0.3",
+    "constant-case": "^3.0.3",
+    "dot-case": "^3.0.3",
+    "header-case": "^2.0.3",
+    "no-case": "^3.0.3",
+    "param-case": "^3.0.3",
+    "pascal-case": "^3.1.1",
+    "path-case": "^3.0.3",
+    "sentence-case": "^3.0.3",
+    "snake-case": "^3.0.3",
     "tslib": "^1.10.0"
   },
   "devDependencies": {
