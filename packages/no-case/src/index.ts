@@ -1,14 +1,14 @@
 import { lowerCase } from "lower-case";
 
 export interface Options {
-  splitRegexp?: RegExp;
-  stripRegexp?: RegExp;
+  splitRegexp?: RegExp | RegExp[];
+  stripRegexp?: RegExp | RegExp[];
   delimiter?: string;
   transform?: (part: string, index: number, parts: string[]) => string;
 }
 
 // Support camel case ("camelCase" -> "camel Case" and "CAMELCase" -> "CAMEL Case").
-const DEFAULT_SPLIT_REGEXP = /([a-z0-9])([A-Z])|([A-Z])([A-Z][a-z])/g;
+const DEFAULT_SPLIT_REGEXP = [/([a-z0-9])([A-Z])/g, /([A-Z])([A-Z][a-z])/g];
 
 // Remove all non-word characters.
 const DEFAULT_STRIP_REGEXP = /[^A-Z0-9]+/gi;
@@ -24,15 +24,11 @@ export function noCase(input: string, options: Options = {}) {
     delimiter = " "
   } = options;
 
-  let result = input
-    .replace(splitRegexp, (...args) => {
-      return args
-        .slice(1, -2)
-        .filter(x => x !== undefined)
-        .join("\0");
-    })
-    .replace(stripRegexp, "\0");
-
+  let result = replace(
+    replace(input, splitRegexp, "$1\0$2"),
+    stripRegexp,
+    "\0"
+  );
   let start = 0;
   let end = result.length;
 
@@ -46,4 +42,12 @@ export function noCase(input: string, options: Options = {}) {
     .split("\0")
     .map(transform)
     .join(delimiter);
+}
+
+/**
+ * Replace `re` in the input string with the replacement value.
+ */
+function replace(input: string, re: RegExp | RegExp[], value: string) {
+  if (re instanceof RegExp) return input.replace(re, value);
+  return re.reduce((input, re) => input.replace(re, value), input);
 }

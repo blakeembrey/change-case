@@ -23,6 +23,7 @@ const TEST_CASES: [string, string, Options?][] = [
   // Random cases.
   ["FOO_bar", "foo bar"],
   ["XMLHttpRequest", "xml http request"],
+  ["IQueryAArgs", "i query a args"],
 
   // Non-alphanumeric separators.
   ["dot.case", "dot case"],
