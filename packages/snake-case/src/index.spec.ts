@@ -2,6 +2,7 @@ import { snakeCase } from ".";
 
 const TEST_CASES: [string, string][] = [
   ["", ""],
+  ["_id", "id"],
   ["test", "test"],
   ["test string", "test_string"],
   ["Test String", "test_string"],
