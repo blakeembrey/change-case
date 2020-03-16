@@ -143,7 +143,7 @@ snakeCase("test string");
 - [`lowerCaseFirst`](#lowercasefirst)
 - [`upperCase`](#uppercase)
 - [`upperCaseFirst`](#uppercasefirst)
-- [`randomCase`](#randomcase)
+- [`spongeCase`](#spongeCase)
 
 _These functions are not "case" libraries but independent functions, you must install these separately._
 
@@ -219,12 +219,12 @@ upperCaseFirst("test");
 //=> "Test"
 ```
 
-#### [randomCase](https://github.com/blakeembrey/change-case/tree/master/packages/random-case)
+#### [spongeCase](https://github.com/blakeembrey/change-case/tree/master/packages/sponge-case)
 
 > Transform into a string with random capitalization applied.
 
 ```js
-randomCase("Test String");
+spongeCase("Test String");
 //=> "tEst stRINg"
 ```
 

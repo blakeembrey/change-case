@@ -1,4 +1,4 @@
-import { randomCase } from ".";
+import { spongeCase } from ".";
 
 /* Since strings are non-deterministic, we test string length to ensure integrity */
 
@@ -14,7 +14,7 @@ const TEST_CASES: [string, number][] = [
 describe("random case", () => {
   for (const [input, length] of TEST_CASES) {
     it(`${input} -> ${length}`, () => {
-      expect(randomCase(input)).toHaveLength(length);
+      expect(spongeCase(input)).toHaveLength(length);
     });
   }
 });

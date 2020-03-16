@@ -1,7 +1,7 @@
 {
-  "name": "random-case",
-  "version": "1.0.3",
-  "description": "Transform a string by randomly capitalizing or lowercasing every character",
+  "name": "sponge-case",
+  "version": "0.0.0",
+  "description": "Transform into a string with random capitalization applied",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "module": "dist.es2015/index.js",
@@ -44,7 +44,7 @@
   "bugs": {
     "url": "https://github.com/blakeembrey/change-case/issues"
   },
-  "homepage": "https://github.com/blakeembrey/change-case/tree/master/packages/random-case#readme",
+  "homepage": "https://github.com/blakeembrey/change-case/tree/master/packages/sponge-case#readme",
   "size-limit": [
     {
       "path": "dist/index.js",
@@ -72,9 +72,7 @@
     "access": "public"
   },
   "dependencies": {
-    "no-case": "^3.0.3",
-    "tslib": "^1.10.0",
-    "upper-case-first": "^2.0.1"
+    "tslib": "^1.10.0"
   },
   "devDependencies": {
     "@size-limit/preset-small-lib": "^2.2.1",
