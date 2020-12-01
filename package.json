@@ -3,10 +3,12 @@
   "private": true,
   "scripts": {
     "bootstrap": "lerna bootstrap",
+    "changed": "lerna changed",
     "prettier": "prettier --write",
     "build": "lerna run build",
     "format": "npm run prettier -- \"{,packages/**/}*.{js,jsx,ts,tsx,json,md,yml,yaml}\" --ignore-path .gitignore",
-    "test": "lerna run test"
+    "test": "lerna run test",
+    "release": "lerna publish"
   },
   "husky": {
     "hooks": {
