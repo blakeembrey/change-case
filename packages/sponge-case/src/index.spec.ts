@@ -8,7 +8,7 @@ const TEST_CASES: [string, number][] = [
   ["test string", 11],
   ["Test String", 11],
   ["TestV2", 6],
-  ["rAnDoM cAsE", 11]
+  ["rAnDoM cAsE", 11],
 ];
 
 describe("random case", () => {

@@ -241,7 +241,7 @@ If you find the default split hard to use, you can provide a different one. The 
 
 ```js
 const options = {
-  splitRegexp: /([a-z])([A-Z0-9])/g
+  splitRegexp: /([a-z])([A-Z0-9])/g,
 };
 ```
 

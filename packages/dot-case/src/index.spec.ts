@@ -9,7 +9,7 @@ const TEST_CASES: [string, string][] = [
   ["path/case", "path.case"],
   ["TestV2", "test.v2"],
   ["version 1.2.10", "version.1.2.10"],
-  ["version 1.21.0", "version.1.21.0"]
+  ["version 1.21.0", "version.1.21.0"],
 ];
 
 describe("dot case", () => {

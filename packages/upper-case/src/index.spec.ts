@@ -5,7 +5,7 @@ const TEST_CASES: [string, string][] = [
   ["test", "TEST"],
   ["test string", "TEST STRING"],
   ["Test String", "TEST STRING"],
-  ["\u0131", "I"]
+  ["\u0131", "I"],
 ];
 
 const LOCALE_TEST_CASES: [string, string, string][] = [["i", "\u0130", "tr"]];

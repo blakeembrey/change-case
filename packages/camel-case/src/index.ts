@@ -2,7 +2,7 @@ import {
   pascalCase,
   pascalCaseTransform,
   pascalCaseTransformMerge,
-  Options
+  Options,
 } from "pascal-case";
 
 export { Options };
@@ -20,6 +20,6 @@ export function camelCaseTransformMerge(input: string, index: number) {
 export function camelCase(input: string, options: Options = {}) {
   return pascalCase(input, {
     transform: camelCaseTransform,
-    ...options
+    ...options,
   });
 }

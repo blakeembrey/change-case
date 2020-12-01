@@ -11,6 +11,6 @@ export function capitalCase(input: string, options: Options = {}) {
   return noCase(input, {
     delimiter: " ",
     transform: capitalCaseTransform,
-    ...options
+    ...options,
   });
 }

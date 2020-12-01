@@ -13,14 +13,14 @@ const SUPPORTED_LOCALE: Record<string, Locale> = {
   tr: {
     regexp: /[\u0069]/g,
     map: {
-      i: "\u0130"
-    }
+      i: "\u0130",
+    },
   },
   az: {
     regexp: /[\u0069]/g,
     map: {
-      i: "\u0130"
-    }
+      i: "\u0130",
+    },
   },
   lt: {
     regexp: /[\u0069\u006A\u012F]\u0307|\u0069\u0307[\u0300\u0301\u0303]/g,
@@ -30,9 +30,9 @@ const SUPPORTED_LOCALE: Record<string, Locale> = {
       į̇: "\u012E",
       i̇̀: "\u00CC",
       i̇́: "\u00CD",
-      i̇̃: "\u0128"
-    }
-  }
+      i̇̃: "\u0128",
+    },
+  },
 };
 
 /**
@@ -40,7 +40,7 @@ const SUPPORTED_LOCALE: Record<string, Locale> = {
  */
 export function localeUpperCase(str: string, locale: string) {
   const lang = SUPPORTED_LOCALE[locale.toLowerCase()];
-  if (lang) return upperCase(str.replace(lang.regexp, m => lang.map[m]));
+  if (lang) return upperCase(str.replace(lang.regexp, (m) => lang.map[m]));
   return upperCase(str);
 }
 

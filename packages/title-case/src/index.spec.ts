@@ -19,7 +19,7 @@ const TEST_CASES: [string, string][] = [
   ["leave Q&A unscathed", "Leave Q&A Unscathed"],
   [
     "piña colada while you listen to ænima",
-    "Piña Colada While You Listen to Ænima"
+    "Piña Colada While You Listen to Ænima",
   ],
   ["start title – end title", "Start Title – End Title"],
   ["start title–end title", "Start Title–End Title"],
@@ -37,7 +37,7 @@ const TEST_CASES: [string, string][] = [
   ["email email@example.com address", "Email email@example.com Address"],
   [
     "you have an https://example.com/ title",
-    "You Have an https://example.com/ Title"
+    "You Have an https://example.com/ Title",
   ],
   ["_underscores around words_", "_Underscores Around Words_"],
   ["*asterisks around words*", "*Asterisks Around Words*"],
@@ -47,18 +47,18 @@ const TEST_CASES: [string, string][] = [
   ["this v that", "This v That"],
   [
     "Scott Moritz and TheStreet.com’s million iPhone la-la land",
-    "Scott Moritz and TheStreet.com’s Million iPhone La-La Land"
+    "Scott Moritz and TheStreet.com’s Million iPhone La-La Land",
   ],
   [
     "Notes and observations regarding Apple’s announcements from ‘The Beat Goes On’ special event",
-    "Notes and Observations Regarding Apple’s Announcements From ‘The Beat Goes On’ Special Event"
+    "Notes and Observations Regarding Apple’s Announcements From ‘The Beat Goes On’ Special Event",
   ],
   [
     "the quick brown fox jumps over the lazy dog",
-    "The Quick Brown Fox Jumps over the Lazy Dog"
+    "The Quick Brown Fox Jumps over the Lazy Dog",
   ],
   ["newcastle upon tyne", "Newcastle upon Tyne"],
-  ["newcastle *upon* tyne", "Newcastle *upon* Tyne"]
+  ["newcastle *upon* tyne", "Newcastle *upon* Tyne"],
 ];
 
 describe("swap case", () => {

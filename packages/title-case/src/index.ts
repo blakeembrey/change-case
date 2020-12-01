@@ -24,7 +24,7 @@ export function titleCase(input: string) {
         WHITESPACE.test(input.charAt(index + token.length + 1)))
     ) {
       // Find and uppercase first word character, skips over *modifiers*.
-      result += token.replace(ALPHANUMERIC_PATTERN, m => m.toUpperCase());
+      result += token.replace(ALPHANUMERIC_PATTERN, (m) => m.toUpperCase());
       continue;
     }
 

@@ -3,7 +3,7 @@ import { lowerCaseFirst } from ".";
 const TEST_CASES: [string, string][] = [
   ["", ""],
   ["test", "test"],
-  ["TEST", "tEST"]
+  ["TEST", "tEST"],
 ];
 
 describe("lower case first", () => {

@@ -6,7 +6,7 @@ const TEST_CASES: [string, string][] = [
   ["test string", "TEST STRING"],
   ["Test String", "tEST sTRING"],
   ["TestV2", "tESTv2"],
-  ["sWaP cAsE", "SwAp CaSe"]
+  ["sWaP cAsE", "SwAp CaSe"],
 ];
 
 describe("swap case", () => {

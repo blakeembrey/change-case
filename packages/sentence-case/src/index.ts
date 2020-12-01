@@ -13,6 +13,6 @@ export function sentenceCase(input: string, options: Options = {}) {
   return noCase(input, {
     delimiter: " ",
     transform: sentenceCaseTransform,
-    ...options
+    ...options,
   });
 }

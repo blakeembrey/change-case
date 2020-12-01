@@ -5,11 +5,11 @@ const TEST_CASES: [string, string][] = [
   ["test", "test"],
   ["TEST", "test"],
   ["test string", "test string"],
-  ["TEST STRING", "test string"]
+  ["TEST STRING", "test string"],
 ];
 
 const LOCALE_TEST_CASES: [string, string, string][] = [
-  ["STRING", "strıng", "tr"]
+  ["STRING", "strıng", "tr"],
 ];
 
 describe("lower case", () => {

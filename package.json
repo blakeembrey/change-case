@@ -5,7 +5,7 @@
     "bootstrap": "lerna bootstrap",
     "prettier": "prettier --write",
     "build": "lerna run build",
-    "format": "npm run prettier -- \"{./,packages/**/}*.{js,jsx,ts,tsx,json,md,yml,yaml}\" --ignore-path .gitignore",
+    "format": "npm run prettier -- \"{,packages/**/}*.{js,jsx,ts,tsx,json,md,yml,yaml}\" --ignore-path .gitignore",
     "test": "lerna run test",
     "prepare": "npm run bootstrap"
   },
@@ -15,15 +15,12 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,json,md,yml,yaml}": [
-      "npm run prettier",
-      "git add"
-    ]
+    "*.{js,jsx,ts,tsx,json,md,yml,yaml}": "npm run prettier"
   },
   "devDependencies": {
-    "husky": "^3.1.0",
+    "husky": "^4.3.0",
     "lerna": "^3.19.0",
-    "lint-staged": "^9.5.0",
-    "prettier": "^1.19.1"
+    "lint-staged": "^10.5.2",
+    "prettier": "^2.2.1"
   }
 }

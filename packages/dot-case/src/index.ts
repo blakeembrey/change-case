@@ -5,6 +5,6 @@ export { Options };
 export function dotCase(input: string, options: Options = {}) {
   return noCase(input, {
     delimiter: ".",
-    ...options
+    ...options,
   });
 }

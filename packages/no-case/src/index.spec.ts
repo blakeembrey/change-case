@@ -52,7 +52,7 @@ const TEST_CASES: [string, string, Options?][] = [
 
   // Customization.
   ["camel2019", "camel 2019", { splitRegexp: /([a-z])([A-Z0-9])/g }],
-  ["minifyURLs", "minify urls", { splitRegexp: /([a-z])([A-Z0-9])/g }]
+  ["minifyURLs", "minify urls", { splitRegexp: /([a-z])([A-Z0-9])/g }],
 ];
 
 describe("no case", () => {

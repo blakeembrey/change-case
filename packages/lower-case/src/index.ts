@@ -15,16 +15,16 @@ const SUPPORTED_LOCALE: Record<string, Locale> = {
     map: {
       İ: "\u0069",
       I: "\u0131",
-      İ: "\u0069"
-    }
+      İ: "\u0069",
+    },
   },
   az: {
     regexp: /\u0130/g,
     map: {
       İ: "\u0069",
       I: "\u0131",
-      İ: "\u0069"
-    }
+      İ: "\u0069",
+    },
   },
   lt: {
     regexp: /\u0049|\u004A|\u012E|\u00CC|\u00CD|\u0128/g,
@@ -34,9 +34,9 @@ const SUPPORTED_LOCALE: Record<string, Locale> = {
       Į: "\u012F\u0307",
       Ì: "\u0069\u0307\u0300",
       Í: "\u0069\u0307\u0301",
-      Ĩ: "\u0069\u0307\u0303"
-    }
-  }
+      Ĩ: "\u0069\u0307\u0303",
+    },
+  },
 };
 
 /**
@@ -44,7 +44,7 @@ const SUPPORTED_LOCALE: Record<string, Locale> = {
  */
 export function localeLowerCase(str: string, locale: string) {
   const lang = SUPPORTED_LOCALE[locale.toLowerCase()];
-  if (lang) return lowerCase(str.replace(lang.regexp, m => lang.map[m]));
+  if (lang) return lowerCase(str.replace(lang.regexp, (m) => lang.map[m]));
   return lowerCase(str);
 }
 

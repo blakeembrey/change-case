@@ -6,7 +6,7 @@ const TEST_CASES: [string, boolean][] = [
   ["TEST", false],
   ["Test", false],
   ["123", false],
-  ["snake_case", true]
+  ["snake_case", true],
 ];
 
 describe("is lower case", () => {

@@ -3,7 +3,7 @@ import { upperCaseFirst } from ".";
 const TEST_CASES: [string, string][] = [
   ["", ""],
   ["test", "Test"],
-  ["TEST", "TEST"]
+  ["TEST", "TEST"],
 ];
 
 describe("upper case first", () => {

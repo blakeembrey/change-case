@@ -5,6 +5,6 @@ export { Options };
 export function pathCase(input: string, options: Options = {}) {
   return dotCase(input, {
     delimiter: "/",
-    ...options
+    ...options,
   });
 }

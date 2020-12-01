@@ -7,7 +7,7 @@ const TEST_CASES: [string, string][] = [
   ["Test String", "Test string"],
   ["TestV2", "Test v2"],
   ["version 1.2.10", "Version 1 2 10"],
-  ["version 1.21.0", "Version 1 21 0"]
+  ["version 1.21.0", "Version 1 21 0"],
 ];
 
 describe("sentence case", () => {

@@ -8,7 +8,7 @@ const TEST_CASES: [string, string][] = [
   ["Test String", "test_string"],
   ["TestV2", "test_v2"],
   ["version 1.2.10", "version_1_2_10"],
-  ["version 1.21.0", "version_1_21_0"]
+  ["version 1.21.0", "version_1_21_0"],
 ];
 
 describe("snake case", () => {

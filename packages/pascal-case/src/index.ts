@@ -19,6 +19,6 @@ export function pascalCase(input: string, options: Options = {}) {
   return noCase(input, {
     delimiter: "",
     transform: pascalCaseTransform,
-    ...options
+    ...options,
   });
 }
