@@ -1,6 +1,6 @@
 {
   "name": "sponge-case",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Transform into a string with random capitalization applied",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",

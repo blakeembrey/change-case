@@ -1,6 +1,6 @@
 {
   "name": "swap-case",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Transform a string by swapping every character from upper to lower case, or lower to upper case",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",

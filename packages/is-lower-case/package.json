@@ -1,6 +1,6 @@
 {
   "name": "is-lower-case",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Returns `true` if the string is lower case only",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",

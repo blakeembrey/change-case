@@ -1,6 +1,6 @@
 {
   "name": "capital-case",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Transform into a space separated string with each word capitalized",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -70,9 +70,9 @@
     "access": "public"
   },
   "dependencies": {
-    "no-case": "^3.0.3",
+    "no-case": "^3.0.4",
     "tslib": "^2.0.3",
-    "upper-case-first": "^2.0.1"
+    "upper-case-first": "^2.0.2"
   },
   "devDependencies": {
     "@size-limit/preset-small-lib": "^2.2.1",

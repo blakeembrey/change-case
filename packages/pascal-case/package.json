@@ -1,6 +1,6 @@
 {
   "name": "pascal-case",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "Transform into a string of capitalized words without separators",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -71,7 +71,7 @@
     "access": "public"
   },
   "dependencies": {
-    "no-case": "^3.0.3",
+    "no-case": "^3.0.4",
     "tslib": "^2.0.3"
   },
   "devDependencies": {

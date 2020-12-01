@@ -1,6 +1,6 @@
 {
   "name": "title-case",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "Transform a string into title case following English rules",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",

@@ -1,6 +1,6 @@
 {
   "name": "camel-case",
-  "version": "4.1.1",
+  "version": "4.1.2",
   "description": "Transform into a string with the separator denoted by the next word capitalized",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -70,7 +70,7 @@
     "access": "public"
   },
   "dependencies": {
-    "pascal-case": "^3.1.1",
+    "pascal-case": "^3.1.2",
     "tslib": "^2.0.3"
   },
   "devDependencies": {
