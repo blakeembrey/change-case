@@ -6,8 +6,7 @@
     "prettier": "prettier --write",
     "build": "lerna run build",
     "format": "npm run prettier -- \"{,packages/**/}*.{js,jsx,ts,tsx,json,md,yml,yaml}\" --ignore-path .gitignore",
-    "test": "lerna run test",
-    "prepare": "npm run bootstrap"
+    "test": "lerna run test"
   },
   "husky": {
     "hooks": {
