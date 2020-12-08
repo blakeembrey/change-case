@@ -44,7 +44,7 @@
   "bugs": {
     "url": "https://github.com/blakeembrey/change-case/issues"
   },
-  "homepage": "https://github.com/blakeembrey/change-case/tree/master/packages/camel-case#readme",
+  "homepage": "https://github.com/blakeembrey/change-case/tree/master/packages/change-case#readme",
   "size-limit": [
     {
       "path": "dist/index.js",
