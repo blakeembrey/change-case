@@ -84,7 +84,7 @@ headerCase("test string");
 > Transform into a lower cased string with spaces between words.
 
 ```js
-noCase("test string");
+noCase("testString");
 //=> "test string"
 ```
 
