@@ -66,8 +66,7 @@
     ]
   },
   "dependencies": {
-    "lower-case": "^2.0.2",
-    "tslib": "^2.0.3"
+    "lower-case": "^2.0.2"
   },
   "devDependencies": {
     "@size-limit/preset-small-lib": "^2.2.1",
