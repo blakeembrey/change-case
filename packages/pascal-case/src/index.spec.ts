@@ -9,6 +9,7 @@ const TEST_CASES: [string, string, Options?][] = [
   ["version 1.2.10", "Version_1_2_10"],
   ["version 1.21.0", "Version_1_21_0"],
   ["version 1.21.0", "Version1210", { transform: pascalCaseTransformMerge }],
+  ["TestV2", "TestV_2", { separateNumbers: true }],
 ];
 
 describe("pascal case", () => {
