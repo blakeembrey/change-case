@@ -11,6 +11,11 @@ const TEST_CASES: [string, string, Options?][] = [
   ["version 1.21.0", "version_1_21_0"],
   ["version 1.2.10", "version1210", { transform: camelCaseTransformMerge }],
   ["TestV2", "testV_2", { separateNumbers: true }],
+  ["1test", "1Test", { separateNumbers: true }],
+  ["Foo12019Bar", "foo_12019Bar", { separateNumbers: true }],
+  ["aNumber2in", "aNumber_2In", { separateNumbers: true }],
+  ["V1Test", "v1Test"],
+  ["V1Test with separateNumbers", "v_1TestWithSeparateNumbers", { separateNumbers: true }],
 ];
 
 describe("camel case", () => {
