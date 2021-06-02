@@ -10,7 +10,7 @@ export interface Options {
 
 // Support camel case ("camelCase" -> "camel Case" and "CAMELCase" -> "CAMEL Case").
 const DEFAULT_SPLIT_REGEXP = [/([a-z0-9])([A-Z])/g, /([A-Z])([A-Z][a-z])/g];
-const SEPARATE_NUMBERS_SPLIT_REGEXP = [/([a-z0-9])([A-Z])/g, /([A-Z])([A-Z][a-z])/g, /([(0-9)])([A-Za-z])/g, /([A-Za-z])([0-9])/g,];
+const SEPARATE_NUMBERS_SPLIT_REGEXP = [/([a-z0-9])([A-Z])/g, /([A-Z])([A-Z][a-z])/g, /([0-9])([A-Za-z])/g, /([A-Za-z])([0-9])/g,];
 
 // Remove all non-word characters.
 const DEFAULT_STRIP_REGEXP = /[^A-Z0-9]+/gi;
