@@ -1,9 +1,9 @@
-import { dotCase, Options } from "dot-case";
+import { noCase, Options } from "no-case";
 
 export { Options };
 
 export function pathCase(input: string, options: Options = {}) {
-  return dotCase(input, {
+  return noCase(input, {
     delimiter: "/",
     ...options,
   });
