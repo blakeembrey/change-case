@@ -1,5 +1,5 @@
-const SMALL_WORDS = /\b(?:an?d?|a[st]|because|but|by|en|for|i[fn]|neither|nor|o[fnr]|only|over|per|so|some|tha[tn]|the|to|up|upon|vs?\.?|versus|via|when|with|without|yet)\b/i;
 const SMALL_WORDS_CAPITALIZED = /\b(s?he|it|we|him|her|you)\b/;
+const SMALL_WORDS_NOT_CAPITALIZED = /\b(?:an?d?|a[st]|but|by|en|for|i[fn]|nor|o[fnr]|per|the|to|up|vs?\.?|via|yet)\b/i;
 const TOKENS = /[^\s:–—-]+|./g;
 const WHITESPACE = /\s/;
 const IS_MANUAL_CASE = /.(?=[A-Z]|\..)/;
@@ -17,7 +17,7 @@ export function apaTitleCase(input: string) {
       // Ignore already capitalized words.
       !IS_MANUAL_CASE.test(token) &&
       // Ignore small words except at beginning or end.
-      (!(token.length < 4) ||
+      (!SMALL_WORDS_NOT_CAPITALIZED.test(token) ||
         SMALL_WORDS_CAPITALIZED.test(token) ||
         index === 0 ||
         index + token.length === input.length) &&
