@@ -8,10 +8,13 @@ export interface Options {
 }
 
 // Support camel case ("camelCase" -> "camel Case" and "CAMELCase" -> "CAMEL Case").
-const DEFAULT_SPLIT_REGEXP = [/([a-z0-9])([A-Z])/g, /([A-Z])([A-Z][a-z])/g];
+const DEFAULT_SPLIT_REGEXP = [
+  /([\p{Ll}\d])(\p{Lu})/gu,
+  /(\p{Lu})([\p{Lu}][\p{Ll}])/gu,
+];
 
 // Remove all non-word characters.
-const DEFAULT_STRIP_REGEXP = /[^A-Z0-9]+/gi;
+const DEFAULT_STRIP_REGEXP = /[^\p{L}\d]+/giu;
 
 /**
  * Normalize the string into something other libraries can manipulate easier.

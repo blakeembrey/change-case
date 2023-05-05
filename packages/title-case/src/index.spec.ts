@@ -59,6 +59,8 @@ const TEST_CASES: [string, string][] = [
   ],
   ["newcastle upon tyne", "Newcastle upon Tyne"],
   ["newcastle *upon* tyne", "Newcastle *upon* Tyne"],
+
+  ["лев николаевич толстой", "Лев Николаевич Толстой"],
 ];
 
 describe("swap case", () => {
