@@ -42,7 +42,6 @@ const TEST_CASES: [string, string, Options?][] = [
   ["snake_case", "snake case"],
   ["snake_case123", "snake case123"],
   ["snake_case_123", "snake case 123"],
-  ["snake_case_123", "snake case 123"],
   ["čūska_case_123", "čūska case 123"],
 
   // Punctuation.
