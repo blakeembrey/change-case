@@ -1,7 +1,7 @@
 {
-  "name": "change-case",
-  "version": "4.1.2",
-  "description": "Transform a string between `camelCase`, `PascalCase`, `Capital Case`, `snake_case`, `param-case`, `CONSTANT_CASE` and others",
+  "name": "change-case-of-keys",
+  "version": "0.0.0",
+  "description": "Transforms the keys of an object by applying a change-case function of choice on each key, recursively",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "module": "dist.es2015/index.js",
@@ -27,13 +27,11 @@
   "keywords": [
     "change",
     "case",
+    "keys",
     "convert",
     "transform",
-    "camel-case",
-    "pascal-case",
-    "param-case",
-    "kebab-case",
-    "header-case"
+    "recursive",
+    "nested"
   ],
   "author": {
     "name": "Blake Embrey",
@@ -44,11 +42,11 @@
   "bugs": {
     "url": "https://github.com/blakeembrey/change-case/issues"
   },
-  "homepage": "https://github.com/blakeembrey/change-case/tree/master/packages/change-case#readme",
+  "homepage": "https://github.com/blakeembrey/change-case/tree/master/packages/is-upper-case#readme",
   "size-limit": [
     {
       "path": "dist/index.js",
-      "limit": "750 B"
+      "limit": "50 B"
     }
   ],
   "jest": {
@@ -71,25 +69,11 @@
   "publishConfig": {
     "access": "public"
   },
-  "dependencies": {
-    "camel-case": "^4.1.2",
-    "capital-case": "^1.0.4",
-    "change-case-of-keys": "^0.1.0",
-    "constant-case": "^3.0.4",
-    "dot-case": "^3.0.4",
-    "header-case": "^2.0.4",
-    "no-case": "^3.0.4",
-    "param-case": "^3.0.4",
-    "pascal-case": "^3.1.2",
-    "path-case": "^3.0.4",
-    "sentence-case": "^3.0.4",
-    "snake-case": "^3.0.4",
-    "tslib": "^2.0.3"
-  },
   "devDependencies": {
     "@size-limit/preset-small-lib": "^2.2.1",
     "@types/jest": "^24.0.23",
     "@types/node": "^12.12.14",
+    "camel-case": "^4.1.2",
     "jest": "^24.9.0",
     "rimraf": "^3.0.0",
     "ts-jest": "^24.2.0",

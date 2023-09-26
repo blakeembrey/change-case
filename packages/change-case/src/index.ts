@@ -9,3 +9,4 @@ export * from "pascal-case";
 export * from "path-case";
 export * from "sentence-case";
 export * from "snake-case";
+export * from "change-case-of-keys";
