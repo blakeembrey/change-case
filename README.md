@@ -245,6 +245,17 @@ const options = {
 };
 ```
 
+To support non-ASCII characters, you can use the "letter" character category matcher `\p{L}` together with `/u` Unicode support flag.
+For lowercase `\p{Ll}`, uppercase `\p{Lu}`.
+
+Above regex modified:
+
+```js
+splitRegexp: /([\p{Ll})([\p{Lu}\d])/gu,
+```
+
+See https://www.regular-expressions.info/unicode.html (Unicode Categories section) for more.
+
 ## Related
 
 - [Meteor](https://github.com/Konecty/change-case)

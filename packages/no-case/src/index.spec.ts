@@ -16,6 +16,17 @@ const TEST_CASES: [string, string, Options?][] = [
   ["foo bar123", "foo bar123"],
   ["a1bStar", "a1b star"],
 
+  // unicode name (Latin-1 Supplement)
+  ["SørenKierkegaard", "søren kierkegaard"],
+  // sample of Latin Extended-A
+  ["Ā ā Ă ă Ą ą Ć", "ā ā ă ă ą ą ć"],
+  // sample of Latin Extended Additional
+  ["Ḁ ḁ Ḃ ḃ Ḅ ḅ Ḇ", "ḁ ḁ ḃ ḃ ḅ ḅ ḇ"],
+
+  // strip non letters (letter-like symbols and currency symbols)
+  ["™©®", ""],
+  ["£$", ""],
+
   // Constant case.
   ["CONSTANT_CASE ", "constant case"],
   ["CONST123_FOO", "const123 foo"],
@@ -31,6 +42,7 @@ const TEST_CASES: [string, string, Options?][] = [
   ["snake_case", "snake case"],
   ["snake_case123", "snake case123"],
   ["snake_case_123", "snake case 123"],
+  ["čūska_case_123", "čūska case 123"],
 
   // Punctuation.
   ['"quotes"', "quotes"],
