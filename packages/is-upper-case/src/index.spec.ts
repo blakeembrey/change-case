@@ -1,4 +1,5 @@
-import { isUpperCase } from ".";
+import { describe, it, expect } from "vitest";
+import { isUpperCase } from "./index.js";
 
 const TEST_CASES: [string, boolean][] = [
   ["", false],

@@ -1,4 +1,5 @@
-import { snakeCase, Options } from ".";
+import { describe, it, expect } from "vitest";
+import { snakeCase, Options } from "./index.js";
 
 const TEST_CASES: [string, string, Options?][] = [
   ["", ""],
@@ -11,12 +12,20 @@ const TEST_CASES: [string, string, Options?][] = [
   ["version 1.21.0", "version_1_21_0"],
   ["TestV2", "test_v_2", { separateNumbers: true }],
   ["address line 1", "address_line_1", { separateNumbers: true }],
-  ["Test string For 3rd Test", "test_string_for_3_rd_test", { separateNumbers: true }],
+  [
+    "Test string For 3rd Test",
+    "test_string_for_3_rd_test",
+    { separateNumbers: true },
+  ],
   ["1test", "1_test", { separateNumbers: true }],
   ["Foo12019Bar", "foo_12019_bar", { separateNumbers: true }],
   ["aNumber2in", "a_number_2_in", { separateNumbers: true }],
   ["V1Test", "v1_test"],
-  ["V1Test with separateNumbers", "v_1_test_with_separate_numbers", { separateNumbers: true }],
+  [
+    "V1Test with separateNumbers",
+    "v_1_test_with_separate_numbers",
+    { separateNumbers: true },
+  ],
 ];
 
 describe("snake case", () => {

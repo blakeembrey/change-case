@@ -1,4 +1,5 @@
-import { headerCase } from ".";
+import { describe, it, expect } from "vitest";
+import { headerCase } from "./index.js";
 
 const TEST_CASES: [string, string][] = [
   ["", ""],

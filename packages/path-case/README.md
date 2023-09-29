@@ -1,9 +1,5 @@
 # Path Case
 
-[![NPM version][npm-image]][npm-url]
-[![NPM downloads][downloads-image]][downloads-url]
-[![Bundle size][bundlephobia-image]][bundlephobia-url]
-
 > Transform into a lower case string with slashes between words.
 
 ## Installation
@@ -28,10 +24,3 @@ The function also accepts [`options`](https://github.com/blakeembrey/change-case
 ## License
 
 MIT
-
-[npm-image]: https://img.shields.io/npm/v/path-case.svg?style=flat
-[npm-url]: https://npmjs.org/package/path-case
-[downloads-image]: https://img.shields.io/npm/dm/path-case.svg?style=flat
-[downloads-url]: https://npmjs.org/package/path-case
-[bundlephobia-image]: https://img.shields.io/bundlephobia/minzip/path-case.svg
-[bundlephobia-url]: https://bundlephobia.com/result?p=path-case

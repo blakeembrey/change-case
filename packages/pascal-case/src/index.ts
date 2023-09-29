@@ -1,24 +1,16 @@
-import { noCase, Options } from "no-case";
+import { split, toLower, toUpper, Options } from "no-case";
 
-export { Options };
+export type { Options };
 
-export function pascalCaseTransform(input: string, index: number) {
-  const firstChar = input.charAt(0);
-  const lowerChars = input.substr(1).toLowerCase();
-  if (index > 0 && firstChar >= "0" && firstChar <= "9") {
-    return `_${firstChar}${lowerChars}`;
-  }
-  return `${firstChar.toUpperCase()}${lowerChars}`;
-}
-
-export function pascalCaseTransformMerge(input: string) {
-  return input.charAt(0).toUpperCase() + input.slice(1).toLowerCase();
-}
-
-export function pascalCase(input: string, options: Options = {}) {
-  return noCase(input, {
-    delimiter: "",
-    transform: pascalCaseTransform,
-    ...options,
-  });
+export function pascalCase(input: string, options?: Options) {
+  const lower = toLower(options?.locale);
+  const upper = toUpper(options?.locale);
+  return split(input, options)
+    .map((word, index) => {
+      const char0 = word[0];
+      const initial =
+        index > 0 && char0 >= "0" && char0 <= "9" ? "_" + char0 : upper(char0);
+      return initial + lower(word.slice(1));
+    })
+    .join("");
 }

@@ -1,16 +1,11 @@
-import { noCase, Options } from "no-case";
-import { upperCaseFirst } from "upper-case-first";
+import { split, toLower, toUpper, Options } from "no-case";
 
-export { Options };
+export type { Options };
 
-export function capitalCaseTransform(input: string) {
-  return upperCaseFirst(input.toLowerCase());
-}
-
-export function capitalCase(input: string, options: Options = {}) {
-  return noCase(input, {
-    delimiter: " ",
-    transform: capitalCaseTransform,
-    ...options,
-  });
+export function capitalCase(input: string, options?: Options) {
+  const lower = toLower(options?.locale);
+  const upper = toUpper(options?.locale);
+  return split(input, options)
+    .map((x) => `${upper(x[0])}${lower(x.slice(1))}`)
+    .join(" ");
 }

@@ -1,10 +1,8 @@
-import { noCase, Options } from "no-case";
+import { split, toLower, Options } from "no-case";
 
-export { Options };
+export type { Options };
 
-export function dotCase(input: string, options: Options = {}) {
-  return noCase(input, {
-    delimiter: ".",
-    ...options,
-  });
+export function dotCase(input: string, options?: Options) {
+  const lower = toLower(options?.locale);
+  return split(input, options).map(lower).join(".");
 }

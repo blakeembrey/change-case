@@ -1,18 +1,14 @@
-import { noCase, Options } from "no-case";
-import { upperCaseFirst } from "upper-case-first";
+import { split, Options, toLower, toUpper } from "no-case";
 
-export { Options };
+export type { Options };
 
-export function sentenceCaseTransform(input: string, index: number) {
-  const result = input.toLowerCase();
-  if (index === 0) return upperCaseFirst(result);
-  return result;
-}
-
-export function sentenceCase(input: string, options: Options = {}) {
-  return noCase(input, {
-    delimiter: " ",
-    transform: sentenceCaseTransform,
-    ...options,
-  });
+export function sentenceCase(input: string, options?: Options) {
+  const lower = toLower(options?.locale);
+  const upper = toUpper(options?.locale);
+  return split(input)
+    .map((word, index) => {
+      if (index === 0) return upper(word[0]) + lower(word.slice(1));
+      return lower(word);
+    })
+    .join(" ");
 }

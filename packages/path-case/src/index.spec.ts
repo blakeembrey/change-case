@@ -1,4 +1,5 @@
-import { pathCase } from ".";
+import { describe, it, expect } from "vitest";
+import { pathCase } from "./index.js";
 
 const TEST_CASES: [string, string][] = [
   ["", ""],

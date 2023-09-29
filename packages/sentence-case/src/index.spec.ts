@@ -1,4 +1,5 @@
-import { sentenceCase } from ".";
+import { describe, it, expect } from "vitest";
+import { sentenceCase } from "./index.js";
 
 const TEST_CASES: [string, string][] = [
   ["", ""],

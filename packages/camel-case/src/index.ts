@@ -1,25 +1,18 @@
-import {
-  pascalCase,
-  pascalCaseTransform,
-  pascalCaseTransformMerge,
-  Options,
-} from "pascal-case";
+import { split, toLower, toUpper, Options } from "no-case";
 
-export { Options };
+export type { Options };
 
-export function camelCaseTransform(input: string, index: number) {
-  if (index === 0) return input.toLowerCase();
-  return pascalCaseTransform(input, index);
-}
-
-export function camelCaseTransformMerge(input: string, index: number) {
-  if (index === 0) return input.toLowerCase();
-  return pascalCaseTransformMerge(input);
-}
-
-export function camelCase(input: string, options: Options = {}) {
-  return pascalCase(input, {
-    transform: camelCaseTransform,
-    ...options,
-  });
+export function camelCase(input: string, options?: Options) {
+  const lower = toLower(options?.locale);
+  const upper = toUpper(options?.locale);
+  return split(input, options)
+    .map((word, index) => {
+      if (index === 0) {
+        return lower(word);
+      }
+      const char0 = word[0];
+      const initial = char0 >= "0" && char0 <= "9" ? "_" + char0 : upper(char0);
+      return initial + lower(word.slice(1));
+    })
+    .join("");
 }

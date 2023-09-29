@@ -1,9 +1,5 @@
 # Header Case
 
-[![NPM version][npm-image]][npm-url]
-[![NPM downloads][downloads-image]][downloads-url]
-[![Bundle size][bundlephobia-image]][bundlephobia-url]
-
 > Transform into a dash separated string of capitalized words.
 
 ## Installation
@@ -28,10 +24,3 @@ The function also accepts [`options`](https://github.com/blakeembrey/change-case
 ## License
 
 MIT
-
-[npm-image]: https://img.shields.io/npm/v/header-case.svg?style=flat
-[npm-url]: https://npmjs.org/package/header-case
-[downloads-image]: https://img.shields.io/npm/dm/header-case.svg?style=flat
-[downloads-url]: https://npmjs.org/package/header-case
-[bundlephobia-image]: https://img.shields.io/bundlephobia/minzip/header-case.svg
-[bundlephobia-url]: https://bundlephobia.com/result?p=header-case

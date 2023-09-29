@@ -1,4 +1,5 @@
-import { constantCase } from ".";
+import { describe, it, expect } from "vitest";
+import { constantCase } from "./index.js";
 
 const TEST_CASES: [string, string][] = [
   ["", ""],

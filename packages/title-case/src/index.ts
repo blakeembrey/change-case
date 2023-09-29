@@ -1,10 +1,11 @@
-const SMALL_WORDS = /\b(?:an?d?|a[st]|because|but|by|en|for|i[fn]|neither|nor|o[fnr]|only|over|per|so|some|tha[tn]|the|to|up|upon|vs?\.?|versus|via|when|with|without|yet)\b/i;
+const SMALL_WORDS =
+  /\b(?:an?d?|a[st]|because|but|by|en|for|i[fn]|neither|nor|o[fnr]|only|over|per|so|some|tha[tn]|the|to|up|upon|vs?\.?|versus|via|when|with|without|yet)\b/i;
 const TOKENS = /[^\s:–—-]+|./g;
 const WHITESPACE = /\s/;
 const IS_MANUAL_CASE = /.(?=[\p{Lu}]|\..)/u;
 const ALPHANUMERIC_PATTERN = /[\p{Lu}\p{Ll}\d]/u;
 
-export function titleCase(input: string) {
+export function titleCase(input: string, locale?: string[] | string) {
   let result = "";
   let m: RegExpExecArray | null;
 
@@ -24,7 +25,9 @@ export function titleCase(input: string) {
         WHITESPACE.test(input.charAt(index + token.length + 1)))
     ) {
       // Find and uppercase first word character, skips over *modifiers*.
-      result += token.replace(ALPHANUMERIC_PATTERN, (m) => m.toUpperCase());
+      result += token.replace(ALPHANUMERIC_PATTERN, (m) =>
+        m.toLocaleUpperCase(locale),
+      );
       continue;
     }
 

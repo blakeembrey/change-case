@@ -1,9 +1,5 @@
 # Snake Case
 
-[![NPM version][npm-image]][npm-url]
-[![NPM downloads][downloads-image]][downloads-url]
-[![Bundle size][bundlephobia-image]][bundlephobia-url]
-
 > Transform into a lower case string with underscores between words.
 
 ## Installation
@@ -28,10 +24,3 @@ The function also accepts [`options`](https://github.com/blakeembrey/change-case
 ## License
 
 MIT
-
-[npm-image]: https://img.shields.io/npm/v/snake-case.svg?style=flat
-[npm-url]: https://npmjs.org/package/snake-case
-[downloads-image]: https://img.shields.io/npm/dm/snake-case.svg?style=flat
-[downloads-url]: https://npmjs.org/package/snake-case
-[bundlephobia-image]: https://img.shields.io/bundlephobia/minzip/snake-case.svg
-[bundlephobia-url]: https://bundlephobia.com/result?p=snake-case

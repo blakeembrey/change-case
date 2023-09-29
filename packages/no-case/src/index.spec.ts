@@ -1,6 +1,8 @@
-import { noCase, Options } from ".";
+import { noCase, split, Options } from "./index.js";
+import { describe, it, expect } from "vitest";
 
 const TEST_CASES: [string, string, Options?][] = [
+  ["", ""],
   // Single words.
   ["test", "test"],
   ["TEST", "test"],
@@ -62,23 +64,37 @@ const TEST_CASES: [string, string, Options?][] = [
   ["amazon s3 data", "amazon s3 data"],
   ["foo_13_bar", "foo 13 bar"],
 
-  // Customization.
-  ["camel2019", "camel 2019", { splitRegexp: /([a-z])([A-Z0-9])/g }],
-  ["minifyURLs", "minify urls", { splitRegexp: /([a-z])([A-Z0-9])/g }],
-
   // Separate Numbers.
   ["testString123", "test string 123", { separateNumbers: true }],
   ["1test", "1 test", { separateNumbers: true }],
   ["Foo12019Bar", "foo 12019 bar", { separateNumbers: true }],
   ["aNumber2in", "a number 2 in", { separateNumbers: true }],
   ["V1Test", "v1 test"],
-  ["V1Test with separateNumbers", "v 1 test with separate numbers", { separateNumbers: true }],
+  [
+    "V1Test with separateNumbers",
+    "v 1 test with separate numbers",
+    { separateNumbers: true },
+  ],
 ];
 
 describe("no case", () => {
   for (const [input, result, options] of TEST_CASES) {
     it(`${input} -> ${result}`, () => {
       expect(noCase(input, options)).toEqual(result);
+    });
+  }
+});
+
+const SPLIT_TEST_CASES: [string, string[]][] = [
+  ["", []],
+  [" ", []],
+  ["camelCase", ["camel", "Case"]],
+];
+
+describe("split", () => {
+  for (const [input, result] of SPLIT_TEST_CASES) {
+    it(`${input} -> [${result.join(",")}]`, () => {
+      expect(split(input)).toEqual(result);
     });
   }
 });

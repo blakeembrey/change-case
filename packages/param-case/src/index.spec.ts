@@ -1,4 +1,5 @@
-import { Options, paramCase } from ".";
+import { describe, it, expect } from "vitest";
+import { Options, paramCase } from "./index.js";
 
 const TEST_CASES: [string, string, Options?][] = [
   ["", ""],
@@ -13,7 +14,11 @@ const TEST_CASES: [string, string, Options?][] = [
   ["Foo12019Bar", "foo-12019-bar", { separateNumbers: true }],
   ["aNumber2in", "a-number-2-in", { separateNumbers: true }],
   ["V1Test", "v1-test"],
-  ["V1Test with separateNumbers", "v-1-test-with-separate-numbers", { separateNumbers: true }],
+  [
+    "V1Test with separateNumbers",
+    "v-1-test-with-separate-numbers",
+    { separateNumbers: true },
+  ],
 ];
 
 describe("param case", () => {

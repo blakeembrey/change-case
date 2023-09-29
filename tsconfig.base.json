@@ -1,17 +1,3 @@
 {
-  "compilerOptions": {
-    "target": "es5",
-    "lib": ["es5"],
-    "outDir": "dist",
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "importHelpers": true,
-    "declaration": true,
-    "strict": true,
-    "sourceMap": true,
-    "inlineSources": true,
-    "types": ["node", "jest"]
-  },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "**/*.spec.ts"]
+  "extends": "@borderless/ts-scripts/configs/tsconfig.json"
 }

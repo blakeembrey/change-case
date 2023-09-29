@@ -1,4 +1,5 @@
-import { upperCase, localeUpperCase } from ".";
+import { describe, it, expect } from "vitest";
+import { upperCase, localeUpperCase } from "./index.js";
 
 const TEST_CASES: [string, string][] = [
   ["", ""],

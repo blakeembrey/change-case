@@ -1,4 +1,5 @@
-import { spongeCase } from ".";
+import { describe, it, expect } from "vitest";
+import { spongeCase } from "./index.js";
 
 /* Since strings are non-deterministic, we test string length to ensure integrity */
 

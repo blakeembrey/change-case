@@ -1,4 +1,5 @@
-import { capitalCase } from ".";
+import { describe, it, expect } from "vitest";
+import { capitalCase } from "./index";
 
 const TEST_CASES: [string, string][] = [
   ["", ""],

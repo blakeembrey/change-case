@@ -1,4 +1,5 @@
-import { swapCase } from ".";
+import { describe, it, expect } from "vitest";
+import { swapCase } from "./index.js";
 
 const TEST_CASES: [string, string][] = [
   ["", ""],

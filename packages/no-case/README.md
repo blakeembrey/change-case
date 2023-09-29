@@ -1,10 +1,7 @@
 # No Case
 
-[![NPM version][npm-image]][npm-url]
-[![NPM downloads][downloads-image]][downloads-url]
-[![Bundle size][bundlephobia-image]][bundlephobia-url]
-
-> Transform into a lower cased string with spaces between words.
+> Transform any case string into a lower case string with a space between each word.
+> Example: `foo_bar` => `fooBar`
 
 ## Installation
 
@@ -23,15 +20,11 @@ noCase("PascalCase"); //=> "pascal case"
 noCase("version 1.2.10"); //=> "version 1 2 10"
 ```
 
-The function also accepts [`options`](https://github.com/blakeembrey/change-case#options).
+Optional `options` as the second argument:
+
+- `separateNumbers: boolean` - Splits numbers apart from letters, e.g. `V1` -> `v 1`.
+- `locale: string | false` - Lower case according to a specific `locale`, defaulting to the current system locale.
 
 ## License
 
 MIT
-
-[npm-image]: https://img.shields.io/npm/v/no-case.svg?style=flat
-[npm-url]: https://npmjs.org/package/no-case
-[downloads-image]: https://img.shields.io/npm/dm/no-case.svg?style=flat
-[downloads-url]: https://npmjs.org/package/no-case
-[bundlephobia-image]: https://img.shields.io/bundlephobia/minzip/no-case.svg
-[bundlephobia-url]: https://bundlephobia.com/result?p=no-case

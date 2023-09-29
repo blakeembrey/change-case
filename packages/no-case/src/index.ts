@@ -1,65 +1,70 @@
-import { lowerCase } from "lower-case";
+export interface Options extends SplitOptions {
+  locale?: Locale;
+}
 
-export interface Options {
-  splitRegexp?: RegExp | RegExp[];
-  stripRegexp?: RegExp | RegExp[];
-  delimiter?: string;
-  transform?: (part: string, index: number, parts: string[]) => string;
+/**
+ * Convert any string into a lower case string with spaces between words.
+ */
+export function noCase(input: string, options?: Options) {
+  return split(input, options)
+    .map(toLower(options?.locale))
+    .join(" ");
+}
+
+// Regexps involved with splitting words in various case formats.
+const SPLIT_LOWER_UPPER_RE = /([\p{Ll}\d])(\p{Lu})/gu;
+const SPLIT_UPPER_UPPER_RE = /(\p{Lu})([\p{Lu}][\p{Ll}])/gu;
+const SPLIT_NUMBER_LOWER_RE = /(\d)(\p{Ll})/gu;
+const SPLIT_LETTER_NUMBER_RE = /(\p{L})(\d)/gu;
+
+// Regexp involved with stripping non-word characters from the result.
+const DEFAULT_STRIP_REGEXP = /[^\p{L}\d]+/giu;
+
+// The replacement value for splits.
+const SPLIT_REPLACE_VALUE = "$1\0$2";
+
+export interface SplitOptions {
   separateNumbers?: boolean;
 }
 
-// Support camel case ("camelCase" -> "camel Case" and "CAMELCase" -> "CAMEL Case").
-const DEFAULT_SPLIT_REGEXP = [
-  /([\p{Ll}\d])(\p{Lu})/gu,
-  /(\p{Lu})([\p{Lu}][\p{Ll}])/gu,
-];
-
-// Regex to split numbers ("13test" -> "13 test")
-const SEPARATE_NUMBERS_SPLIT_REGEXP = [...DEFAULT_SPLIT_REGEXP, /([0-9])([A-Za-z])/g, /([A-Za-z])([0-9])/g];
-
-// Remove all non-word characters.
-const DEFAULT_STRIP_REGEXP = /[^\p{L}\d]+/giu;
-
 /**
- * Normalize the string into something other libraries can manipulate easier.
+ * Split any cased input strings into an array of words.
  */
-export function noCase(input: string, options: Options = {}) {
-  const {
-    stripRegexp = DEFAULT_STRIP_REGEXP,
-    transform = lowerCase,
-    delimiter = " ",
-    separateNumbers,
-  } = options;
-  let { splitRegexp } = options;
+export function split(input: string, options: SplitOptions = {}) {
+  let result = input
+    .replace(SPLIT_LOWER_UPPER_RE, SPLIT_REPLACE_VALUE)
+    .replace(SPLIT_UPPER_UPPER_RE, SPLIT_REPLACE_VALUE);
 
-  /**
-   * If splitRegexp was not passed in options, and seperateNumbers is true,
-   * update DEFAULT_SPLIT_REGEXP with regex to split numbers.
-   */
-  if (!splitRegexp) {
-    splitRegexp = separateNumbers ? SEPARATE_NUMBERS_SPLIT_REGEXP : DEFAULT_SPLIT_REGEXP;
+  if (options.separateNumbers) {
+    result = result
+      .replace(SPLIT_NUMBER_LOWER_RE, SPLIT_REPLACE_VALUE)
+      .replace(SPLIT_LETTER_NUMBER_RE, SPLIT_REPLACE_VALUE);
   }
 
-  let result = replace(
-    replace(input, splitRegexp, "$1\0$2"),
-    stripRegexp,
-    "\0"
-  );
+  result = result.replace(DEFAULT_STRIP_REGEXP, "\0");
+
   let start = 0;
   let end = result.length;
 
   // Trim the delimiter from around the output string.
   while (result.charAt(start) === "\0") start++;
+  if (start === end) return [];
   while (result.charAt(end - 1) === "\0") end--;
 
   // Transform each token independently.
-  return result.slice(start, end).split("\0").map(transform).join(delimiter);
+  return result.slice(start, end).split(/\0/g);
 }
 
-/**
- * Replace `re` in the input string with the replacement value.
- */
-function replace(input: string, re: RegExp | RegExp[], value: string) {
-  if (re instanceof RegExp) return input.replace(re, value);
-  return re.reduce((input, re) => input.replace(re, value), input);
+export type Locale = string[] | string | false | undefined;
+
+export function toLower(locale: Locale): (input: string) => string {
+  return locale === false
+    ? (input: string) => input.toLowerCase()
+    : (input: string) => input.toLocaleLowerCase(locale);
+}
+
+export function toUpper(locale: Locale): (input: string) => string {
+  return locale === false
+    ? (input: string) => input.toUpperCase()
+    : (input: string) => input.toLocaleUpperCase(locale);
 }

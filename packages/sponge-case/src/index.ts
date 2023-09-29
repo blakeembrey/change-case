@@ -1,8 +1,10 @@
-export function spongeCase(input: string): string {
+export function spongeCase(input: string, locale?: string[] | string): string {
   let result = "";
-  for (let i = 0; i < input.length; i++) {
+  for (const char of input) {
     result +=
-      Math.random() > 0.5 ? input[i].toUpperCase() : input[i].toLowerCase();
+      Math.random() > 0.5
+        ? char.toLocaleUpperCase(locale)
+        : char.toLocaleLowerCase(locale);
   }
   return result;
 }

@@ -1,4 +1,5 @@
-import { lowerCaseFirst } from ".";
+import { describe, it, expect } from "vitest";
+import { lowerCaseFirst } from "./index.js";
 
 const TEST_CASES: [string, string][] = [
   ["", ""],

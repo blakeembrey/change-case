@@ -1,8 +1,8 @@
-export function swapCase(input: string) {
+export function swapCase(input: string, locale?: string[] | string) {
   let result = "";
-  for (let i = 0; i < input.length; i++) {
-    const lower = input[i].toLowerCase();
-    result += input[i] === lower ? input[i].toUpperCase() : lower;
+  for (const char of input) {
+    const lower = char.toLocaleLowerCase(locale);
+    result += char === lower ? char.toLocaleUpperCase(locale) : lower;
   }
   return result;
 }

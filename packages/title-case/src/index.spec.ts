@@ -1,5 +1,6 @@
+import { describe, it, expect } from "vitest";
 import { inspect } from "util";
-import { titleCase } from ".";
+import { titleCase } from "./index.js";
 
 /**
  * Based on https://github.com/gouch/to-title-case/blob/master/test/tests.json.

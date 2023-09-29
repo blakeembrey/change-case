@@ -1,10 +1,8 @@
-import { noCase, Options } from "no-case";
+import { split, Options, toLower } from "no-case";
 
-export { Options };
+export type { Options };
 
-export function snakeCase(input: string, options: Options = {}) {
-  return noCase(input, {
-    delimiter: "_",
-    ...options,
-  });
+export function snakeCase(input: string, options?: Options) {
+  const lower = toLower(options?.locale);
+  return split(input, options).map(lower).join("_");
 }

@@ -1,12 +1,9 @@
-import { noCase, Options } from "no-case";
-import { upperCase } from "upper-case";
+import { split, toUpper, Options } from "no-case";
 
-export { Options };
+export type { Options };
 
-export function constantCase(input: string, options: Options = {}) {
-  return noCase(input, {
-    delimiter: "_",
-    transform: upperCase,
-    ...options,
-  });
+export function constantCase(input: string, options?: Options) {
+  const upper = toUpper(options?.locale);
+
+  return split(input, options).map(upper).join("_");
 }

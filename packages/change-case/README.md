@@ -1,10 +1,6 @@
 # Change Case
 
-[![NPM version][npm-image]][npm-url]
-[![NPM downloads][downloads-image]][downloads-url]
-[![Bundle size][bundlephobia-image]][bundlephobia-url]
-
-> Transform a string between `camelCase`, `PascalCase`, `Capital Case`, `snake_case`, `param-case`, `CONSTANT_CASE` and others.
+> Transform a string between `camelCase`, `PascalCase`, `Capital Case`, `snake_case`, `kebab-case`, `CONSTANT_CASE` and others.
 
 ## Installation
 
@@ -21,8 +17,8 @@ import {
   constantCase,
   dotCase,
   headerCase,
+  kebabCase,
   noCase,
-  paramCase,
   pascalCase,
   pathCase,
   sentenceCase,
@@ -30,15 +26,28 @@ import {
 } from "change-case";
 ```
 
-Methods can also be installed [independently](https://github.com/blakeembrey/change-case). All functions also accept [`options`](https://github.com/blakeembrey/change-case#options) as the second argument.
+### case(input: string, options?: Options)
+
+**Options:**
+
+- `locale?: string[] | string | false` - lower/upper according to specified locale, defaults to host environment. Set to `false` to disable.
+- `separateNumbers?: boolean` Splits `foo123` into `foo 123` instead of keeping them together. Defaults to `true`.
+
+## Change Case Keys
+
+```js
+import * as changeKeys from "change-case/keys";
+
+changeKeys.camelCase({ TEST_KEY: true }); //=> { testKey: true }
+```
+
+Keys is a wrapper around the core case methods to support mapping objects of any case into another case.
+
+### case(input: string, depth?: number, options?: Options)
+
+**Depth:** Specify the depth to transfer for case transformation. Defaults to `1`.
+**Options:** Same as base case library.
 
 ## License
 
 MIT
-
-[npm-image]: https://img.shields.io/npm/v/change-case.svg?style=flat
-[npm-url]: https://npmjs.org/package/change-case
-[downloads-image]: https://img.shields.io/npm/dm/change-case.svg?style=flat
-[downloads-url]: https://npmjs.org/package/change-case
-[bundlephobia-image]: https://img.shields.io/bundlephobia/minzip/change-case.svg
-[bundlephobia-url]: https://bundlephobia.com/result?p=change-case
