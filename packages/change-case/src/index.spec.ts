@@ -1,17 +1,17 @@
 import { describe, it, expect } from "vitest";
 import {
-  split,
   camelCase,
   capitalCase,
   constantCase,
   dotCase,
-  headerCase,
   kebabCase,
   noCase,
   pascalCase,
   pathCase,
   sentenceCase,
   snakeCase,
+  split,
+  trainCase,
   Options,
 } from "./index.js";
 
@@ -21,7 +21,7 @@ type Result = {
   capitalCase: string;
   constantCase: string;
   dotCase: string;
-  headerCase: string;
+  trainCase: string;
   kebabCase: string;
   noCase: string;
   pascalCase: string;
@@ -39,7 +39,7 @@ const tests: [string, Result, Options?][] = [
       capitalCase: "",
       constantCase: "",
       dotCase: "",
-      headerCase: "",
+      trainCase: "",
       kebabCase: "",
       noCase: "",
       pascalCase: "",
@@ -56,7 +56,7 @@ const tests: [string, Result, Options?][] = [
       capitalCase: "Test",
       constantCase: "TEST",
       dotCase: "test",
-      headerCase: "Test",
+      trainCase: "Test",
       kebabCase: "test",
       noCase: "test",
       pascalCase: "Test",
@@ -73,7 +73,7 @@ const tests: [string, Result, Options?][] = [
       capitalCase: "Test String",
       constantCase: "TEST_STRING",
       dotCase: "test.string",
-      headerCase: "Test-String",
+      trainCase: "Test-String",
       kebabCase: "test-string",
       noCase: "test string",
       pascalCase: "TestString",
@@ -90,7 +90,7 @@ const tests: [string, Result, Options?][] = [
       capitalCase: "Test String",
       constantCase: "TEST_STRING",
       dotCase: "test.string",
-      headerCase: "Test-String",
+      trainCase: "Test-String",
       kebabCase: "test-string",
       noCase: "test string",
       pascalCase: "TestString",
@@ -107,7 +107,7 @@ const tests: [string, Result, Options?][] = [
       capitalCase: "Test V2",
       constantCase: "TEST_V2",
       dotCase: "test.v2",
-      headerCase: "Test-V2",
+      trainCase: "Test-V2",
       kebabCase: "test-v2",
       noCase: "test v2",
       pascalCase: "TestV2",
@@ -124,7 +124,7 @@ const tests: [string, Result, Options?][] = [
       capitalCase: "Foo Bar",
       constantCase: "FOO_BAR",
       dotCase: "foo.bar",
-      headerCase: "Foo-Bar",
+      trainCase: "Foo-Bar",
       kebabCase: "foo-bar",
       noCase: "foo bar",
       pascalCase: "FooBar",
@@ -141,7 +141,7 @@ const tests: [string, Result, Options?][] = [
       capitalCase: "Version 1 2 10",
       constantCase: "VERSION_1_2_10",
       dotCase: "version.1.2.10",
-      headerCase: "Version-1-2-10",
+      trainCase: "Version-1-2-10",
       kebabCase: "version-1-2-10",
       noCase: "version 1 2 10",
       pascalCase: "Version_1_2_10",
@@ -158,7 +158,7 @@ const tests: [string, Result, Options?][] = [
       capitalCase: "Version 1 21 0",
       constantCase: "VERSION_1_21_0",
       dotCase: "version.1.21.0",
-      headerCase: "Version-1-21-0",
+      trainCase: "Version-1-21-0",
       kebabCase: "version-1-21-0",
       noCase: "version 1 21 0",
       pascalCase: "Version_1_21_0",
@@ -175,7 +175,7 @@ const tests: [string, Result, Options?][] = [
       capitalCase: "Test V 2",
       constantCase: "TEST_V_2",
       dotCase: "test.v.2",
-      headerCase: "Test-V-2",
+      trainCase: "Test-V-2",
       kebabCase: "test-v-2",
       noCase: "test v 2",
       pascalCase: "TestV_2",
@@ -193,7 +193,7 @@ const tests: [string, Result, Options?][] = [
       capitalCase: "1 Test",
       constantCase: "1_TEST",
       dotCase: "1.test",
-      headerCase: "1-Test",
+      trainCase: "1-Test",
       kebabCase: "1-test",
       noCase: "1 test",
       pascalCase: "1Test",
@@ -211,7 +211,7 @@ const tests: [string, Result, Options?][] = [
       capitalCase: "Foo 12019 Bar",
       constantCase: "FOO_12019_BAR",
       dotCase: "foo.12019.bar",
-      headerCase: "Foo-12019-Bar",
+      trainCase: "Foo-12019-Bar",
       kebabCase: "foo-12019-bar",
       noCase: "foo 12019 bar",
       pascalCase: "Foo_12019Bar",
@@ -229,7 +229,7 @@ const tests: [string, Result, Options?][] = [
       capitalCase: "A Number 2 In",
       constantCase: "A_NUMBER_2_IN",
       dotCase: "a.number.2.in",
-      headerCase: "A-Number-2-In",
+      trainCase: "A-Number-2-In",
       kebabCase: "a-number-2-in",
       noCase: "a number 2 in",
       pascalCase: "ANumber_2In",
@@ -247,7 +247,7 @@ const tests: [string, Result, Options?][] = [
       capitalCase: "V1 Test",
       constantCase: "V1_TEST",
       dotCase: "v1.test",
-      headerCase: "V1-Test",
+      trainCase: "V1-Test",
       kebabCase: "v1-test",
       noCase: "v1 test",
       pascalCase: "V1Test",
@@ -264,7 +264,7 @@ const tests: [string, Result, Options?][] = [
       capitalCase: "V 1 Test With Separate Numbers",
       constantCase: "V_1_TEST_WITH_SEPARATE_NUMBERS",
       dotCase: "v.1.test.with.separate.numbers",
-      headerCase: "V-1-Test-With-Separate-Numbers",
+      trainCase: "V-1-Test-With-Separate-Numbers",
       kebabCase: "v-1-test-with-separate-numbers",
       noCase: "v 1 test with separate numbers",
       pascalCase: "V_1TestWithSeparateNumbers",
@@ -284,7 +284,7 @@ describe("change case", () => {
       expect(capitalCase(input, options)).toEqual(result.capitalCase);
       expect(constantCase(input, options)).toEqual(result.constantCase);
       expect(dotCase(input, options)).toEqual(result.dotCase);
-      expect(headerCase(input, options)).toEqual(result.headerCase);
+      expect(trainCase(input, options)).toEqual(result.trainCase);
       expect(kebabCase(input, options)).toEqual(result.kebabCase);
       expect(noCase(input, options)).toEqual(result.noCase);
       expect(pascalCase(input, options)).toEqual(result.pascalCase);

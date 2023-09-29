@@ -156,7 +156,7 @@ export function snakeCase(input: string, options?: Options) {
 /**
  * Convert a string to header case (`Foo-Bar`).
  */
-export function headerCase(input: string, options?: Options) {
+export function trainCase(input: string, options?: Options) {
   const lower = lowerFactory(options?.locale);
   const upper = upperFactory(options?.locale);
   return split(input, options)

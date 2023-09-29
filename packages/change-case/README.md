@@ -10,25 +10,25 @@ npm install change-case --save
 
 ## Usage
 
-```js
-import {
-  camelCase,
-  capitalCase,
-  constantCase,
-  dotCase,
-  headerCase,
-  kebabCase,
-  noCase,
-  pascalCase,
-  pathCase,
-  sentenceCase,
-  snakeCase,
-} from "change-case";
-```
+These case change functions are included:
 
-### case(input: string, options?: Options)
+| Method         | Result      |
+| -------------- | ----------- |
+| `camelCase`    | `twoWords`  |
+| `capitalCase`  | `Two Words` |
+| `constantCase` | `TWO_WORDS` |
+| `dotCase`      | `two.words` |
+| `trainCase`    | `Two-Words` |
+| `kebabCase`    | `two-words` |
+| `noCase`       | `two words` |
+| `pascalCase`   | `TwoWords`  |
+| `pathCase`     | `two/words` |
+| `sentenceCase` | `Two words` |
+| `snakeCase`    | `two_words` |
 
-**Options:**
+All core methods accept [`options`](#options) as the second argument.
+
+#### Options
 
 - `locale?: string[] | string | false` - lower/upper according to specified locale, defaults to host environment. Set to `false` to disable.
 - `separateNumbers?: boolean` Splits `foo123` into `foo 123` instead of keeping them together. Defaults to `true`.
@@ -41,12 +41,13 @@ import * as changeKeys from "change-case/keys";
 changeKeys.camelCase({ TEST_KEY: true }); //=> { testKey: true }
 ```
 
-Keys is a wrapper around the core case methods to support mapping objects of any case into another case.
+Keys is a wrapper around all case methods to support transforming objects to any case.
 
-### case(input: string, depth?: number, options?: Options)
+### API
 
-**Depth:** Specify the depth to transfer for case transformation. Defaults to `1`.
-**Options:** Same as base case library.
+- **input: unknown** Any JavaScript value.
+- **depth: number** Specify the depth to transfer for case transformation. Defaults to `1`.
+- **options: object** Same as base case library.
 
 ## License
 
