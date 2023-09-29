@@ -28,5 +28,4 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - run: npm ci --workspaces --include-workspace-root
-      - run: npm run build --workspaces
       - run: npm test --workspaces
