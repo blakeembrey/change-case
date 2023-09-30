@@ -44,7 +44,7 @@
     "access": "public"
   },
   "dependencies": {
-    "no-case": "^3.0.4"
+    "no-case": "^4.0.0"
   },
   "devDependencies": {
     "@vitest/coverage-v8": "^0.34.5"
