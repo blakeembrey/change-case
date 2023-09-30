@@ -1,6 +1,6 @@
 {
   "name": "param-case",
-  "version": "3.0.4",
+  "version": "4.0.0",
   "description": "Transform into a lower cased string with dashes between words",
   "type": "module",
   "files": [

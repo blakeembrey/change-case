@@ -1,6 +1,6 @@
 {
   "name": "upper-case-first",
-  "version": "2.0.2",
+  "version": "3.0.0",
   "description": "Transforms the string with the first character in upper cased",
   "type": "module",
   "files": [

@@ -1,6 +1,6 @@
 {
   "name": "path-case",
-  "version": "3.0.4",
+  "version": "4.0.0",
   "description": "Transform into a lower case string with slashes between words",
   "type": "module",
   "files": [

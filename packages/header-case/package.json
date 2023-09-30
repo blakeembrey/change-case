@@ -1,6 +1,6 @@
 {
   "name": "header-case",
-  "version": "2.0.4",
+  "version": "3.0.0",
   "description": "Transform into a dash separated string of capitalized words",
   "type": "module",
   "files": [

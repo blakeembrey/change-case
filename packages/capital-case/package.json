@@ -1,6 +1,6 @@
 {
   "name": "capital-case",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "description": "Transform into a space separated string with each word capitalized",
   "type": "module",
   "files": [

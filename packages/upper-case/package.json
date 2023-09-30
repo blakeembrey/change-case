@@ -1,6 +1,6 @@
 {
   "name": "upper-case",
-  "version": "2.0.2",
+  "version": "3.0.0",
   "description": "Transforms the string to upper case",
   "type": "module",
   "files": [

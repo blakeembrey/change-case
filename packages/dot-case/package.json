@@ -1,6 +1,6 @@
 {
   "name": "dot-case",
-  "version": "3.0.4",
+  "version": "4.0.0",
   "description": "Transform into a lower case string with a period between words",
   "type": "module",
   "files": [

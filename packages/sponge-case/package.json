@@ -1,6 +1,6 @@
 {
   "name": "sponge-case",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Transform into a string with random capitalization applied",
   "type": "module",
   "files": [
