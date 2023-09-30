@@ -28,10 +28,20 @@ These case change functions are included:
 
 All core methods accept [`options`](#options) as the second argument.
 
-#### Options
+### Options
 
 - `locale?: string[] | string | false` - lower/upper according to specified locale, defaults to host environment. Set to `false` to disable.
 - `separateNumbers?: boolean` Splits `foo123` into `foo 123` instead of keeping them together. Defaults to `true`.
+
+### Split
+
+**Change case** also exports a `split` function which can be used to build your own case formatting methods. It accepts a string and returns each "word" as an array. For example:
+
+```js
+split("fooBar")
+  .map((x) => x.toLowerCase())
+  .join("_"); //=> "foo_bar"
+```
 
 ## Change Case Keys
 

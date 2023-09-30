@@ -88,6 +88,17 @@ export function pascalCase(input: string, options?: Options) {
 }
 
 /**
+ * Convert a string to pascal snake case (`Foo_Bar`).
+ */
+export function pascalSnakeCase(input: string, options?: Options) {
+  const lower = lowerFactory(options?.locale);
+  const upper = upperFactory(options?.locale);
+  return split(input, options)
+    .map(capitalCaseTransformFactory(lower, upper))
+    .join("_");
+}
+
+/**
  * Convert a string to capital case (`Foo Bar`).
  */
 export function capitalCase(input: string, options?: Options) {
