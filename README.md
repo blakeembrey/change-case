@@ -8,8 +8,6 @@
 - [sponge-case](https://github.com/blakeembrey/change-case/tree/master/packages/sponge-case)
 - [swap-case](https://github.com/blakeembrey/change-case/tree/master/packages/swap-case)
 - [title-case](https://github.com/blakeembrey/change-case/tree/master/packages/title-case)
-- [lower-case-first](https://github.com/blakeembrey/change-case/tree/master/packages/lower-case-first)
-- [upper-case-first](https://github.com/blakeembrey/change-case/tree/master/packages/upper-case-first)
 
 ## Related
 
