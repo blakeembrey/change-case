@@ -19,8 +19,6 @@ spongeCase("PascalCase"); //=> "pASCaLCasE"
 spongeCase("version 1.2.10"); //=> "VErSIoN 1.2.10"
 ```
 
-**Note:** Capitalization outcomes are random.
-
 ## License
 
 MIT

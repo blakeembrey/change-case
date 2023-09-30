@@ -19,8 +19,6 @@ snakeCase("PascalCase"); //=> "pascal_case"
 snakeCase("version 1.2.10"); //=> "version_1_2_10"
 ```
 
-The function also accepts [`options`](https://github.com/blakeembrey/change-case#options).
-
 ## License
 
 MIT
