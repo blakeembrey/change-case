@@ -1,6 +1,6 @@
 {
   "name": "title-case",
-  "version": "4.0.1",
+  "version": "4.1.0",
   "description": "Transform a string into title case following English rules",
   "type": "module",
   "files": [
