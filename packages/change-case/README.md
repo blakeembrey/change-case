@@ -12,19 +12,20 @@ npm install change-case --save
 
 These case change functions are included:
 
-| Method         | Result      |
-| -------------- | ----------- |
-| `camelCase`    | `twoWords`  |
-| `capitalCase`  | `Two Words` |
-| `constantCase` | `TWO_WORDS` |
-| `dotCase`      | `two.words` |
-| `trainCase`    | `Two-Words` |
-| `kebabCase`    | `two-words` |
-| `noCase`       | `two words` |
-| `pascalCase`   | `TwoWords`  |
-| `pathCase`     | `two/words` |
-| `sentenceCase` | `Two words` |
-| `snakeCase`    | `two_words` |
+| Method            | Result      |
+| ----------------- | ----------- |
+| `camelCase`       | `twoWords`  |
+| `capitalCase`     | `Two Words` |
+| `constantCase`    | `TWO_WORDS` |
+| `dotCase`         | `two.words` |
+| `kebabCase`       | `two-words` |
+| `noCase`          | `two words` |
+| `pascalCase`      | `TwoWords`  |
+| `pascalSnakeCase` | `Two_Words` |
+| `pathCase`        | `two/words` |
+| `sentenceCase`    | `Two words` |
+| `snakeCase`       | `two_words` |
+| `trainCase`       | `Two-Words` |
 
 All core methods accept [`options`](#options) as the second argument.
 
