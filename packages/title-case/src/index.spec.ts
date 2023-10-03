@@ -65,6 +65,7 @@ const TEST_CASES: [string, string][] = [
     "Is Human Activity Responsible for the Climate Emergency? New Report Calls It ‘Unequivocal.’",
   ],
   ["лев николаевич толстой", "Лев Николаевич Толстой"],
+  ["Read foo-bar.com", "Read foo-bar.com"],
 ];
 
 describe("swap case", () => {
