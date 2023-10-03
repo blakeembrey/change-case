@@ -2,8 +2,8 @@ const SMALL_WORDS =
   /\b(?:an?d?|a[st]|because|but|by|en|for|i[fn]|neither|nor|o[fnr]|only|over|per|so|some|tha[tn]|the|to|up|upon|vs?\.?|versus|via|when|with|without|yet)\b/i;
 const TOKENS = /[^\s:–—-]+|./g;
 const WHITESPACE = /\s/;
-const IS_MANUAL_CASE = /.(?=[\p{Lu}]|\..)/u;
-const ALPHANUMERIC_PATTERN = /[\p{Lu}\p{Ll}\d]/u;
+const IS_MANUAL_CASE = /\p{Ll}(?=[\p{Lu}])|\.\p{L}/u; // iPhone, example.com, U.N., etc.
+const ALPHANUMERIC_PATTERN = /[\p{L}\d]/u;
 
 export function titleCase(input: string, locale?: string[] | string) {
   let result = "";

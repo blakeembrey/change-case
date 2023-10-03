@@ -60,7 +60,10 @@ const TEST_CASES: [string, string][] = [
   ],
   ["newcastle upon tyne", "Newcastle upon Tyne"],
   ["newcastle *upon* tyne", "Newcastle *upon* Tyne"],
-
+  [
+    "Is human activity responsible for the climate emergency? New report calls it ‘unequivocal.’",
+    "Is Human Activity Responsible for the Climate Emergency? New Report Calls It ‘Unequivocal.’",
+  ],
   ["лев николаевич толстой", "Лев Николаевич Толстой"],
 ];
 
