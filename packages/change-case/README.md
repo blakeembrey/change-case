@@ -31,8 +31,9 @@ All core methods accept [`options`](#options) as the second argument.
 
 ### Options
 
-- `locale?: string[] | string | false` - lower/upper according to specified locale, defaults to host environment. Set to `false` to disable.
+- `locale?: string[] | string | false` Lower/upper according to specified locale, defaults to host environment. Set to `false` to disable.
 - `separateNumbers?: boolean` Splits `foo123` into `foo 123` instead of keeping them together. Defaults to `true`.
+- `prefixCharacters?: string` Retain at the beginning of the string. Defaults to `""`. Example: use `"_"` to keep the underscores in `__typename`.
 
 ### Split
 
