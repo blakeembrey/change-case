@@ -11,7 +11,7 @@ const DEFAULT_STRIP_REGEXP = /[^\p{L}\d]+/giu;
 const SPLIT_REPLACE_VALUE = "$1\0$2";
 
 // The default characters to keep after transforming case.
-const DEFAULT_PREFIX_CHARACTERS = "_$";
+const DEFAULT_PREFIX_CHARACTERS = "";
 
 /**
  * Supported locale values. Use `false` to ignore locale.
