@@ -5,6 +5,7 @@ const ALPHANUMERIC_PATTERN = /[\p{L}\d]+/gu;
 const WORD_SEPARATORS = new Set(["—", "–", "-", "―", "/"]);
 
 const SMALL_WORDS = new Set([
+  "a",
   "an",
   "and",
   "as",
