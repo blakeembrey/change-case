@@ -10,7 +10,13 @@ npm install change-case --save
 
 ## Usage
 
-These case change functions are included:
+```js
+import * as changeCase from "change-case";
+
+changeCase.camelCase("TEST_VALUE"); //=> "testValue"
+```
+
+Included case functions:
 
 | Method            | Result      |
 | ----------------- | ----------- |
@@ -27,9 +33,7 @@ These case change functions are included:
 | `snakeCase`       | `two_words` |
 | `trainCase`       | `Two-Words` |
 
-All core methods accept [`options`](#options) as the second argument.
-
-### Options
+All methods accept an `options` object as the second argument:
 
 - `locale?: string[] | string | false` Lower/upper according to specified locale, defaults to host environment. Set to `false` to disable.
 - `separateNumbers?: boolean` Splits `foo123` into `foo 123` instead of keeping them together. Defaults to `true`.
@@ -37,7 +41,7 @@ All core methods accept [`options`](#options) as the second argument.
 
 ### Split
 
-**Change case** also exports a `split` function which can be used to build your own case formatting methods. It accepts a string and returns each "word" as an array. For example:
+**Change case** exports a `split` utility which can be used to build other case functions. It accepts a string and returns each "word" as an array. For example:
 
 ```js
 split("fooBar")
@@ -53,11 +57,11 @@ import * as changeKeys from "change-case/keys";
 changeKeys.camelCase({ TEST_KEY: true }); //=> { testKey: true }
 ```
 
-Keys is a wrapper around all case methods to support transforming objects to any case.
+**Change case keys** wraps around the core methods to transform object keys to any case.
 
 ### API
 
-- **input: unknown** Any JavaScript value.
+- **input: any** Any JavaScript value.
 - **depth: number** Specify the depth to transfer for case transformation. Defaults to `1`.
 - **options: object** Same as base case library.
 
