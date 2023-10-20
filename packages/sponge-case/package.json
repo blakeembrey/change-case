@@ -2,25 +2,6 @@
   "name": "sponge-case",
   "version": "2.0.1",
   "description": "Transform into a string with random capitalization applied",
-  "type": "module",
-  "files": [
-    "dist/"
-  ],
-  "exports": {
-    ".": "./dist/index.js"
-  },
-  "scripts": {
-    "format": "ts-scripts format",
-    "specs": "ts-scripts specs",
-    "test": "ts-scripts test",
-    "build": "ts-scripts build",
-    "bench": "vitest bench",
-    "prepublishOnly": "npm run build"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/blakeembrey/change-case.git"
-  },
   "keywords": [
     "random",
     "randomize",
@@ -32,16 +13,35 @@
     "transform",
     "capitalize"
   ],
+  "homepage": "https://github.com/blakeembrey/change-case/tree/master/packages/sponge-case#readme",
+  "bugs": {
+    "url": "https://github.com/blakeembrey/change-case/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/blakeembrey/change-case.git"
+  },
+  "license": "MIT",
   "author": {
     "name": "Nate Rabins",
     "email": "nrabins@gmail.com",
     "url": "http://rabins.dev"
   },
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/blakeembrey/change-case/issues"
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js"
   },
-  "homepage": "https://github.com/blakeembrey/change-case/tree/master/packages/sponge-case#readme",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "bench": "vitest bench",
+    "build": "ts-scripts build",
+    "format": "ts-scripts format",
+    "prepublishOnly": "npm run build",
+    "specs": "ts-scripts specs",
+    "test": "ts-scripts test"
+  },
   "publishConfig": {
     "access": "public"
   }

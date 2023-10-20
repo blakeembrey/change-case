@@ -2,32 +2,6 @@
   "name": "change-case",
   "version": "5.1.1",
   "description": "Transform a string between `camelCase`, `PascalCase`, `Capital Case`, `snake_case`, `kebab-case`, `CONSTANT_CASE` and others",
-  "type": "module",
-  "files": [
-    "dist/"
-  ],
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    },
-    "./keys": {
-      "types": "./dist/keys.d.ts",
-      "import": "./dist/keys.js"
-    }
-  },
-  "scripts": {
-    "format": "ts-scripts format",
-    "specs": "ts-scripts specs",
-    "test": "ts-scripts test",
-    "build": "ts-scripts build",
-    "bench": "vitest bench",
-    "prepublishOnly": "npm run build"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/blakeembrey/change-case.git"
-  },
   "keywords": [
     "change",
     "case",
@@ -39,16 +13,43 @@
     "kebab-case",
     "header-case"
   ],
+  "homepage": "https://github.com/blakeembrey/change-case/tree/master/packages/change-case#readme",
+  "bugs": {
+    "url": "https://github.com/blakeembrey/change-case/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/blakeembrey/change-case.git"
+  },
+  "license": "MIT",
   "author": {
     "name": "Blake Embrey",
     "email": "hello@blakeembrey.com",
     "url": "http://blakeembrey.me"
   },
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/blakeembrey/change-case/issues"
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./keys": {
+      "types": "./dist/keys.d.ts",
+      "import": "./dist/keys.js"
+    }
   },
-  "homepage": "https://github.com/blakeembrey/change-case/tree/master/packages/change-case#readme",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "bench": "vitest bench",
+    "build": "ts-scripts build",
+    "format": "ts-scripts format",
+    "prepublishOnly": "npm run build",
+    "specs": "ts-scripts specs",
+    "test": "ts-scripts test"
+  },
   "publishConfig": {
     "access": "public"
   }
