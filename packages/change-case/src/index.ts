@@ -19,12 +19,25 @@ const DEFAULT_PREFIX_CHARACTERS = "";
  */
 export type Locale = string[] | string | false | undefined;
 
+/**
+ * Options used for converting strings to pascal/camel case.
+ */
+export interface PascalCaseOptions extends Options {
+  mergeAmbiguousCharacters?: boolean;
+}
+
+/**
+ * Options used for converting strings to any case.
+ */
 export interface Options extends SplitOptions {
   locale?: Locale;
   delimiter?: string;
   prefixCharacters?: string;
 }
 
+/**
+ * Options used for splitting strings into word segments.
+ */
 export interface SplitOptions {
   separateNumbers?: boolean;
 }
@@ -32,15 +45,14 @@ export interface SplitOptions {
 /**
  * Split any cased input strings into an array of words.
  */
-export function split(input: string, options: SplitOptions = {}) {
-  const { separateNumbers } = options;
+export function split(input: string, options?: SplitOptions) {
   let result = input.trim();
 
   result = result
     .replace(SPLIT_LOWER_UPPER_RE, SPLIT_REPLACE_VALUE)
     .replace(SPLIT_UPPER_UPPER_RE, SPLIT_REPLACE_VALUE);
 
-  if (separateNumbers) {
+  if (options?.separateNumbers) {
     result = result
       .replace(SPLIT_NUMBER_LOWER_RE, SPLIT_REPLACE_VALUE)
       .replace(SPLIT_LETTER_NUMBER_RE, SPLIT_REPLACE_VALUE);
@@ -75,11 +87,13 @@ export function noCase(input: string, options?: Options) {
 /**
  * Convert a string to camel case (`fooBar`).
  */
-export function camelCase(input: string, options?: Options) {
+export function camelCase(input: string, options?: PascalCaseOptions) {
   const prefix = getPrefix(input, options?.prefixCharacters);
   const lower = lowerFactory(options?.locale);
   const upper = upperFactory(options?.locale);
-  const transform = pascalCaseTransformFactory(lower, upper);
+  const transform = options?.mergeAmbiguousCharacters
+    ? capitalCaseTransformFactory(lower, upper)
+    : pascalCaseTransformFactory(lower, upper);
   return (
     prefix +
     split(input, options)
@@ -94,14 +108,17 @@ export function camelCase(input: string, options?: Options) {
 /**
  * Convert a string to pascal case (`FooBar`).
  */
-export function pascalCase(input: string, options?: Options) {
+export function pascalCase(input: string, options?: PascalCaseOptions) {
   const prefix = getPrefix(input, options?.prefixCharacters);
   const lower = lowerFactory(options?.locale);
   const upper = upperFactory(options?.locale);
+  const transform = options?.mergeAmbiguousCharacters
+    ? capitalCaseTransformFactory(lower, upper)
+    : pascalCaseTransformFactory(lower, upper);
   return (
     prefix +
     split(input, options)
-      .map(pascalCaseTransformFactory(lower, upper))
+      .map(transform)
       .join(options?.delimiter ?? "")
   );
 }

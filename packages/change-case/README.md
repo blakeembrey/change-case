@@ -37,8 +37,10 @@ All methods accept an `options` object as the second argument:
 
 - `delimiter?: string` The character to use between words. Default depends on method, e.g. `_` in snake case.
 - `locale?: string[] | string | false` Lower/upper according to specified locale, defaults to host environment. Set to `false` to disable.
-- `separateNumbers?: boolean` Splits `foo123` into `foo 123` instead of keeping them together. Defaults to `true`.
+- `separateNumbers?: boolean` Splits `foo123` into `foo 123` instead of keeping them together. Defaults to `false`.
 - `prefixCharacters?: string` Retain at the beginning of the string. Defaults to `""`. Example: use `"_"` to keep the underscores in `__typename`.
+
+By default, `pascalCase` and `snakeCase` separate ambiguous characters with `_`. For example, `V1.2` would become `V1_2` instead of `V12`. If you prefer them merged you can set `mergeAmbiguousCharacters` to `true`.
 
 ### Split
 

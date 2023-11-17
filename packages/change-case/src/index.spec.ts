@@ -350,4 +350,17 @@ describe("change case", () => {
       expect(snakeCase(input, options)).toEqual(result.snakeCase);
     });
   }
+
+  describe("pascal case merge option", () => {
+    it("should merge numbers", () => {
+      const input = "version 1.2.10";
+
+      expect(camelCase(input, { mergeAmbiguousCharacters: true })).toEqual(
+        "version1210",
+      );
+      expect(pascalCase(input, { mergeAmbiguousCharacters: true })).toEqual(
+        "Version1210",
+      );
+    });
+  });
 });
