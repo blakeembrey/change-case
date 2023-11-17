@@ -21,6 +21,7 @@ export type Locale = string[] | string | false | undefined;
 
 export interface Options extends SplitOptions {
   locale?: Locale;
+  delimiter?: string;
   prefixCharacters?: string;
 }
 
@@ -67,7 +68,7 @@ export function noCase(input: string, options?: Options) {
     prefix +
     split(input, options)
       .map(lowerFactory(options?.locale))
-      .join(" ")
+      .join(options?.delimiter ?? " ")
   );
 }
 
@@ -86,7 +87,7 @@ export function camelCase(input: string, options?: Options) {
         if (index === 0) return lower(word);
         return transform(word, index);
       })
-      .join("")
+      .join(options?.delimiter ?? "")
   );
 }
 
@@ -99,7 +100,9 @@ export function pascalCase(input: string, options?: Options) {
   const upper = upperFactory(options?.locale);
   return (
     prefix +
-    split(input, options).map(pascalCaseTransformFactory(lower, upper)).join("")
+    split(input, options)
+      .map(pascalCaseTransformFactory(lower, upper))
+      .join(options?.delimiter ?? "")
   );
 }
 
@@ -107,15 +110,7 @@ export function pascalCase(input: string, options?: Options) {
  * Convert a string to pascal snake case (`Foo_Bar`).
  */
 export function pascalSnakeCase(input: string, options?: Options) {
-  const prefix = getPrefix(input, options?.prefixCharacters);
-  const lower = lowerFactory(options?.locale);
-  const upper = upperFactory(options?.locale);
-  return (
-    prefix +
-    split(input, options)
-      .map(capitalCaseTransformFactory(lower, upper))
-      .join("_")
-  );
+  return capitalCase(input, { delimiter: "_", ...options });
 }
 
 /**
@@ -129,7 +124,7 @@ export function capitalCase(input: string, options?: Options) {
     prefix +
     split(input, options)
       .map(capitalCaseTransformFactory(lower, upper))
-      .join(" ")
+      .join(options?.delimiter ?? " ")
   );
 }
 
@@ -138,35 +133,33 @@ export function capitalCase(input: string, options?: Options) {
  */
 export function constantCase(input: string, options?: Options) {
   const prefix = getPrefix(input, options?.prefixCharacters);
-  const upper = upperFactory(options?.locale);
-  return prefix + split(input, options).map(upper).join("_");
+  return (
+    prefix +
+    split(input, options)
+      .map(upperFactory(options?.locale))
+      .join(options?.delimiter ?? "_")
+  );
 }
 
 /**
  * Convert a string to dot case (`foo.bar`).
  */
 export function dotCase(input: string, options?: Options) {
-  const prefix = getPrefix(input, options?.prefixCharacters);
-  const lower = lowerFactory(options?.locale);
-  return prefix + split(input, options).map(lower).join(".");
+  return noCase(input, { delimiter: ".", ...options });
 }
 
 /**
  * Convert a string to kebab case (`foo-bar`).
  */
 export function kebabCase(input: string, options?: Options) {
-  const prefix = getPrefix(input, options?.prefixCharacters);
-  const lower = lowerFactory(options?.locale);
-  return prefix + split(input, options).map(lower).join("-");
+  return noCase(input, { delimiter: "-", ...options });
 }
 
 /**
  * Convert a string to path case (`foo/bar`).
  */
 export function pathCase(input: string, options?: Options) {
-  const prefix = getPrefix(input, options?.prefixCharacters);
-  const lower = lowerFactory(options?.locale);
-  return prefix + split(input, options).map(lower).join("/");
+  return noCase(input, { delimiter: "/", ...options });
 }
 
 /**
@@ -184,7 +177,7 @@ export function sentenceCase(input: string, options?: Options) {
         if (index === 0) return transform(word);
         return lower(word);
       })
-      .join(" ")
+      .join(options?.delimiter ?? " ")
   );
 }
 
@@ -192,24 +185,14 @@ export function sentenceCase(input: string, options?: Options) {
  * Convert a string to snake case (`foo_bar`).
  */
 export function snakeCase(input: string, options?: Options) {
-  const prefix = getPrefix(input, options?.prefixCharacters);
-  const lower = lowerFactory(options?.locale);
-  return prefix + split(input, options).map(lower).join("_");
+  return noCase(input, { delimiter: "_", ...options });
 }
 
 /**
  * Convert a string to header case (`Foo-Bar`).
  */
 export function trainCase(input: string, options?: Options) {
-  const prefix = getPrefix(input, options?.prefixCharacters);
-  const lower = lowerFactory(options?.locale);
-  const upper = upperFactory(options?.locale);
-  return (
-    prefix +
-    split(input, options)
-      .map(capitalCaseTransformFactory(lower, upper))
-      .join("-")
-  );
+  return capitalCase(input, { delimiter: "-", ...options });
 }
 
 function lowerFactory(locale: Locale): (input: string) => string {

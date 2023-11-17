@@ -105,6 +105,27 @@ const tests: [string, Result, Options?][] = [
     },
   ],
   [
+    "Test String",
+    {
+      split: ["Test", "String"],
+      camelCase: "test$String",
+      capitalCase: "Test$String",
+      constantCase: "TEST$STRING",
+      dotCase: "test$string",
+      kebabCase: "test$string",
+      noCase: "test$string",
+      pascalCase: "Test$String",
+      pascalSnakeCase: "Test$String",
+      pathCase: "test$string",
+      sentenceCase: "Test$string",
+      snakeCase: "test$string",
+      trainCase: "Test$String",
+    },
+    {
+      delimiter: "$",
+    },
+  ],
+  [
     "TestV2",
     {
       split: ["Test", "V2"],
