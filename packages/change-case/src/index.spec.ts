@@ -331,6 +331,49 @@ const tests: [string, Result, Options?][] = [
       prefixCharacters: "_$",
     },
   ],
+  [
+    "type__",
+    {
+      split: ["type"],
+      camelCase: "type__",
+      capitalCase: "Type__",
+      constantCase: "TYPE__",
+      dotCase: "type__",
+      kebabCase: "type__",
+      noCase: "type__",
+      pascalCase: "Type__",
+      pascalSnakeCase: "Type__",
+      pathCase: "type__",
+      sentenceCase: "Type__",
+      snakeCase: "type__",
+      trainCase: "Type__",
+    },
+    {
+      suffixCharacters: "_$",
+    },
+  ],
+  [
+    "__type__",
+    {
+      split: ["type"],
+      camelCase: "__type__",
+      capitalCase: "__Type__",
+      constantCase: "__TYPE__",
+      dotCase: "__type__",
+      kebabCase: "__type__",
+      noCase: "__type__",
+      pascalCase: "__Type__",
+      pascalSnakeCase: "__Type__",
+      pathCase: "__type__",
+      sentenceCase: "__Type__",
+      snakeCase: "__type__",
+      trainCase: "__Type__",
+    },
+    {
+      prefixCharacters: "_",
+      suffixCharacters: "_",
+    },
+  ],
 ];
 
 describe("change case", () => {

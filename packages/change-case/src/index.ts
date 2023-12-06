@@ -11,7 +11,7 @@ const DEFAULT_STRIP_REGEXP = /[^\p{L}\d]+/giu;
 const SPLIT_REPLACE_VALUE = "$1\0$2";
 
 // The default characters to keep after transforming case.
-const DEFAULT_PREFIX_CHARACTERS = "";
+const DEFAULT_PREFIX_SUFFIX_CHARACTERS = "";
 
 /**
  * Supported locale values. Use `false` to ignore locale.
@@ -33,6 +33,7 @@ export interface Options extends SplitOptions {
   locale?: Locale;
   delimiter?: string;
   prefixCharacters?: string;
+  suffixCharacters?: string;
 }
 
 /**
@@ -45,8 +46,8 @@ export interface SplitOptions {
 /**
  * Split any cased input strings into an array of words.
  */
-export function split(input: string, options?: SplitOptions) {
-  let result = input.trim();
+export function split(value: string, options?: SplitOptions) {
+  let result = value.trim();
 
   result = result
     .replace(SPLIT_LOWER_UPPER_RE, SPLIT_REPLACE_VALUE)
@@ -75,12 +76,13 @@ export function split(input: string, options?: SplitOptions) {
  * Convert a string to space separated lower case (`foo bar`).
  */
 export function noCase(input: string, options?: Options) {
-  const prefix = getPrefix(input, options?.prefixCharacters);
+  const [prefix, value, suffix] = splitPrefixSuffix(input, options);
   return (
     prefix +
-    split(input, options)
+    split(value, options)
       .map(lowerFactory(options?.locale))
-      .join(options?.delimiter ?? " ")
+      .join(options?.delimiter ?? " ") +
+    suffix
   );
 }
 
@@ -88,7 +90,7 @@ export function noCase(input: string, options?: Options) {
  * Convert a string to camel case (`fooBar`).
  */
 export function camelCase(input: string, options?: PascalCaseOptions) {
-  const prefix = getPrefix(input, options?.prefixCharacters);
+  const [prefix, value, suffix] = splitPrefixSuffix(input, options);
   const lower = lowerFactory(options?.locale);
   const upper = upperFactory(options?.locale);
   const transform = options?.mergeAmbiguousCharacters
@@ -96,12 +98,13 @@ export function camelCase(input: string, options?: PascalCaseOptions) {
     : pascalCaseTransformFactory(lower, upper);
   return (
     prefix +
-    split(input, options)
+    split(value, options)
       .map((word, index) => {
         if (index === 0) return lower(word);
         return transform(word, index);
       })
-      .join(options?.delimiter ?? "")
+      .join(options?.delimiter ?? "") +
+    suffix
   );
 }
 
@@ -109,7 +112,7 @@ export function camelCase(input: string, options?: PascalCaseOptions) {
  * Convert a string to pascal case (`FooBar`).
  */
 export function pascalCase(input: string, options?: PascalCaseOptions) {
-  const prefix = getPrefix(input, options?.prefixCharacters);
+  const [prefix, value, suffix] = splitPrefixSuffix(input, options);
   const lower = lowerFactory(options?.locale);
   const upper = upperFactory(options?.locale);
   const transform = options?.mergeAmbiguousCharacters
@@ -117,9 +120,10 @@ export function pascalCase(input: string, options?: PascalCaseOptions) {
     : pascalCaseTransformFactory(lower, upper);
   return (
     prefix +
-    split(input, options)
+    split(value, options)
       .map(transform)
-      .join(options?.delimiter ?? "")
+      .join(options?.delimiter ?? "") +
+    suffix
   );
 }
 
@@ -134,14 +138,15 @@ export function pascalSnakeCase(input: string, options?: Options) {
  * Convert a string to capital case (`Foo Bar`).
  */
 export function capitalCase(input: string, options?: Options) {
-  const prefix = getPrefix(input, options?.prefixCharacters);
+  const [prefix, value, suffix] = splitPrefixSuffix(input, options);
   const lower = lowerFactory(options?.locale);
   const upper = upperFactory(options?.locale);
   return (
     prefix +
-    split(input, options)
+    split(value, options)
       .map(capitalCaseTransformFactory(lower, upper))
-      .join(options?.delimiter ?? " ")
+      .join(options?.delimiter ?? " ") +
+    suffix
   );
 }
 
@@ -149,12 +154,13 @@ export function capitalCase(input: string, options?: Options) {
  * Convert a string to constant case (`FOO_BAR`).
  */
 export function constantCase(input: string, options?: Options) {
-  const prefix = getPrefix(input, options?.prefixCharacters);
+  const [prefix, value, suffix] = splitPrefixSuffix(input, options);
   return (
     prefix +
-    split(input, options)
+    split(value, options)
       .map(upperFactory(options?.locale))
-      .join(options?.delimiter ?? "_")
+      .join(options?.delimiter ?? "_") +
+    suffix
   );
 }
 
@@ -183,18 +189,19 @@ export function pathCase(input: string, options?: Options) {
  * Convert a string to path case (`Foo bar`).
  */
 export function sentenceCase(input: string, options?: Options) {
-  const prefix = getPrefix(input, options?.prefixCharacters);
+  const [prefix, value, suffix] = splitPrefixSuffix(input, options);
   const lower = lowerFactory(options?.locale);
   const upper = upperFactory(options?.locale);
   const transform = capitalCaseTransformFactory(lower, upper);
   return (
     prefix +
-    split(input, options)
+    split(value, options)
       .map((word, index) => {
         if (index === 0) return transform(word);
         return lower(word);
       })
-      .join(options?.delimiter ?? " ")
+      .join(options?.delimiter ?? " ") +
+    suffix
   );
 }
 
@@ -243,18 +250,33 @@ function pascalCaseTransformFactory(
   };
 }
 
-function getPrefix(
+function splitPrefixSuffix(
   input: string,
-  prefixCharacters = DEFAULT_PREFIX_CHARACTERS,
-): string {
-  let prefix = "";
-  for (let i = 0; i < input.length; i++) {
-    const char = input.charAt(i);
-    if (prefixCharacters.includes(char)) {
-      prefix += char;
-    } else {
-      break;
-    }
+  options: Options | undefined,
+): [string, string, string] {
+  const prefixCharacters =
+    options?.prefixCharacters ?? DEFAULT_PREFIX_SUFFIX_CHARACTERS;
+  const suffixCharacters =
+    options?.suffixCharacters ?? DEFAULT_PREFIX_SUFFIX_CHARACTERS;
+  let prefixIndex = 0;
+  let suffixIndex = input.length;
+
+  while (prefixIndex < input.length) {
+    const char = input.charAt(prefixIndex);
+    if (!prefixCharacters.includes(char)) break;
+    prefixIndex++;
   }
-  return prefix;
+
+  while (suffixIndex > prefixIndex) {
+    const index = suffixIndex - 1;
+    const char = input.charAt(index);
+    if (!suffixCharacters.includes(char)) break;
+    suffixIndex = index;
+  }
+
+  return [
+    input.slice(0, prefixIndex),
+    input.slice(prefixIndex, suffixIndex),
+    input.slice(suffixIndex),
+  ];
 }
