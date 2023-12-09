@@ -1,10 +1,22 @@
-const TOKENS = /\S+|./g;
-const IS_MANUAL_CASE = /\p{Ll}(?=[\p{Lu}])|\.\p{L}/u; // iPhone, example.com, U.N., etc.
+const TOKENS = /(\S+)|(.)/g;
+const IS_SPECIAL_CASE = /[\.#]\p{L}/u; // #tag, example.com, etc.
+const IS_MANUAL_CASE = /\p{Ll}(?=[\p{Lu}])/u; // iPhone, iOS, etc.
 const ALPHANUMERIC_PATTERN = /[\p{L}\d]+/gu;
+const IS_ACRONYM = /(?:\p{Lu}\.){2,}$/u;
 
-const WORD_SEPARATORS = new Set(["—", "–", "-", "―", "/"]);
+export const WORD_SEPARATORS = new Set(["—", "–", "-", "―", "/"]);
 
-const SMALL_WORDS = new Set([
+export const SENTENCE_TERMINATORS = new Set([
+  ".",
+  "!",
+  "?",
+  ":",
+  '"',
+  "'",
+  "”",
+]);
+
+export const SMALL_WORDS = new Set([
   "a",
   "an",
   "and",
@@ -45,6 +57,8 @@ const SMALL_WORDS = new Set([
 
 export interface Options {
   smallWords?: Set<string>;
+  sentenceTerminators?: Set<string>;
+  wordSeparators?: Set<string>;
   locale?: string | string[];
 }
 
@@ -54,38 +68,77 @@ export function titleCase(
 ) {
   let result = "";
   let m: RegExpExecArray | null;
+  let isNewSentence = true;
 
-  const { smallWords = SMALL_WORDS, locale } =
-    typeof options === "string" || Array.isArray(options)
-      ? { locale: options }
-      : options;
+  const {
+    smallWords = SMALL_WORDS,
+    sentenceTerminators = SENTENCE_TERMINATORS,
+    wordSeparators = WORD_SEPARATORS,
+    locale,
+  } = typeof options === "string" || Array.isArray(options)
+    ? { locale: options }
+    : options;
 
   // tslint:disable-next-line
   while ((m = TOKENS.exec(input)) !== null) {
-    const { 0: token, index } = m;
+    const { 1: token, 2: whiteSpace, index } = m;
 
-    // Ignore already capitalized words.
-    if (IS_MANUAL_CASE.test(token)) {
+    if (whiteSpace) {
+      result += whiteSpace;
+      continue;
+    }
+
+    // Ignore URLs, email addresses, acronyms, etc.
+    if (IS_SPECIAL_CASE.test(token)) {
       result += token;
+
+      // The period at the end of an acronym is not a new sentence.
+      if (IS_ACRONYM.test(token)) {
+        isNewSentence = false;
+        continue;
+      }
     } else {
-      result += token.replace(ALPHANUMERIC_PATTERN, (m, i) => {
-        // Ignore small words except at beginning or end.
-        if (
-          index > 0 &&
-          index + token.length < input.length &&
-          smallWords.has(m)
-        ) {
-          return m;
+      const matches = Array.from(token.matchAll(ALPHANUMERIC_PATTERN));
+      let value = token;
+
+      for (let i = 0; i < matches.length; i++) {
+        const { 0: word, index: wordIndex = 0 } = matches[i];
+
+        // Reset "new sentence" when we find a word.
+        if (isNewSentence) {
+          isNewSentence = false;
+        } else {
+          // Ignore small words except at beginning or end,
+          // or previous token is a new sentence.
+          if (
+            smallWords.has(word) &&
+            // Not the final token and word.
+            !(index + token.length === input.length && i === matches.length - 1)
+          ) {
+            continue;
+          }
+        }
+
+        if (IS_MANUAL_CASE.test(word)) {
+          continue;
         }
 
         // Only capitalize words after a valid word separator.
-        if (i > 1 && !WORD_SEPARATORS.has(input.charAt(index + i - 1))) {
-          return m;
+        if (i > 0 && !wordSeparators.has(token.charAt(wordIndex - 1))) {
+          continue;
         }
 
-        return m.charAt(0).toLocaleUpperCase(locale) + m.slice(1);
-      });
+        value =
+          value.slice(0, wordIndex) +
+          value.charAt(wordIndex).toLocaleUpperCase(locale) +
+          value.slice(wordIndex + 1);
+      }
+
+      result += value;
     }
+
+    const lastChar = token.charAt(token.length - 1);
+    isNewSentence = sentenceTerminators.has(lastChar);
   }
 
   return result;

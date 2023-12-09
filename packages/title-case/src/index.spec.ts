@@ -66,6 +66,17 @@ const TEST_CASES: [string, string][] = [
   ],
   ["лев николаевич толстой", "Лев Николаевич Толстой"],
   ["Read foo-bar.com", "Read foo-bar.com"],
+  ["cowboy bebop: the movie", "Cowboy Bebop: The Movie"],
+  ["a thing. the thing. and more.", "A Thing. The Thing. And More."],
+  ['"a quote." a test.', '"A Quote." A Test.'],
+  ['"The U.N." a quote.', '"The U.N." A Quote.'],
+  ['"The U.N.". a quote.', '"The U.N.". A Quote.'],
+  ['"go without"', '"Go Without"'],
+  ["the iPhone: a quote", "The iPhone: A Quote"],
+  ["the U.N. and me", "The U.N. and Me"],
+  ["start-and-end", "Start-and-End"],
+  ["go-to-iPhone", "Go-to-iPhone"],
+  ["Keep #tag", "Keep #tag"],
 ];
 
 describe("swap case", () => {
