@@ -1,11 +1,11 @@
 import { describe, it, expect } from "vitest";
 import { inspect } from "util";
-import { titleCase } from "./index.js";
+import { titleCase, Options } from "./index.js";
 
 /**
  * Based on https://github.com/gouch/to-title-case/blob/master/test/tests.json.
  */
-const TEST_CASES: [string, string][] = [
+const TEST_CASES: [string, string, Options?][] = [
   ["", ""],
   ["2019", "2019"],
   ["test", "Test"],
@@ -71,18 +71,30 @@ const TEST_CASES: [string, string][] = [
   ['"a quote." a test.', '"A Quote." A Test.'],
   ['"The U.N." a quote.', '"The U.N." A Quote.'],
   ['"The U.N.". a quote.', '"The U.N.". A Quote.'],
+  ['"The U.N.". a quote.', '"The U.N.". A quote.', { sentenceCase: true }],
   ['"go without"', '"Go Without"'],
   ["the iPhone: a quote", "The iPhone: A Quote"],
+  ["the iPhone: a quote", "The iPhone: a quote", { sentenceCase: true }],
   ["the U.N. and me", "The U.N. and Me"],
+  ["the U.N. and me", "The U.N. and me", { sentenceCase: true }],
+  ["the U.N. and me", "The U.N. And Me", { smallWords: new Set() }],
   ["start-and-end", "Start-and-End"],
   ["go-to-iPhone", "Go-to-iPhone"],
   ["Keep #tag", "Keep #tag"],
+  ['"Hello world", says John.', '"Hello World", Says John.'],
+  [
+    '"Hello world", says John.',
+    '"Hello world", says John.',
+    { sentenceCase: true },
+  ],
 ];
 
 describe("swap case", () => {
-  for (const [input, result] of TEST_CASES) {
-    it(`${inspect(input)} -> ${inspect(result)}`, () => {
-      expect(titleCase(input)).toEqual(result);
+  for (const [input, result, options] of TEST_CASES) {
+    it(`${inspect(input)} (${
+      options ? JSON.stringify(options) : "null"
+    }) -> ${inspect(result)}`, () => {
+      expect(titleCase(input, options)).toEqual(result);
     });
   }
 });

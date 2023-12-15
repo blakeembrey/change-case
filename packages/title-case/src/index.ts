@@ -6,10 +6,10 @@ const IS_ACRONYM = /(?:\p{Lu}\.){2,}$/u;
 
 export const WORD_SEPARATORS = new Set(["—", "–", "-", "―", "/"]);
 
-export const SENTENCE_TERMINATORS = new Set([
-  ".",
-  "!",
-  "?",
+export const SENTENCE_TERMINATORS = new Set([".", "!", "?"]);
+
+export const TITLE_TERMINATORS = new Set([
+  ...SENTENCE_TERMINATORS,
   ":",
   '"',
   "'",
@@ -56,32 +56,36 @@ export const SMALL_WORDS = new Set([
 ]);
 
 export interface Options {
-  smallWords?: Set<string>;
-  sentenceTerminators?: Set<string>;
-  wordSeparators?: Set<string>;
   locale?: string | string[];
+  sentenceCase?: boolean;
+  sentenceTerminators?: Set<string>;
+  smallWords?: Set<string>;
+  titleTerminators?: Set<string>;
+  wordSeparators?: Set<string>;
 }
 
 export function titleCase(
   input: string,
   options: Options | string[] | string = {},
 ) {
-  let result = "";
-  let m: RegExpExecArray | null;
-  let isNewSentence = true;
-
   const {
-    smallWords = SMALL_WORDS,
+    locale = undefined,
+    sentenceCase = false,
     sentenceTerminators = SENTENCE_TERMINATORS,
+    titleTerminators = TITLE_TERMINATORS,
+    smallWords = SMALL_WORDS,
     wordSeparators = WORD_SEPARATORS,
-    locale,
   } = typeof options === "string" || Array.isArray(options)
     ? { locale: options }
     : options;
 
+  const terminators = sentenceCase ? sentenceTerminators : titleTerminators;
+  let result = "";
+  let isNewSentence = true;
+
   // tslint:disable-next-line
-  while ((m = TOKENS.exec(input)) !== null) {
-    const { 1: token, 2: whiteSpace, index } = m;
+  for (const m of input.matchAll(TOKENS)) {
+    const { 1: token, 2: whiteSpace, index = 0 } = m;
 
     if (whiteSpace) {
       result += whiteSpace;
@@ -108,6 +112,11 @@ export function titleCase(
         if (isNewSentence) {
           isNewSentence = false;
         } else {
+          // Skip capitalizing all words if sentence case is enabled.
+          if (sentenceCase) {
+            continue;
+          }
+
           // Ignore small words except at beginning or end,
           // or previous token is a new sentence.
           if (
@@ -138,7 +147,7 @@ export function titleCase(
     }
 
     const lastChar = token.charAt(token.length - 1);
-    isNewSentence = sentenceTerminators.has(lastChar);
+    isNewSentence = terminators.has(lastChar);
   }
 
   return result;
