@@ -19,12 +19,12 @@ titleCase("follow step-by-step instructions"); //=> "Follow Step-by-Step Instruc
 
 ### Options
 
-- `locale?: string | string[]`
+- `locale?: string | string[]` Locale used for `toLocaleUpperCase` during case transformation (default: `undefined`)
 - `sentenceCase?: boolean` Only capitalize the first word of each sentence (default: `false`)
 - `sentenceTerminators?: Set<string>` Set of characters to consider a new sentence under sentence case behavior (e.g. `.`, default: `SENTENCE_TERMINATORS`)
 - `smallWords?: Set<string>` Set of words to keep lower-case when `sentenceCase === false` (default: `SMALL_WORDS`)
-- `titleTerminators?: Set<string>` Set of characters to consider a new sentence under title case behavior (e.g. `:`, default: `TITLE_TERMINATORS`).
-- `wordSeparators?: Set<string>` Set of characters to consider a new word for capitalization, such as hyphenation (default: `WORD_SEPARATORS`).
+- `titleTerminators?: Set<string>` Set of characters to consider a new sentence under title case behavior (e.g. `:`, default: `TITLE_TERMINATORS`)
+- `wordSeparators?: Set<string>` Set of characters to consider a new word for capitalization, such as hyphenation (default: `WORD_SEPARATORS`)
 
 ## TypeScript and ESM
 

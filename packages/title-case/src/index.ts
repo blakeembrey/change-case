@@ -1,8 +1,9 @@
 const TOKENS = /(\S+)|(.)/g;
-const IS_SPECIAL_CASE = /[\.#]\p{L}/u; // #tag, example.com, etc.
+const IS_SPECIAL_CASE = /[\.#]\p{Alphabetic}/u; // #tag, example.com, etc.
 const IS_MANUAL_CASE = /\p{Ll}(?=[\p{Lu}])/u; // iPhone, iOS, etc.
-const ALPHANUMERIC_PATTERN = /[\p{L}\d]+/gu;
-const IS_ACRONYM = /(?:\p{Lu}\.){2,}$/u;
+const ALPHANUMERIC_PATTERN = /\p{Alphabetic}+/gu;
+const IS_ACRONYM =
+  /^(\P{Alphabetic})*(?:\p{Alphabetic}\.){2,}(\P{Alphabetic})*$/u;
 
 export const WORD_SEPARATORS = new Set(["—", "–", "-", "―", "/"]);
 
@@ -94,61 +95,83 @@ export function titleCase(
 
     // Ignore URLs, email addresses, acronyms, etc.
     if (IS_SPECIAL_CASE.test(token)) {
-      result += token;
+      const acronym = token.match(IS_ACRONYM);
 
-      // The period at the end of an acronym is not a new sentence.
-      if (IS_ACRONYM.test(token)) {
-        isNewSentence = false;
+      // The period at the end of an acronym is not a new sentence,
+      // but we should uppercase first for i.e., e.g., etc.
+      if (acronym) {
+        const [_, prefix = "", suffix = ""] = acronym;
+        result += upperAt(token, prefix.length, locale);
+        isNewSentence = terminators.has(suffix.charAt(0));
         continue;
       }
+
+      result += token;
+      isNewSentence = terminators.has(token.charAt(token.length - 1));
     } else {
       const matches = Array.from(token.matchAll(ALPHANUMERIC_PATTERN));
       let value = token;
+      let isSentenceEnd = false;
 
       for (let i = 0; i < matches.length; i++) {
         const { 0: word, index: wordIndex = 0 } = matches[i];
+        const nextChar = token.charAt(wordIndex + word.length);
 
-        // Reset "new sentence" when we find a word.
+        isSentenceEnd = terminators.has(nextChar);
+
+        // Always the capitalize first word and reset "new sentence".
         if (isNewSentence) {
           isNewSentence = false;
-        } else {
-          // Skip capitalizing all words if sentence case is enabled.
-          if (sentenceCase) {
+        }
+        // Skip capitalizing all words if sentence case is enabled.
+        else if (sentenceCase || IS_MANUAL_CASE.test(word)) {
+          continue;
+        }
+        // Handle simple words.
+        else if (matches.length === 1) {
+          // Avoid capitalizing small words, except at the end of a sentence.
+          if (smallWords.has(word)) {
+            const isFinalToken = index + token.length === input.length;
+
+            if (!isFinalToken && !isSentenceEnd) {
+              continue;
+            }
+          }
+        }
+        // Multi-word tokens need to be parsed differently.
+        else if (i > 0) {
+          // Avoid capitalizing words without a valid word separator,
+          // e.g. "apple's" or "test(ing)".
+          if (!wordSeparators.has(token.charAt(wordIndex - 1))) {
             continue;
           }
 
-          // Ignore small words except at beginning or end,
-          // or previous token is a new sentence.
-          if (
-            smallWords.has(word) &&
-            // Not the final token and word.
-            !(index + token.length === input.length && i === matches.length - 1)
-          ) {
+          // Ignore small words in the middle of hyphenated words.
+          if (smallWords.has(word) && wordSeparators.has(nextChar)) {
             continue;
           }
         }
 
-        if (IS_MANUAL_CASE.test(word)) {
-          continue;
-        }
-
-        // Only capitalize words after a valid word separator.
-        if (i > 0 && !wordSeparators.has(token.charAt(wordIndex - 1))) {
-          continue;
-        }
-
-        value =
-          value.slice(0, wordIndex) +
-          value.charAt(wordIndex).toLocaleUpperCase(locale) +
-          value.slice(wordIndex + 1);
+        value = upperAt(value, wordIndex, locale);
       }
 
       result += value;
+      isNewSentence =
+        isSentenceEnd || terminators.has(token.charAt(token.length - 1));
     }
-
-    const lastChar = token.charAt(token.length - 1);
-    isNewSentence = terminators.has(lastChar);
   }
 
   return result;
+}
+
+function upperAt(
+  input: string,
+  index: number,
+  locale: string | string[] | undefined,
+) {
+  return (
+    input.slice(0, index) +
+    input.charAt(index).toLocaleUpperCase(locale) +
+    input.slice(index + 1)
+  );
 }
