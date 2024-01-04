@@ -31,11 +31,13 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
     },
     "./keys": {
       "types": "./dist/keys.d.ts",
-      "import": "./dist/keys.js"
+      "import": "./dist/keys.js",
+      "default": "./dist/keys.js"
     }
   },
   "types": "./dist/index.d.ts",
