@@ -37,7 +37,7 @@ All methods accept an `options` object as the second argument:
 
 - `delimiter?: string` The character to use between words. Default depends on method, e.g. `_` in snake case.
 - `locale?: string[] | string | false` Lower/upper according to specified locale, defaults to host environment. Set to `false` to disable.
-- `separateNumbers?: boolean` Splits `foo123` into `foo 123` instead of keeping them together. Defaults to `false`.
+- `split?: (value: string) => string[]` A function to define how the input is split into words. Defaults to `split`.
 - `prefixCharacters?: string` Retain at the beginning of the string. Defaults to `""`. Example: use `"_"` to keep the underscores in `__typename`.
 - `suffixCharacters?: string` Retain at the end of the string. Defaults to `""`. Example: use `"_"` to keep the underscore in `type_`.
 
