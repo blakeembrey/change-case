@@ -135,7 +135,15 @@ const TEST_CASES: [string, string, Options?][] = [
     "Something About _Me-Too_? And You Too.",
   ],
   ["an example. i.e. test.", "An Example. I.e. Test."],
+  ["an example, i.e. test.", "An Example, I.e. Test."],
   ['an example. "i.e. test."', 'An Example. "I.e. Test."'],
+  ["an example. i.e. test.", "An example. I.e. test.", { sentenceCase: true }],
+  ["an example, i.e. test.", "An example, i.e. test.", { sentenceCase: true }],
+  [
+    'an example. "i.e. test."',
+    'An example. "I.e. test."',
+    { sentenceCase: true },
+  ],
 ];
 
 describe("swap case", () => {

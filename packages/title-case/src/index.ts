@@ -101,7 +101,10 @@ export function titleCase(
       // but we should uppercase first for i.e., e.g., etc.
       if (acronym) {
         const [_, prefix = "", suffix = ""] = acronym;
-        result += upperAt(token, prefix.length, locale);
+        result +=
+          sentenceCase && !isNewSentence
+            ? token
+            : upperAt(token, prefix.length, locale);
         isNewSentence = terminators.has(suffix.charAt(0));
         continue;
       }
