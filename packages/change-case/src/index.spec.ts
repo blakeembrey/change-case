@@ -11,12 +11,12 @@ import {
   sentenceCase,
   snakeCase,
   split,
+  splitSeparateNumbers,
   trainCase,
   Options,
 } from "./index.js";
 
 type Result = {
-  split: string[];
   camelCase: string;
   capitalCase: string;
   constantCase: string;
@@ -35,7 +35,6 @@ const tests: [string, Result, Options?][] = [
   [
     "",
     {
-      split: [],
       camelCase: "",
       capitalCase: "",
       constantCase: "",
@@ -53,7 +52,6 @@ const tests: [string, Result, Options?][] = [
   [
     "test",
     {
-      split: ["test"],
       camelCase: "test",
       capitalCase: "Test",
       constantCase: "TEST",
@@ -71,7 +69,6 @@ const tests: [string, Result, Options?][] = [
   [
     "test string",
     {
-      split: ["test", "string"],
       camelCase: "testString",
       capitalCase: "Test String",
       constantCase: "TEST_STRING",
@@ -89,7 +86,6 @@ const tests: [string, Result, Options?][] = [
   [
     "Test String",
     {
-      split: ["Test", "String"],
       camelCase: "testString",
       capitalCase: "Test String",
       constantCase: "TEST_STRING",
@@ -107,7 +103,6 @@ const tests: [string, Result, Options?][] = [
   [
     "Test String",
     {
-      split: ["Test", "String"],
       camelCase: "test$String",
       capitalCase: "Test$String",
       constantCase: "TEST$STRING",
@@ -128,7 +123,6 @@ const tests: [string, Result, Options?][] = [
   [
     "TestV2",
     {
-      split: ["Test", "V2"],
       camelCase: "testV2",
       capitalCase: "Test V2",
       constantCase: "TEST_V2",
@@ -146,7 +140,6 @@ const tests: [string, Result, Options?][] = [
   [
     "_foo_bar_",
     {
-      split: ["foo", "bar"],
       camelCase: "fooBar",
       capitalCase: "Foo Bar",
       constantCase: "FOO_BAR",
@@ -164,7 +157,6 @@ const tests: [string, Result, Options?][] = [
   [
     "version 1.2.10",
     {
-      split: ["version", "1", "2", "10"],
       camelCase: "version_1_2_10",
       capitalCase: "Version 1 2 10",
       constantCase: "VERSION_1_2_10",
@@ -182,7 +174,6 @@ const tests: [string, Result, Options?][] = [
   [
     "version 1.21.0",
     {
-      split: ["version", "1", "21", "0"],
       camelCase: "version_1_21_0",
       capitalCase: "Version 1 21 0",
       constantCase: "VERSION_1_21_0",
@@ -200,7 +191,6 @@ const tests: [string, Result, Options?][] = [
   [
     "TestV2",
     {
-      split: ["Test", "V", "2"],
       camelCase: "testV_2",
       capitalCase: "Test V 2",
       constantCase: "TEST_V_2",
@@ -214,12 +204,13 @@ const tests: [string, Result, Options?][] = [
       snakeCase: "test_v_2",
       trainCase: "Test-V-2",
     },
-    { separateNumbers: true },
+    {
+      separateNumbers: true,
+    },
   ],
   [
     "1test",
     {
-      split: ["1", "test"],
       camelCase: "1Test",
       capitalCase: "1 Test",
       constantCase: "1_TEST",
@@ -238,7 +229,6 @@ const tests: [string, Result, Options?][] = [
   [
     "Foo12019Bar",
     {
-      split: ["Foo", "12019", "Bar"],
       camelCase: "foo_12019Bar",
       capitalCase: "Foo 12019 Bar",
       constantCase: "FOO_12019_BAR",
@@ -257,7 +247,6 @@ const tests: [string, Result, Options?][] = [
   [
     "aNumber2in",
     {
-      split: ["a", "Number", "2", "in"],
       camelCase: "aNumber_2In",
       capitalCase: "A Number 2 In",
       constantCase: "A_NUMBER_2_IN",
@@ -276,7 +265,6 @@ const tests: [string, Result, Options?][] = [
   [
     "V1Test",
     {
-      split: ["V1", "Test"],
       camelCase: "v1Test",
       capitalCase: "V1 Test",
       constantCase: "V1_TEST",
@@ -294,7 +282,6 @@ const tests: [string, Result, Options?][] = [
   [
     "V1Test with separateNumbers",
     {
-      split: ["V", "1", "Test", "with", "separate", "Numbers"],
       camelCase: "v_1TestWithSeparateNumbers",
       capitalCase: "V 1 Test With Separate Numbers",
       constantCase: "V_1_TEST_WITH_SEPARATE_NUMBERS",
@@ -313,7 +300,6 @@ const tests: [string, Result, Options?][] = [
   [
     "__typename",
     {
-      split: ["typename"],
       camelCase: "__typename",
       capitalCase: "__Typename",
       constantCase: "__TYPENAME",
@@ -334,7 +320,6 @@ const tests: [string, Result, Options?][] = [
   [
     "type__",
     {
-      split: ["type"],
       camelCase: "type__",
       capitalCase: "Type__",
       constantCase: "TYPE__",
@@ -355,7 +340,6 @@ const tests: [string, Result, Options?][] = [
   [
     "__type__",
     {
-      split: ["type"],
       camelCase: "__type__",
       capitalCase: "__Type__",
       constantCase: "__TYPE__",
@@ -379,7 +363,6 @@ const tests: [string, Result, Options?][] = [
 describe("change case", () => {
   for (const [input, result, options] of tests) {
     it(input, () => {
-      expect(split(input, options)).toEqual(result.split);
       expect(camelCase(input, options)).toEqual(result.camelCase);
       expect(capitalCase(input, options)).toEqual(result.capitalCase);
       expect(constantCase(input, options)).toEqual(result.constantCase);
@@ -393,6 +376,12 @@ describe("change case", () => {
       expect(snakeCase(input, options)).toEqual(result.snakeCase);
     });
   }
+
+  describe("split", () => {
+    it("should split an empty string", () => {
+      expect(split("")).toEqual([]);
+    });
+  });
 
   describe("pascal case merge option", () => {
     it("should merge numbers", () => {
