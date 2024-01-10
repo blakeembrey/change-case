@@ -3,7 +3,7 @@ const SPLIT_LOWER_UPPER_RE = /([\p{Ll}\d])(\p{Lu})/gu;
 const SPLIT_UPPER_UPPER_RE = /(\p{Lu})([\p{Lu}][\p{Ll}])/gu;
 
 // Used to iterate over the initial split result and separate numbers.
-const SPLIT_SEPARATE_NUMBER_RE = /(?<=\d)(\p{Ll})|(?<=\p{L})(\d)/u;
+const SPLIT_SEPARATE_NUMBER_RE = /(\d)\p{Ll}|(\p{L})\d/u;
 
 // Regexp involved with stripping non-word characters from the result.
 const DEFAULT_STRIP_REGEXP = /[^\p{L}\d]+/giu;
@@ -72,7 +72,8 @@ export function splitSeparateNumbers(value: string) {
     const word = words[i];
     const match = SPLIT_SEPARATE_NUMBER_RE.exec(word);
     if (match) {
-      words.splice(i, 1, word.slice(0, match.index), word.slice(match.index));
+      const offset = match.index + (match[1] ?? match[2]).length;
+      words.splice(i, 1, word.slice(0, offset), word.slice(offset));
     }
   }
   return words;

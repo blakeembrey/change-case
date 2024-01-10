@@ -209,6 +209,26 @@ const tests: [string, Result, Options?][] = [
     },
   ],
   [
+    "𝒳123",
+    {
+      camelCase: "𝒳_123",
+      capitalCase: "𝒳 123",
+      constantCase: "𝒳_123",
+      dotCase: "𝒳.123",
+      kebabCase: "𝒳-123",
+      noCase: "𝒳 123",
+      pascalCase: "𝒳_123",
+      pascalSnakeCase: "𝒳_123",
+      pathCase: "𝒳/123",
+      sentenceCase: "𝒳 123",
+      snakeCase: "𝒳_123",
+      trainCase: "𝒳-123",
+    },
+    {
+      separateNumbers: true,
+    },
+  ],
+  [
     "1test",
     {
       camelCase: "1Test",
