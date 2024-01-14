@@ -26,6 +26,7 @@
     "url": "http://blakeembrey.me"
   },
   "type": "module",
+  "main": "./dist/index.js",
   "exports": {
     ".": "./dist/index.js"
   },
