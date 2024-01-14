@@ -26,10 +26,10 @@
     "url": "http://blakeembrey.me"
   },
   "type": "module",
-  "main": "./dist/index.js",
   "exports": {
     ".": "./dist/index.js"
   },
+  "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist/"
