@@ -144,6 +144,7 @@ const TEST_CASES: [string, string, Options?][] = [
     'An example. "I.e. test."',
     { sentenceCase: true },
   ],
+  ["me And you", "Me and You", { lowerCaseSmallWords: true }],
 ];
 
 describe("swap case", () => {
