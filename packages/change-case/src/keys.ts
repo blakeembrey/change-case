@@ -14,7 +14,7 @@ function changeKeysFactory(
     if (depth === 0 || !isObject(object)) return object;
 
     if (Array.isArray(object)) {
-      return object.map((item) => changeKeys(item, depth - 1));
+      return object.map((item) => changeKeys(item, depth - 1, options));
     }
 
     const result: Record<string, unknown> = Object.create(
@@ -24,7 +24,7 @@ function changeKeysFactory(
     Object.keys(object as object).forEach((key) => {
       const value = (object as Record<string, unknown>)[key];
       const changedKey = changeCase(key, options);
-      const changedValue = changeKeys(value, depth - 1);
+      const changedValue = changeKeys(value, depth - 1, options);
       result[changedKey] = changedValue;
     });
 
