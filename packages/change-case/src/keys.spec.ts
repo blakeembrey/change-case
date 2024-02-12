@@ -45,10 +45,32 @@ const TEST_CASES: [unknown, number | undefined, unknown][] = [
   [null, 1, null],
 ];
 
+const TEST_CASES_MERGE_AMBIGUOUS: [unknown, number | undefined, unknown][] = [
+  [
+    {
+      outer_property_1_2: "outer",
+      an_array: [{ inner_property_3_4: true }],
+    },
+    Infinity,
+    {
+      outerProperty12: "outer",
+      anArray: [{ innerProperty34: true }],
+    },
+  ],
+];
+
 describe("change keys", () => {
   for (const [input, depth, result] of TEST_CASES) {
     it(`${input} -> ${result}`, () => {
       expect(camelCase(input, depth)).toEqual(result);
+    });
+  }
+
+  for (const [input, depth, result] of TEST_CASES_MERGE_AMBIGUOUS) {
+    it(`${input} -> ${result}`, () => {
+      expect(
+        camelCase(input, depth, { mergeAmbiguousCharacters: true }),
+      ).toEqual(result);
     });
   }
 });
