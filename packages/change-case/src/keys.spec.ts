@@ -43,9 +43,6 @@ const TEST_CASES: [unknown, number | undefined, unknown][] = [
   ],
   [{ TEST: true }, 0, { TEST: true }],
   [null, 1, null],
-];
-
-const TEST_CASES_MERGE_AMBIGUOUS: [unknown, number | undefined, unknown][] = [
   [
     {
       outer_property_1_2: "outer",
@@ -56,21 +53,14 @@ const TEST_CASES_MERGE_AMBIGUOUS: [unknown, number | undefined, unknown][] = [
       outerProperty12: "outer",
       anArray: [{ innerProperty34: true }],
     },
+    { mergeAmbiguousCharacters: true },
   ],
 ];
 
 describe("change keys", () => {
-  for (const [input, depth, result] of TEST_CASES) {
+  for (const [input, depth, result, options] of TEST_CASES) {
     it(`${input} -> ${result}`, () => {
-      expect(camelCase(input, depth)).toEqual(result);
-    });
-  }
-
-  for (const [input, depth, result] of TEST_CASES_MERGE_AMBIGUOUS) {
-    it(`${input} -> ${result}`, () => {
-      expect(
-        camelCase(input, depth, { mergeAmbiguousCharacters: true }),
-      ).toEqual(result);
+      expect(camelCase(input, depth, options)).toEqual(result);
     });
   }
 });
