@@ -43,12 +43,24 @@ const TEST_CASES: [unknown, number | undefined, unknown][] = [
   ],
   [{ TEST: true }, 0, { TEST: true }],
   [null, 1, null],
+  [
+    {
+      outer_property_1_2: "outer",
+      an_array: [{ inner_property_3_4: true }],
+    },
+    Infinity,
+    {
+      outerProperty12: "outer",
+      anArray: [{ innerProperty34: true }],
+    },
+    { mergeAmbiguousCharacters: true },
+  ],
 ];
 
 describe("change keys", () => {
-  for (const [input, depth, result] of TEST_CASES) {
+  for (const [input, depth, result, options] of TEST_CASES) {
     it(`${input} -> ${result}`, () => {
-      expect(camelCase(input, depth)).toEqual(result);
+      expect(camelCase(input, depth, options)).toEqual(result);
     });
   }
 });
