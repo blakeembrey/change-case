@@ -63,6 +63,7 @@ export interface Options {
   smallWords?: Set<string>;
   titleTerminators?: Set<string>;
   wordSeparators?: Set<string>;
+  lowerCaseSmallWords?: boolean;
 }
 
 export function titleCase(
@@ -76,6 +77,7 @@ export function titleCase(
     titleTerminators = TITLE_TERMINATORS,
     smallWords = SMALL_WORDS,
     wordSeparators = WORD_SEPARATORS,
+    lowerCaseSmallWords = false,
   } = typeof options === "string" || Array.isArray(options)
     ? { locale: options }
     : options;
@@ -155,7 +157,11 @@ export function titleCase(
           }
         }
 
-        value = upperAt(value, wordIndex, locale);
+        if (lowerCaseSmallWords && smallWords.has(value.toLocaleLowerCase())) {
+          value = value.toLocaleLowerCase();
+        } else {
+          value = upperAt(value, wordIndex, locale);
+        }
       }
 
       result += value;
