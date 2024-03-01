@@ -56,7 +56,7 @@ split("fooBar")
 ## Change Case Keys
 
 ```js
-import * as changeKeys from "change-case/keys";
+import * as changeKeys from "change-case/dist/keys";
 
 changeKeys.camelCase({ TEST_KEY: true }); //=> { testKey: true }
 ```
