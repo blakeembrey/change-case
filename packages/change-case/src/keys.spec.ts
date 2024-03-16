@@ -1,7 +1,15 @@
 import { describe, it, expect } from "vitest";
 import { camelCase } from "./keys";
+import * as changeCase from "./index.js";
 
-const TEST_CASES: [unknown, number | undefined, unknown][] = [
+type TestCase = [
+  unknown,
+  number | undefined,
+  unknown,
+  (changeCase.Options | changeCase.PascalCaseOptions)?,
+];
+
+const TEST_CASES: TestCase[] = [
   [
     {
       first_name: "bob",
