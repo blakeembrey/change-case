@@ -1,6 +1,6 @@
 {
   "name": "change-case",
-  "version": "5.4.3",
+  "version": "5.4.4",
   "description": "Transform a string between `camelCase`, `PascalCase`, `Capital Case`, `snake_case`, `kebab-case`, `CONSTANT_CASE` and others",
   "keywords": [
     "change",
