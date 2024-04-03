@@ -3,13 +3,15 @@ import * as changeCase from "./index.js";
 const isObject = (object: unknown) =>
   object !== null && typeof object === "object";
 
-function changeKeysFactory(
+function changeKeysFactory<
+  Options extends changeCase.Options = changeCase.Options,
+>(
   changeCase: (input: string, options?: changeCase.Options) => string,
-): (object: unknown, depth?: number) => unknown {
+): (object: unknown, depth?: number, options?: Options) => unknown {
   return function changeKeys(
     object: unknown,
     depth = 1,
-    options?: changeCase.Options,
+    options?: Options,
   ): unknown {
     if (depth === 0 || !isObject(object)) return object;
 
@@ -32,14 +34,18 @@ function changeKeysFactory(
   };
 }
 
-export const camelCase = changeKeysFactory(changeCase.camelCase);
+export const camelCase = changeKeysFactory<changeCase.PascalCaseOptions>(
+  changeCase.camelCase,
+);
 export const capitalCase = changeKeysFactory(changeCase.capitalCase);
 export const constantCase = changeKeysFactory(changeCase.constantCase);
 export const dotCase = changeKeysFactory(changeCase.dotCase);
 export const trainCase = changeKeysFactory(changeCase.trainCase);
 export const noCase = changeKeysFactory(changeCase.noCase);
 export const kebabCase = changeKeysFactory(changeCase.kebabCase);
-export const pascalCase = changeKeysFactory(changeCase.pascalCase);
+export const pascalCase = changeKeysFactory<changeCase.PascalCaseOptions>(
+  changeCase.pascalCase,
+);
 export const pathCase = changeKeysFactory(changeCase.pathCase);
 export const sentenceCase = changeKeysFactory(changeCase.sentenceCase);
 export const snakeCase = changeKeysFactory(changeCase.snakeCase);
