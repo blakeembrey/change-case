@@ -1,18 +1,18 @@
 // Regexps involved with splitting words in various case formats.
-const SPLIT_LOWER_UPPER_RE = /([\p{Ll}\d])(\p{Lu})/gu;
-const SPLIT_UPPER_UPPER_RE = /(\p{Lu})([\p{Lu}][\p{Ll}])/gu;
+export const SPLIT_LOWER_UPPER_RE = /([\p{Ll}\d])(\p{Lu})/gu;
+export const SPLIT_UPPER_UPPER_RE = /(\p{Lu})([\p{Lu}][\p{Ll}])/gu;
 
 // Used to iterate over the initial split result and separate numbers.
-const SPLIT_SEPARATE_NUMBER_RE = /(\d)\p{Ll}|(\p{L})\d/u;
+export const SPLIT_SEPARATE_NUMBER_RE = /(\d)\p{Ll}|(\p{L})\d/u;
 
 // Regexp involved with stripping non-word characters from the result.
-const DEFAULT_STRIP_REGEXP = /[^\p{L}\d]+/giu;
+export const DEFAULT_STRIP_REGEXP = /[^\p{L}\d]+/giu;
 
 // The replacement value for splits.
-const SPLIT_REPLACE_VALUE = "$1\0$2";
+export const SPLIT_REPLACE_VALUE = "$1\0$2";
 
 // The default characters to keep after transforming case.
-const DEFAULT_PREFIX_SUFFIX_CHARACTERS = "";
+export const DEFAULT_PREFIX_SUFFIX_CHARACTERS = "";
 
 /**
  * Supported locale values. Use `false` to ignore locale.
@@ -38,19 +38,30 @@ export interface Options {
   delimiter?: string;
   prefixCharacters?: string;
   suffixCharacters?: string;
+  ignoreChar?: string;
 }
 
 /**
+ * Options used for default split options.
+ */
+export const DEFAULT_SPLIT_OPTIONS = {
+  defaultStripRegexp: DEFAULT_STRIP_REGEXP,
+  splitLowerUpperRe: SPLIT_LOWER_UPPER_RE,
+  splitLowerUpperReplaceValue: SPLIT_REPLACE_VALUE,
+  splitUpperUpperRe: SPLIT_UPPER_UPPER_RE,
+  splitUpperUpperReplaceValue: SPLIT_REPLACE_VALUE,
+};
+/**
  * Split any cased input strings into an array of words.
  */
-export function split(value: string) {
+export function split(value: string, options = DEFAULT_SPLIT_OPTIONS) {
   let result = value.trim();
 
   result = result
-    .replace(SPLIT_LOWER_UPPER_RE, SPLIT_REPLACE_VALUE)
-    .replace(SPLIT_UPPER_UPPER_RE, SPLIT_REPLACE_VALUE);
+    .replace(options.splitLowerUpperRe, options.splitLowerUpperReplaceValue)
+    .replace(options.splitUpperUpperRe, options.splitUpperUpperReplaceValue);
 
-  result = result.replace(DEFAULT_STRIP_REGEXP, "\0");
+  result = result.replace(options.defaultStripRegexp, "\0");
 
   let start = 0;
   let end = result.length;
@@ -230,14 +241,14 @@ function upperFactory(locale: Locale): (input: string) => string {
 
 function capitalCaseTransformFactory(
   lower: (input: string) => string,
-  upper: (input: string) => string,
+  upper: (input: string) => string
 ) {
   return (word: string) => `${upper(word[0])}${lower(word.slice(1))}`;
 }
 
 function pascalCaseTransformFactory(
   lower: (input: string) => string,
-  upper: (input: string) => string,
+  upper: (input: string) => string
 ) {
   return (word: string, index: number) => {
     const char0 = word[0];
@@ -249,7 +260,7 @@ function pascalCaseTransformFactory(
 
 function splitPrefixSuffix(
   input: string,
-  options: Options = {},
+  options: Options = {}
 ): [string, string[], string] {
   const splitFn =
     options.split ?? (options.separateNumbers ? splitSeparateNumbers : split);
