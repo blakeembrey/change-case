@@ -44,8 +44,8 @@ export interface Options {
 /**
  * Options used for default split options.
  */
-export const DEFAULT_SPLIT_OPTIONS = {
-  defaultStripRegexp: DEFAULT_STRIP_REGEXP,
+export const defaultSplitOptions = {
+  stripRegexp: DEFAULT_STRIP_REGEXP,
   splitLowerUpperRe: SPLIT_LOWER_UPPER_RE,
   splitLowerUpperReplaceValue: SPLIT_REPLACE_VALUE,
   splitUpperUpperRe: SPLIT_UPPER_UPPER_RE,
@@ -54,14 +54,14 @@ export const DEFAULT_SPLIT_OPTIONS = {
 /**
  * Split any cased input strings into an array of words.
  */
-export function split(value: string, options = DEFAULT_SPLIT_OPTIONS) {
+export function split(value: string, options = defaultSplitOptions) {
   let result = value.trim();
 
   result = result
     .replace(options.splitLowerUpperRe, options.splitLowerUpperReplaceValue)
     .replace(options.splitUpperUpperRe, options.splitUpperUpperReplaceValue);
 
-  result = result.replace(options.defaultStripRegexp, "\0");
+  result = result.replace(options.stripRegexp, "\0");
 
   let start = 0;
   let end = result.length;
