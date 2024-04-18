@@ -16,7 +16,7 @@ import * as changeCase from "change-case";
 changeCase.camelCase("TEST_VALUE"); //=> "testValue"
 ```
 
-Included case functions:
+### Built-in methods
 
 | Method            | Result      |
 | ----------------- | ----------- |
@@ -32,6 +32,8 @@ Included case functions:
 | `sentenceCase`    | `Two words` |
 | `snakeCase`       | `two_words` |
 | `trainCase`       | `Two-Words` |
+
+**Tip:** Change case assumes you are switching between different programming cases. It does not retain punctuation or other sensitivities. For example, `WOW! That's crazy.` would be `wowThatSCrazy` in camel case. If you're looking for a more generic title/sentence case library, consider trying [title-case](https://github.com/blakeembrey/change-case/blob/main/packages/title-case/README.md).
 
 All methods accept an `options` object as the second argument:
 
