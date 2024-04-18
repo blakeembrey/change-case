@@ -38,7 +38,6 @@ export interface Options {
   delimiter?: string;
   prefixCharacters?: string;
   suffixCharacters?: string;
-  ignoreChar?: string;
 }
 
 /**
