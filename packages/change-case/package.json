@@ -29,8 +29,16 @@
   },
   "type": "module",
   "exports": {
-    ".": "./dist/index.js",
-    "./keys": "./dist/keys.js"
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./keys": {
+      "import": "./dist/keys.js",
+      "require": "./dist/keys.js",
+      "types": "./dist/keys.d.ts"
+    }
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
