@@ -32,10 +32,11 @@
     ".": "./dist/index.js",
     "./keys": "./dist/keys.js"
   },
-  "main": "./dist/index.js",
+  "main": "./dist-cjs/index.js",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist/"
+    "dist/",
+    "dist-cjs/"
   ],
   "scripts": {
     "bench": "vitest bench",
@@ -47,5 +48,11 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "ts-scripts": {
+    "project": [
+      "tsconfig.json",
+      "tsconfig-cjs.json"
+    ]
   }
 }
