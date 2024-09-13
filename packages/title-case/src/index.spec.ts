@@ -144,6 +144,8 @@ const TEST_CASES: [string, string, Options?][] = [
     'An example. "I.e. test."',
     { sentenceCase: true },
   ],
+  ["friday the 13th", "Friday the 13th"],
+  ["21st century", "21st Century"],
 ];
 
 describe("swap case", () => {

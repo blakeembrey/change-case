@@ -1,7 +1,7 @@
 const TOKENS = /(\S+)|(.)/g;
 const IS_SPECIAL_CASE = /[\.#]\p{Alphabetic}/u; // #tag, example.com, etc.
 const IS_MANUAL_CASE = /\p{Ll}(?=[\p{Lu}])/u; // iPhone, iOS, etc.
-const ALPHANUMERIC_PATTERN = /\p{Alphabetic}+/gu;
+const ALPHANUMERIC_PATTERN = /[\p{Alphabetic}\p{Nd}]+/gu;
 const IS_ACRONYM =
   /^(\P{Alphabetic})*(?:\p{Alphabetic}\.){2,}(\P{Alphabetic})*$/u;
 
