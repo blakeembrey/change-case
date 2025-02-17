@@ -1,7 +1,5 @@
+import isPlainObject from "is-plain-obj";
 import * as changeCase from "./index.js";
-
-const isObject = (object: unknown) =>
-  object !== null && typeof object === "object";
 
 function changeKeysFactory<
   Options extends changeCase.Options = changeCase.Options,
@@ -13,11 +11,13 @@ function changeKeysFactory<
     depth = 1,
     options?: Options,
   ): unknown {
-    if (depth === 0 || !isObject(object)) return object;
+    if (depth === 0) return object;
 
     if (Array.isArray(object)) {
       return object.map((item) => changeKeys(item, depth - 1, options));
     }
+
+    if (!isPlainObject(object)) return object;
 
     const result: Record<string, unknown> = Object.create(
       Object.getPrototypeOf(object),

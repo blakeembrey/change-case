@@ -63,6 +63,7 @@ const TEST_CASES: TestCase[] = [
     },
     { mergeAmbiguousCharacters: true },
   ],
+  [new Date(), 1, new Date()],
 ];
 
 describe("change keys", () => {
