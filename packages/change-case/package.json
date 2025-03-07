@@ -45,9 +45,6 @@
     "specs": "ts-scripts specs",
     "test": "ts-scripts test"
   },
-  "dependencies": {
-    "is-plain-obj": "^4.1.0"
-  },
   "publishConfig": {
     "access": "public"
   }

@@ -1,5 +1,19 @@
-import isPlainObject from "is-plain-obj";
 import * as changeCase from "./index.js";
+
+function isPlainObject(value: unknown) {
+  if (typeof value !== "object" || value === null) {
+    return false;
+  }
+
+  const prototype = Object.getPrototypeOf(value);
+  return (
+    (prototype === null ||
+      prototype === Object.prototype ||
+      Object.getPrototypeOf(prototype) === null) &&
+    !(Symbol.toStringTag in value) &&
+    !(Symbol.iterator in value)
+  );
+}
 
 function changeKeysFactory<
   Options extends changeCase.Options = changeCase.Options,
