@@ -11,6 +11,23 @@ type TestCase<Input, Output> = {
 
 type TestCases = TestCase<unknown, unknown>[];
 
+class World {
+  public greeting: string;
+
+  constructor(greeting: string) {
+    this.greeting = greeting;
+  }
+}
+
+describe("keys", () => {
+  it("should not modify class properties", () => {
+    const world = new World("Hello");
+
+    world.constructor = Object;
+    expect(camelCase(world, 2)).toEqual(world);
+  });
+});
+
 describe.each([
   {
     input: {
@@ -63,9 +80,38 @@ describe.each([
     },
     options: { mergeAmbiguousCharacters: true },
   },
+  {
+    input: { todays_date: new Date() },
+    depth: 2,
+    output: { todaysDate: new Date() },
+  },
+  {
+    input: { a_map: new Map() },
+    depth: 2,
+    output: { aMap: new Map() },
+  },
+  {
+    input: { ["the-regex"]: /a/ },
+    depth: 2,
+    output: { theRegex: /a/ },
+  },
   testIdentical({ TEST: true }, 0),
   testIdentical(null),
+  testIdentical(undefined),
   testIdentical(new Date()),
+  testIdentical(Object.create(null)),
+  testIdentical(new Map()),
+  testIdentical(Number.NaN),
+  testIdentical(Error),
+  testIdentical(Object.create({})),
+  testIdentical(""),
+  testIdentical(0),
+  testIdentical(false),
+  testIdentical(() => {}),
+  testIdentical(/a/),
+  testIdentical(["Hello", "world"]),
+  testIdentical({ valueOf: 0 }),
+  testIdentical({}),
 ] as TestCases)(`$input -> $result`, ({ input, output, depth, options }) => {
   it("should output the correct result", () => {
     expect(camelCase(input, depth, options)).toEqual(output);
