@@ -52,16 +52,6 @@ describe.each([
     },
   },
   {
-    input: { TEST: true },
-    depth: 0,
-    output: { TEST: true },
-  },
-  {
-    input: null,
-    depth: 1,
-    output: null,
-  },
-  {
     input: {
       outer_property_1_2: "outer",
       an_array: [{ inner_property_3_4: true }],
@@ -73,13 +63,15 @@ describe.each([
     },
     options: { mergeAmbiguousCharacters: true },
   },
-  {
-    input: new Date(),
-    depth: 1,
-    output: new Date(),
-  },
+  testIdentical({ TEST: true }, 0),
+  testIdentical(null),
+  testIdentical(new Date()),
 ] as TestCases)(`$input -> $result`, ({ input, output, depth, options }) => {
   it("should output the correct result", () => {
     expect(camelCase(input, depth, options)).toEqual(output);
   });
 });
+
+function testIdentical<T>(input: T, depth = 1): TestCase<T, T> {
+  return { input, output: input, depth };
+}
