@@ -112,7 +112,7 @@ describe.each([
   testIdentical(["Hello", "world"]),
   testIdentical({ valueOf: 0 }),
   testIdentical({}),
-] as TestCases)(`$input -> $result`, ({ input, output, depth, options }) => {
+] as TestCases)(`$input -> $output`, ({ input, output, depth, options }) => {
   it("should output the correct result", () => {
     expect(camelCase(input, depth, options)).toEqual(output);
   });
