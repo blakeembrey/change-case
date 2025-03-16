@@ -146,6 +146,8 @@ const TEST_CASES: [string, string, Options?][] = [
   ],
   ["friday the 13th", "Friday the 13th"],
   ["21st century", "21st Century"],
+  ["foo\nbar", "Foo\nBar"],
+  ["foo\nbar\nbaz", "Foo\nBar\nBaz"],
 ];
 
 describe("swap case", () => {
