@@ -1,4 +1,4 @@
-const TOKENS = /(\S+)|(\s)/g;
+const TOKENS = /(\S+)|\s+/g;
 const IS_SPECIAL_CASE = /[\.#][\p{L}\p{N}]/u; // #tag, example.com, etc.
 const IS_MANUAL_CASE = /\p{Ll}(?=[\p{Lu}])/u; // iPhone, iOS, etc.
 const ALPHANUMERIC_PATTERN = /[\p{L}\p{N}]+/gu;
@@ -85,10 +85,10 @@ export function titleCase(
 
   // tslint:disable-next-line
   for (const m of input.matchAll(TOKENS)) {
-    const { 1: token, 2: whiteSpace, index = 0 } = m;
+    const { 0: match, 1: token, index = 0 } = m;
 
-    if (whiteSpace) {
-      result += whiteSpace;
+    if (!token) {
+      result += match;
       continue;
     }
 
