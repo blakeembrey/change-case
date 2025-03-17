@@ -1,7 +1,19 @@
 import * as changeCase from "./index.js";
 
-const isObject = (object: unknown) =>
-  object !== null && typeof object === "object";
+function isPlainObject(value: unknown) {
+  if (typeof value !== "object" || value === null) {
+    return false;
+  }
+
+  const prototype = Object.getPrototypeOf(value);
+  return (
+    (prototype === null ||
+      prototype === Object.prototype ||
+      Object.getPrototypeOf(prototype) === null) &&
+    !(Symbol.toStringTag in value) &&
+    !(Symbol.iterator in value)
+  );
+}
 
 function changeKeysFactory<
   Options extends changeCase.Options = changeCase.Options,
@@ -13,11 +25,13 @@ function changeKeysFactory<
     depth = 1,
     options?: Options,
   ): unknown {
-    if (depth === 0 || !isObject(object)) return object;
+    if (depth === 0) return object;
 
     if (Array.isArray(object)) {
       return object.map((item) => changeKeys(item, depth - 1, options));
     }
+
+    if (!isPlainObject(object)) return object;
 
     const result: Record<string, unknown> = Object.create(
       Object.getPrototypeOf(object),
