@@ -6,7 +6,7 @@ const IS_ACRONYM = /^([^\p{L}])*(?:\p{L}\.){2,}([^\p{L}])*$/u;
 
 export const WORD_SEPARATORS = new Set(["—", "–", "-", "―", "/"]);
 
-export const SENTENCE_TERMINATORS = new Set([".", "!", "?"]);
+export const SENTENCE_TERMINATORS = new Set([".", "!", "?", "\n", "\r"]);
 
 export const TITLE_TERMINATORS = new Set([
   ...SENTENCE_TERMINATORS,
@@ -89,7 +89,7 @@ export function titleCase(
 
     if (!token) {
       result += match;
-      if (match === "\n" || match === "\r") isNewSentence = true;
+      if (terminators.has(match)) isNewSentence = true;
       continue;
     }
 
