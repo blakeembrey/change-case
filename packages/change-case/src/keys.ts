@@ -3,6 +3,12 @@ import * as changeCase from "./index.js";
 const isObject = (object: unknown) =>
   object !== null && typeof object === "object";
 
+const isPlainObject = (object: unknown) => {
+  if (!isObject(object)) return false;
+  const proto = Object.getPrototypeOf(object);
+  return proto === null || proto === Object.prototype;
+};
+
 function changeKeysFactory<
   Options extends changeCase.Options = changeCase.Options,
 >(
@@ -18,6 +24,8 @@ function changeKeysFactory<
     if (Array.isArray(object)) {
       return object.map((item) => changeKeys(item, depth - 1, options));
     }
+
+    if (!isPlainObject(object)) return object;
 
     const result: Record<string, unknown> = Object.create(
       Object.getPrototypeOf(object),

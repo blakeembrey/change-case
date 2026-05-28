@@ -63,6 +63,17 @@ const TEST_CASES: TestCase[] = [
     },
     { mergeAmbiguousCharacters: true },
   ],
+  // Date objects should be passed through without modification (#356)
+  [
+    { date_time: new Date("2024-01-01T00:00:00.000Z") },
+    2,
+    { dateTime: new Date("2024-01-01T00:00:00.000Z") },
+  ],
+  [
+    { created_at: new Date("2024-06-15T12:00:00.000Z"), user_name: "bob" },
+    Infinity,
+    { createdAt: new Date("2024-06-15T12:00:00.000Z"), userName: "bob" },
+  ],
 ];
 
 describe("change keys", () => {
