@@ -1,5 +1,6 @@
 const TOKENS = /(\S+)|\s/g;
 const IS_SPECIAL_CASE = /[\.#][\p{L}\p{N}]/u; // #tag, example.com, etc.
+const IS_HTML_ENTITY = /^&(#\d+|#x[\da-f]+|[a-z][a-z\d]*);$/iu; // &amp;, &#38;, etc.
 const IS_MANUAL_CASE = /\p{Ll}(?=[\p{Lu}])/u; // iPhone, iOS, etc.
 const ALPHANUMERIC_PATTERN = /[\p{L}\p{N}]+/gu;
 const IS_ACRONYM = /^([^\p{L}])*(?:\p{L}\.){2,}([^\p{L}])*$/u;
@@ -90,6 +91,14 @@ export function titleCase(
     if (!token) {
       result += match;
       if (terminators.has(match)) isNewSentence = true;
+      continue;
+    }
+
+    // Leave HTML character references untouched, e.g. `&amp;` must not become
+    // `&Amp;`. The trailing `;` is not a sentence terminator, so the sentence
+    // state is preserved for the surrounding words.
+    if (IS_HTML_ENTITY.test(token)) {
+      result += token;
       continue;
     }
 
