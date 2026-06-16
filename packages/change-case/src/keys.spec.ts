@@ -71,4 +71,22 @@ describe("change keys", () => {
       expect(camelCase(input, depth, options)).toEqual(result);
     });
   }
+
+  it("preserves non-plain object values", () => {
+    const date = new Date();
+    const regexp = /foo/;
+    const result = camelCase(
+      { created_at: date, match_pattern: regexp },
+      Infinity,
+    ) as Record<string, unknown>;
+
+    expect(result.createdAt).toBe(date);
+    expect(result.matchPattern).toBe(regexp);
+    expect(() => (result.createdAt as Date).toISOString()).not.toThrow();
+  });
+
+  it("returns a non-plain object passed as the top-level value untouched", () => {
+    const date = new Date();
+    expect(camelCase(date, Infinity)).toBe(date);
+  });
 });

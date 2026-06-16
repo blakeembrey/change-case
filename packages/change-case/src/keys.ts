@@ -3,6 +3,16 @@ import * as changeCase from "./index.js";
 const isObject = (object: unknown) =>
   object !== null && typeof object === "object";
 
+// Only plain objects should have their keys transformed. Other objects such as
+// `Date`, `RegExp`, `Map` or class instances rely on internal state that would
+// be lost when their keys are copied onto a new object, so they are returned
+// untouched.
+const isPlainObject = (object: unknown) => {
+  if (!isObject(object)) return false;
+  const proto = Object.getPrototypeOf(object);
+  return proto === null || proto === Object.prototype;
+};
+
 function changeKeysFactory<
   Options extends changeCase.Options = changeCase.Options,
 >(
@@ -18,6 +28,8 @@ function changeKeysFactory<
     if (Array.isArray(object)) {
       return object.map((item) => changeKeys(item, depth - 1, options));
     }
+
+    if (!isPlainObject(object)) return object;
 
     const result: Record<string, unknown> = Object.create(
       Object.getPrototypeOf(object),
