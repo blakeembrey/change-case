@@ -149,6 +149,12 @@ const TEST_CASES: [string, string, Options?][] = [
   ["foo\nbar", "Foo\nBar"],
   ["foo\nbar\nbaz", "Foo\nBar\nBaz"],
   ["friday\nthe 13th", "Friday\nThe 13th"],
+  ["this &amp; that", "This &amp; That"],
+  ["tom &amp; jerry", "Tom &amp; Jerry"],
+  ["a &lt; b &gt; c", "A &lt; B &gt; C"],
+  ["rock &#38; roll", "Rock &#38; Roll"],
+  ["look &#x1f600; up", "Look &#x1f600; Up"],
+  ["fish & chips", "Fish & Chips"],
 ];
 
 describe("swap case", () => {
