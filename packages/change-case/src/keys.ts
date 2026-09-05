@@ -1,7 +1,14 @@
 import * as changeCase from "./index.js";
 
-const isObject = (object: unknown) =>
-  object !== null && typeof object === "object";
+// Only recurse into arrays and plain objects. Other objects (`Date`, `Map`,
+// `Set`, `RegExp`, class instances, …) can rely on internal slots that a
+// shallow key-renamed clone would not preserve, so they are passed through
+// unchanged as values.
+const isPlainObject = (object: unknown): boolean => {
+  if (object === null || typeof object !== "object") return false;
+  const prototype = Object.getPrototypeOf(object);
+  return prototype === null || prototype === Object.prototype;
+};
 
 function changeKeysFactory<
   Options extends changeCase.Options = changeCase.Options,
@@ -13,11 +20,13 @@ function changeKeysFactory<
     depth = 1,
     options?: Options,
   ): unknown {
-    if (depth === 0 || !isObject(object)) return object;
+    if (depth === 0) return object;
 
     if (Array.isArray(object)) {
       return object.map((item) => changeKeys(item, depth - 1, options));
     }
+
+    if (!isPlainObject(object)) return object;
 
     const result: Record<string, unknown> = Object.create(
       Object.getPrototypeOf(object),

@@ -71,4 +71,20 @@ describe("change keys", () => {
       expect(camelCase(input, depth, options)).toEqual(result);
     });
   }
+
+  it("passes non-plain object values through unchanged", () => {
+    const date = new Date("2020-01-02T03:04:05.000Z");
+    const map = new Map([["a", 1]]);
+    const regexp = /foo/g;
+    const input = { created_at: date, some_map: map, some_regexp: regexp };
+
+    const result = camelCase(input, Infinity) as Record<string, unknown>;
+
+    expect(result.createdAt).toBe(date);
+    expect((result.createdAt as Date).toISOString()).toBe(
+      "2020-01-02T03:04:05.000Z",
+    );
+    expect(result.someMap).toBe(map);
+    expect(result.someRegexp).toBe(regexp);
+  });
 });
