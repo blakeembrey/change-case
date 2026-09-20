@@ -415,4 +415,57 @@ describe("change case", () => {
       );
     });
   });
+
+  describe("consecutive single-letter segments", () => {
+    it("should keep kebab/pascal round-trips reversible by default", () => {
+      const inputs = [
+        "an-outlined-open-a-i",
+        "an-outlined-harmony-o-s",
+        "bx-sort-a-z",
+        "open-a-i",
+        "a-i",
+        "a-b-c",
+      ];
+
+      for (const input of inputs) {
+        expect(kebabCase(pascalCase(input))).toEqual(input);
+        expect(kebabCase(camelCase(input))).toEqual(input);
+      }
+    });
+
+    it("should separate consecutive single letters with _ in pascal and camel", () => {
+      expect(pascalCase("an-outlined-open-a-i")).toEqual("AnOutlinedOpenA_I");
+      expect(pascalCase("an-outlined-harmony-o-s")).toEqual(
+        "AnOutlinedHarmonyO_S",
+      );
+      expect(pascalCase("bx-sort-a-z")).toEqual("BxSortA_Z");
+      expect(pascalCase("open-a-i")).toEqual("OpenA_I");
+      expect(pascalCase("a-i")).toEqual("A_I");
+      expect(pascalCase("a-b-c")).toEqual("A_B_C");
+
+      expect(camelCase("an-outlined-open-a-i")).toEqual("anOutlinedOpenA_I");
+      expect(camelCase("open-a-i")).toEqual("openA_I");
+      // First camel word is lowercase, so a single following letter is already
+      // a lower→Upper boundary (`aI`) and does not need `_`.
+      expect(camelCase("a-i")).toEqual("aI");
+      expect(camelCase("a-b-c")).toEqual("aB_C");
+    });
+
+    it("should still treat a multi-letter token as one word", () => {
+      expect(pascalCase("open-ai")).toEqual("OpenAi");
+      expect(kebabCase("OpenAi")).toEqual("open-ai");
+      expect(kebabCase(pascalCase("open-ai"))).toEqual("open-ai");
+      expect(split("XMLHttpRequest")).toEqual(["XML", "Http", "Request"]);
+      expect(kebabCase("XMLHttpRequest")).toEqual("xml-http-request");
+    });
+
+    it("should still merge letters when mergeAmbiguousCharacters is set", () => {
+      expect(
+        pascalCase("an-outlined-open-a-i", { mergeAmbiguousCharacters: true }),
+      ).toEqual("AnOutlinedOpenAI");
+      expect(
+        kebabCase("AnOutlinedOpenAI", { split: splitSeparateNumbers }),
+      ).toEqual("an-outlined-open-ai");
+    });
+  });
 });

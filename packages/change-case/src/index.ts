@@ -103,12 +103,10 @@ export function camelCase(input: string, options?: PascalCaseOptions) {
     : pascalCaseTransformFactory(lower, upper);
   return (
     prefix +
-    words
-      .map((word, index) => {
-        if (index === 0) return lower(word);
-        return transform(word, index);
-      })
-      .join(options?.delimiter ?? "") +
+    mapCaseWords(words, (word, index, previous) => {
+      if (index === 0) return lower(word);
+      return transform(word, index, previous);
+    }).join(options?.delimiter ?? "") +
     suffix
   );
 }
@@ -123,7 +121,11 @@ export function pascalCase(input: string, options?: PascalCaseOptions) {
   const transform = options?.mergeAmbiguousCharacters
     ? capitalCaseTransformFactory(lower, upper)
     : pascalCaseTransformFactory(lower, upper);
-  return prefix + words.map(transform).join(options?.delimiter ?? "") + suffix;
+  return (
+    prefix +
+    mapCaseWords(words, transform).join(options?.delimiter ?? "") +
+    suffix
+  );
 }
 
 /**
@@ -228,6 +230,17 @@ function upperFactory(locale: Locale): (input: string) => string {
     : (input: string) => input.toLocaleUpperCase(locale);
 }
 
+function mapCaseWords(
+  words: string[],
+  transform: (word: string, index: number, previous: string) => string,
+) {
+  const result: string[] = [];
+  for (let index = 0; index < words.length; index++) {
+    result.push(transform(words[index], index, result[index - 1] ?? ""));
+  }
+  return result;
+}
+
 function capitalCaseTransformFactory(
   lower: (input: string) => string,
   upper: (input: string) => string,
@@ -239,11 +252,26 @@ function pascalCaseTransformFactory(
   lower: (input: string) => string,
   upper: (input: string) => string,
 ) {
-  return (word: string, index: number) => {
+  return (word: string, index: number, previous = "") => {
     const char0 = word[0];
-    const initial =
-      index > 0 && char0 >= "0" && char0 <= "9" ? "_" + char0 : upper(char0);
-    return initial + lower(word.slice(1));
+    const rest = lower(word.slice(1));
+
+    // Prefix `_` before numbers so `v 1` → `V_1` instead of `V1`.
+    if (index > 0 && char0 >= "0" && char0 <= "9") {
+      return "_" + char0 + rest;
+    }
+
+    const initial = upper(char0);
+
+    // Consecutive single letters would otherwise become an all-caps run
+    // (`A`+`I` → `AI`) that `split` treats as one acronym, so kebab/snake
+    // cannot recover `a-i`. Mirror the number rule when the previous
+    // transformed word ends with an uppercase letter.
+    if (index > 0 && word.length === 1 && /\p{Lu}/u.test(previous.slice(-1))) {
+      return "_" + initial;
+    }
+
+    return initial + rest;
   };
 }
 
