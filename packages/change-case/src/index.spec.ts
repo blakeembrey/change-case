@@ -401,6 +401,23 @@ describe("change case", () => {
     it("should split an empty string", () => {
       expect(split("")).toEqual([]);
     });
+
+    it("should not split digit→ALLCAPS (idempotent CONSTANT_CASE)", () => {
+      // Regression for https://github.com/blakeembrey/change-case/issues/367
+      expect(split("FOO123BAR")).toEqual(["FOO123BAR"]);
+      expect(split("foo123bar")).toEqual(["foo123bar"]);
+      expect(split("foo123Bar")).toEqual(["foo123", "Bar"]);
+      expect(split("V1Test")).toEqual(["V1", "Test"]);
+    });
+  });
+
+  describe("constantCase idempotency with digits (#367)", () => {
+    it("should be idempotent when digits abut letters", () => {
+      for (const input of ["foo123bar", "a1b2c3", "3dModel", "http2Server"]) {
+        const once = constantCase(input);
+        expect(constantCase(once)).toEqual(once);
+      }
+    });
   });
 
   describe("pascal case merge option", () => {
