@@ -1,5 +1,8 @@
 // Regexps involved with splitting words in various case formats.
-const SPLIT_LOWER_UPPER_RE = /([\p{Ll}\d])(\p{Lu})/gu;
+const SPLIT_LOWER_UPPER_RE = /(\p{Ll})(\p{Lu})/gu;
+// Digit followed by PascalCase (Upper+lower), but not digit→ALLCAPS — keeps
+// V1Test splitting while making CONSTANT_CASE idempotent for digit runs.
+const SPLIT_DIGIT_UPPER_LOWER_RE = /(\d)(\p{Lu}\p{Ll})/gu;
 const SPLIT_UPPER_UPPER_RE = /(\p{Lu})([\p{Lu}][\p{Ll}])/gu;
 
 // Used to iterate over the initial split result and separate numbers.
@@ -48,6 +51,7 @@ export function split(value: string) {
 
   result = result
     .replace(SPLIT_LOWER_UPPER_RE, SPLIT_REPLACE_VALUE)
+    .replace(SPLIT_DIGIT_UPPER_LOWER_RE, SPLIT_REPLACE_VALUE)
     .replace(SPLIT_UPPER_UPPER_RE, SPLIT_REPLACE_VALUE);
 
   result = result.replace(DEFAULT_STRIP_REGEXP, "\0");
