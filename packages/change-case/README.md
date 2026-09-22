@@ -43,7 +43,7 @@ All methods accept an `options` object as the second argument:
 - `prefixCharacters?: string` Retain at the beginning of the string. Defaults to `""`. Example: use `"_"` to keep the underscores in `__typename`.
 - `suffixCharacters?: string` Retain at the end of the string. Defaults to `""`. Example: use `"_"` to keep the underscore in `type_`.
 
-By default, `pascalCase` and `snakeCase` separate ambiguous characters with `_`. For example, `V1.2` would become `V1_2` instead of `V12`. If you prefer them merged you can set `mergeAmbiguousCharacters` to `true`.
+By default, `pascalCase` and `camelCase` separate ambiguous characters with `_`. For example, `pascalCase("V1.2")` returns `V1_2` instead of `V12`. If you prefer them merged you can set `mergeAmbiguousCharacters` to `true`.
 
 ### Split
 
