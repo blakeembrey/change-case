@@ -415,4 +415,16 @@ describe("change case", () => {
       );
     });
   });
+
+  describe("constant case idempotency", () => {
+    it("should not re-split a digit run followed by an all caps word", () => {
+      // `constantCase` upper cases every word, so re-running it on its own
+      // output must not discover new word boundaries around digits.
+      expect(constantCase("foo123bar")).toEqual("FOO123BAR");
+      expect(constantCase(constantCase("foo123bar"))).toEqual("FOO123BAR");
+
+      expect(constantCase("a1b2c3")).toEqual("A1B2C3");
+      expect(constantCase(constantCase("a1b2c3"))).toEqual("A1B2C3");
+    });
+  });
 });

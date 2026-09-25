@@ -1,5 +1,12 @@
 // Regexps involved with splitting words in various case formats.
-const SPLIT_LOWER_UPPER_RE = /([\p{Ll}\d])(\p{Lu})/gu;
+// A digit is only treated as the end of a word when it's directly followed
+// by the start of a new capitalized word, i.e. an upper case letter that is
+// itself followed by a lower case letter (like the `T` in `V1Test`).
+// Without that lookahead, an already upper cased run of letters and digits
+// (e.g. `FOO123BAR` or `A1B2C3`, produced by re-casing
+// `foo123bar`/`a1b2c3`) gets split all over again on every digit/letter
+// boundary, which breaks idempotency of the casing functions.
+const SPLIT_LOWER_UPPER_RE = /(\p{Ll})(\p{Lu})|(\d)(\p{Lu})(?=\p{Ll})/gu;
 const SPLIT_UPPER_UPPER_RE = /(\p{Lu})([\p{Lu}][\p{Ll}])/gu;
 
 // Used to iterate over the initial split result and separate numbers.
@@ -9,7 +16,7 @@ const SPLIT_SEPARATE_NUMBER_RE = /(\d)\p{Ll}|(\p{L})\d/u;
 const DEFAULT_STRIP_REGEXP = /[^\p{L}\d]+/giu;
 
 // The replacement value for splits.
-const SPLIT_REPLACE_VALUE = "$1\0$2";
+const SPLIT_REPLACE_VALUE = "$1$3\0$2$4";
 
 // The default characters to keep after transforming case.
 const DEFAULT_PREFIX_SUFFIX_CHARACTERS = "";
