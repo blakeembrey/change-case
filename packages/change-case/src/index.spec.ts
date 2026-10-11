@@ -381,6 +381,34 @@ const tests: [string, Result, Options?][] = [
 ];
 
 describe("change case", () => {
+  it("capitalizes supplementary-plane letters as complete code points", () => {
+    const lower = "\u{10428}";
+    const upper = "\u{10400}";
+    for (const locale of [undefined, false] as const) {
+      expect(capitalCase(`${lower}foo bar`, { locale })).toEqual(
+        `${upper}foo Bar`,
+      );
+      expect(sentenceCase(`${lower}foo bar`, { locale })).toEqual(
+        `${upper}foo bar`,
+      );
+      expect(pascalCase(`${lower}foo bar`, { locale })).toEqual(
+        `${upper}fooBar`,
+      );
+      expect(camelCase(`foo ${lower}bar`, { locale })).toEqual(
+        `foo${upper}bar`,
+      );
+      expect(trainCase(`${lower}foo bar`, { locale })).toEqual(
+        `${upper}foo-Bar`,
+      );
+      expect(
+        pascalCase(`${lower}foo bar`, {
+          locale,
+          mergeAmbiguousCharacters: true,
+        }),
+      ).toEqual(`${upper}fooBar`);
+    }
+  });
+
   for (const [input, result, options] of tests) {
     it(input, () => {
       expect(camelCase(input, options)).toEqual(result.camelCase);
