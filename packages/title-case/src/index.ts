@@ -122,12 +122,17 @@ export function titleCase(
 
         isSentenceEnd = terminators.has(nextChar);
 
+        if (IS_MANUAL_CASE.test(word)) {
+          isNewSentence = false;
+          continue;
+        }
+
         // Always the capitalize first word and reset "new sentence".
         if (isNewSentence) {
           isNewSentence = false;
         }
         // Skip capitalizing all words if sentence case is enabled.
-        else if (sentenceCase || IS_MANUAL_CASE.test(word)) {
+        else if (sentenceCase) {
           continue;
         }
         // Handle simple words.
