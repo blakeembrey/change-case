@@ -401,6 +401,56 @@ describe("change case", () => {
     it("should split an empty string", () => {
       expect(split("")).toEqual([]);
     });
+
+    it.each([
+      ["हिन्दी भाषा", ["हिन्दी", "भाषा"]],
+      ["தமிழ் மொழி", ["தமிழ்", "மொழி"]],
+      ["ภาษาไทย ดี", ["ภาษาไทย", "ดี"]],
+      ["u\u0308ber cool", ["u\u0308ber", "cool"]],
+      ["cafe\u0301Test", ["cafe\u0301", "Test"]],
+      ["a\u0308\u0301Test", ["a\u0308\u0301", "Test"]],
+      ["E\u0301Test", ["E\u0301", "Test"]],
+      ["AE\u0301test", ["A", "E\u0301test"]],
+      ["1\u20e3Test", ["1\u20e3", "Test"]],
+      ["--cafe\u0301.test--", ["cafe\u0301", "test"]],
+    ])("should preserve combining marks in %s", (input, expected) => {
+      expect(split(input)).toEqual(expected);
+    });
+  });
+
+  describe("split separate numbers", () => {
+    it.each([
+      ["cafe\u0301123", ["cafe\u0301", "123"]],
+      ["a\u0308\u0301123", ["a\u0308\u0301", "123"]],
+      ["123e\u0301", ["123", "e\u0301"]],
+      ["1\u20e3test", ["1\u20e3", "test"]],
+      ["𝒳\u0301123", ["𝒳\u0301", "123"]],
+    ])(
+      "should keep combining marks with their letters in %s",
+      (input, expected) => {
+        expect(splitSeparateNumbers(input)).toEqual(expected);
+      },
+    );
+  });
+
+  describe("combining marks", () => {
+    it("should preserve Hindi and Tamil vowel signs and viramas", () => {
+      expect(kebabCase("हिन्दी भाषा")).toEqual("हिन्दी-भाषा");
+      expect(kebabCase("தமிழ் மொழி")).toEqual("தமிழ்-மொழி");
+    });
+
+    it("should preserve Thai vowel signs", () => {
+      expect(camelCase("ภาษาไทย ดี")).toEqual("ภาษาไทยดี");
+    });
+
+    it("should preserve decomposed Latin accents without normalizing", () => {
+      expect(kebabCase("über cool".normalize("NFD"))).toEqual(
+        "über-cool".normalize("NFD"),
+      );
+      expect(capitalCase("Tiếng Việt".normalize("NFD"))).toEqual(
+        "Tiếng Việt".normalize("NFD"),
+      );
+    });
   });
 
   describe("pascal case merge option", () => {
